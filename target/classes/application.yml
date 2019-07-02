@@ -1,0 +1,89 @@
+spring:
+  #thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+
+  #Druid
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 1000
+    initialSize: 100
+    maxWait: 60000
+    minIdle: 500
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+    #static静态页面
+  resources:
+    add-mappings: true
+    cache-period: 3600
+    static-locations: classpath:/static/
+    chain:
+      cache: true
+      enabled: true
+      gzipped: true
+      html-application-cache: true
+
+  #RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    #\u6D88\u8D39\u8005\u6570\u91CF
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+    #\u6D88\u8D39\u8005\u6BCF\u6B21\u4ECE\u961F\u5217\u83B7\u53D6\u7684\u6D88\u606F\u6570\u91CF
+        prefetch: 1
+    #\u6D88\u8D39\u8005\u81EA\u52A8\u542F\u52A8
+        auto-startup: true
+    #\u6D88\u8D39\u5931\u8D25\uFF0C\u81EA\u52A8\u91CD\u65B0\u5165\u961F
+        default-requeue-rejected: true
+    #\u542F\u7528\u53D1\u9001\u91CD\u8BD5
+    template:
+      retry:
+        enabled: true
+        initial-interval: 1000
+        max-attempts: 3
+        max-interval: 10000
+        multiplier: 1.0
+
+#mybatis
+mybatis:
+  type-aliases-package: com.imooc.miaosha.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+  mapper-locations: classpath:com/imooc/miaosha/dao/*.xml
+
+#redis
+redis:
+  host: 127.0.0.1
+  port: 6379
+  timeout: 10
+  poolMaxTotal: 1000
+  poolMaxIdle: 500
+  poolMaxWait: 500
+
+
