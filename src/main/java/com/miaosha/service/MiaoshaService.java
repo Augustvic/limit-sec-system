@@ -11,6 +11,8 @@ import com.miaosha.util.MD5Util;
 import com.miaosha.util.UUIDUtil;
 import com.miaosha.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,7 @@ import javax.script.ScriptEngineManager;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.concurrent.Future;
 
 @Service
 public class MiaoshaService {
@@ -34,6 +37,7 @@ public class MiaoshaService {
 
     @Transactional
     public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
+        System.out.println(Thread.currentThread().getName());
         // 减库存 下订单 写入秒杀订单
         boolean success = goodsService.reduceStock(goods);
         if (success) {

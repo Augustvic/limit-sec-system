@@ -13,10 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created by August on 2019/6/7 21:00
- **/
-
 @Controller
 @RequestMapping("/demo")
 public class SampleController {

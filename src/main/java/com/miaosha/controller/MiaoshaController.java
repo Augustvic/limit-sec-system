@@ -85,6 +85,7 @@ public class MiaoshaController implements InitializingBean {
     public Result<Integer> list(Model model, MiaoshaUser user,
                                 @RequestParam("goodsId") long goodsId,
                                 @PathVariable("path") String path) {
+        System.out.println("do_miaosha:" + Thread.currentThread().getName());
         model.addAttribute("user", user);
         if (user == null)
             return Result.error(CodeMsg.SESSION_ERROR);
@@ -172,6 +173,7 @@ public class MiaoshaController implements InitializingBean {
     @ResponseBody
     public Result<String> getMiaoshaVerifyCode(HttpServletResponse response, MiaoshaUser user,
                                                @RequestParam("goodsId") long goodsId) {
+        System.out.println("verifyCode:" + Thread.currentThread().getName());
         if (user == null)
             return Result.error(CodeMsg.SESSION_ERROR);
         try {

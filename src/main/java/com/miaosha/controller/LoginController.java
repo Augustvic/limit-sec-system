@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-/**
- * Created by August on 2019/6/15 14:40
- **/
-
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -29,6 +25,7 @@ public class LoginController {
 
     @RequestMapping("/to_login")
     public String toLogin() {
+        System.out.println("login:" + Thread.currentThread().getName());
         return "login";
     }
 
