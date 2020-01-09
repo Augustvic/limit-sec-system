@@ -1,4 +1,4 @@
-package com.miaosha.rabbitmq;
+package com.miaosha.kafka;
 
 import com.miaosha.domain.MiaoshaUser;
 

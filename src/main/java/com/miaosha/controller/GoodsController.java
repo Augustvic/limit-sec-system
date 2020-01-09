@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.apache.commons.lang3.StringUtils;
-import org.thymeleaf.spring4.context.SpringWebContext;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.context.WebContext;
+//import org.thymeleaf.spring5.context.SpringWebContext;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,7 +57,8 @@ public class GoodsController {
         model.addAttribute("goodsList", goodsList);
 //        return "goods_list";
         //手动渲染
-        SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
+        WebContext ctx = new WebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap());html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
+        //SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
         html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
         if (!StringUtils.isEmpty(html)) {
             redisService.set(GoodsKey.getGoodsList, "", html);
@@ -104,7 +106,8 @@ public class GoodsController {
 //        return "goods_detail";
 
         //手动渲染
-        SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
+        WebContext ctx = new WebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap());html = thymeleafViewResolver.getTemplateEngine().process("goods_detail", ctx);
+        //SpringWebContext ctx = new SpringWebContext(request, response, request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
         html = thymeleafViewResolver.getTemplateEngine().process("goods_detail", ctx);
         if (!StringUtils.isEmpty(html)) {
             redisService.set(GoodsKey.getGoodsDetail, "", html);

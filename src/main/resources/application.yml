@@ -7,41 +7,34 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     cache: false
-    content-type: text/html
     enabled: true
     encoding: UTF-8
     mode: HTML5
+  # kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      retries: 1
+      batch-size: 16384
+      buffer-memory: 33554432
+    consumer:
+      group-id: miaosha
 
   #Druid
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/miaosha?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    filters: stat
-    maxActive: 1000
-    initialSize: 100
-    maxWait: 60000
-    minIdle: 500
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: select 'x'
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
 
     #static静态页面
   resources:
     add-mappings: true
-    cache-period: 3600
     static-locations: classpath:/static/
     chain:
       cache: true
       enabled: true
-      gzipped: true
       html-application-cache: true
 
   #RabbitMQ

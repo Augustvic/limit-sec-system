@@ -1,7 +1,6 @@
 package com.miaosha.controller;
 
 import com.miaosha.domain.User;
-import com.miaosha.rabbitmq.MQSender;
 import com.miaosha.redis.RedisService;
 import com.miaosha.redis.UserKey;
 import com.miaosha.result.CodeMsg;
@@ -22,9 +21,6 @@ public class SampleController {
 
     @Autowired
     RedisService redisService;
-
-    @Autowired
-    MQSender sender;
 
 //    @RequestMapping("/mq/header")
 //    @ResponseBody
