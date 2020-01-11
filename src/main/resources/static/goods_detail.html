@@ -124,7 +124,7 @@
                     } else {
                         layer.confirm("恭喜你，秒杀成功！查看订单?", {btn: ["确定", "取消"]},
                             function () {
-                                window.location.href = "/order_detail.htm?orderId=" + result;
+                                window.location.href = "/order_detail.html?orderId=" + result;
                             },
                             function () {
                                 layer.closeAll();
@@ -149,7 +149,7 @@
             },
             success: function (data) {
                 if (data.code == 0) {
-                    // window.location.href="/order_detail.htm?orderId="+data.data.id;
+                    // window.location.href="/order_detail.html?orderId="+data.data.id;
                     getMiaoshaResult($("#goodsId").val());
                 } else {
                     layer.msg(data.msg);
@@ -163,6 +163,7 @@
 
     function getDetail() {
         var goodsId = g_getQueryString("goodsId");
+        console.log(goodsId)
         $.ajax({
             url: "/goods/detail/" + goodsId,
             type: "GET",

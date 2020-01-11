@@ -74,6 +74,7 @@ public class MiaoshaService {
         return redisService.exists(MiaoshaKey.isGoodsOver, "" + goodsId);
     }
 
+    // 检查秒杀地址
     public boolean checkPath(MiaoshaUser user, long goodsId, String path) {
         if (user == null || path == null) {
             return false;
@@ -82,6 +83,7 @@ public class MiaoshaService {
         return path.equals(pathOld);
     }
 
+    // 生成秒杀地址 path 参数，并存入缓存中
     public String createMiaoshaPath(MiaoshaUser user, long goodsId) {
         if (user == null || goodsId <= 0) {
             return null;

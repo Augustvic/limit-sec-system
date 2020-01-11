@@ -9,9 +9,10 @@ var g_passsword_salt="1a2b3c4d"
 function g_getQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);
+	console.log(r)
 	if(r != null) return unescape(r[2]);
 	return null;
-};
+}
 //设定时间格式化函数，使用new Date().format("yyyyMMddhhmmss");  
 Date.prototype.format = function (format) {  
     var args = {  

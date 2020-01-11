@@ -8,7 +8,6 @@ import com.miaosha.service.MiaoshaService;
 import com.miaosha.service.MiaoshaUserService;
 import com.miaosha.service.OrderService;
 import com.miaosha.vo.GoodsVo;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
