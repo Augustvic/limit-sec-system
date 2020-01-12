@@ -14,8 +14,14 @@ public class GoodsService {
     @Autowired
     GoodsDao goodsDao;
 
+    // 获取所有商品
     public List<GoodsVo> listGoodsVo() {
         return goodsDao.listGoodsVo();
+    }
+
+    // 获取指定时间内即将参加秒杀的商品
+    public List<MiaoshaGoods> listMiaoshaGoodsLatest(int startSeconds, int endSeconds) {
+
     }
 
     public GoodsVo getGoodsVoByGoodsId(long goodsId) {

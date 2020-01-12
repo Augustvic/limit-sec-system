@@ -3,10 +3,6 @@ package com.miaosha.redis;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by August on 2019/6/14 14:53
- **/
-
 @Component
 @ConfigurationProperties(prefix="redis")
 public class RedisConfig {

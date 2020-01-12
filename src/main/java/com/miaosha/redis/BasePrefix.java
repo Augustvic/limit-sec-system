@@ -1,10 +1,6 @@
 package com.miaosha.redis;
 
-/**
- * Created by August on 2019/6/14 15:58
- **/
-
-public abstract class BasePrefix implements com.miaosha.redis.KeyPrefix {
+public abstract class BasePrefix implements KeyPrefix {
 
     private int expireSeconds;
 

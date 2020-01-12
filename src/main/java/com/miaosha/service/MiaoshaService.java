@@ -37,7 +37,6 @@ public class MiaoshaService {
 
     @Transactional
     public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
-        System.out.println(Thread.currentThread().getName());
         // 减库存 下订单 写入秒杀订单
         boolean success = goodsService.reduceStock(goods);
         if (success) {

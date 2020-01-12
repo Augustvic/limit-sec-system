@@ -2,6 +2,8 @@ package com.miaosha.controller;
 
 
 import com.miaosha.access.AccessLimit;
+import com.miaosha.config.ThreadPoolConfig;
+import com.miaosha.domain.MiaoshaGoods;
 import com.miaosha.domain.MiaoshaOrder;
 import com.miaosha.domain.MiaoshaUser;
 import com.miaosha.domain.OrderInfo;
@@ -17,6 +19,7 @@ import com.miaosha.service.GoodsService;
 import com.miaosha.service.MiaoshaService;
 import com.miaosha.service.MiaoshaUserService;
 import com.miaosha.service.OrderService;
+import com.miaosha.util.BaseUtil;
 import com.miaosha.util.MD5Util;
 import com.miaosha.util.UUIDUtil;
 import com.miaosha.vo.GoodsVo;
@@ -28,18 +31,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/miaosha")
-public class MiaoshaController implements InitializingBean {
+public class MiaoshaController {
 
     @Autowired
     MiaoshaUserService userService;
@@ -61,18 +69,28 @@ public class MiaoshaController implements InitializingBean {
 
     private Map<Long, Boolean> localOverMap = new HashMap<>();
 
-    /**
-     * 系统初始化
-     */
-    public void afterPropertiesSet() throws Exception {
-        List<GoodsVo> goodsList = goodsService.listGoodsVo();
-        if (goodsList == null) {
-            return;
-        }
-        for (GoodsVo goods : goodsList) {
-            redisService.set(GoodsKey.getMiaoshaGoodsStock, "" + goods.getId(), goods.getStockCount());
-            localOverMap.put(goods.getId(), false);
-        }
+    @PostConstruct
+    private void init() {
+        ScheduledExecutorService checkGoodsServiceExecutor = ThreadPoolConfig.checkGoodsServiceExecutor();
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                // 获取距现在 30 - 60 分钟时间段内即将开始秒杀的商品
+                List<MiaoshaGoods> goodsList = goodsService.listMiaoshaGoodsLatest(30 * 60, 60 * 60);
+                if (goodsList == null) {
+                    return;
+                }
+                for (MiaoshaGoods goods : goodsList) {
+                    // 秒杀结束 1 分钟后过期
+                    int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
+                    redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
+                    localOverMap.put(goods.getId(), false);
+                }
+            }
+        };
+        // 30 分钟检查一次
+        checkGoodsServiceExecutor.scheduleAtFixedRate(task, 0,
+                30 * 60, TimeUnit.SECONDS);
     }
 
     /**
@@ -85,7 +103,6 @@ public class MiaoshaController implements InitializingBean {
     public Result<Integer> list(Model model, MiaoshaUser user,
                                 @RequestParam("goodsId") long goodsId,
                                 @PathVariable("path") String path) {
-        System.out.println("do_miaosha:" + Thread.currentThread().getName());
         model.addAttribute("user", user);
         if (user == null)
             return Result.error(CodeMsg.SESSION_ERROR);

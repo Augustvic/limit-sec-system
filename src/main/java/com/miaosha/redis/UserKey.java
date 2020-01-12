@@ -1,8 +1,5 @@
 package com.miaosha.redis;
 
-/**
- * Created by August on 2019/6/14 16:02
- **/
 public class UserKey extends BasePrefix{
 
     public UserKey(String prefix) {

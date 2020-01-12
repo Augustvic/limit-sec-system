@@ -44,11 +44,6 @@ public class GoodsController {
 
     @RequestMapping(value = "/to_list")
     public String toList(HttpServletRequest request, HttpServletResponse response, Model model, MiaoshaUser user) {
-        //取（页面）缓存
-        String html = redisService.get(GoodsKey.getGoodsList, "", String.class);
-        if (!StringUtils.isEmpty(html)) {
-            return html;
-        }
         model.addAttribute("user", user);
         //查询商品列表
         List<GoodsVo> goodsList = goodsService.listGoodsVo();

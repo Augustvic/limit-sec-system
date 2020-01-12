@@ -6,10 +6,6 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-/**
- * Created by August on 2019/6/14 15:37
- **/
-
 @Service
 public class RedisPoolFactory {
 

@@ -1,11 +1,7 @@
 package com.miaosha.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import java.util.concurrent.*;
 
-@Configuration
 public class ThreadPoolConfig {
 
     // CPU 核数
@@ -23,10 +19,22 @@ public class ThreadPoolConfig {
     private final static RejectedExecutionHandler REJECTED_EXECUTION_HANDLER
             = new ThreadPoolExecutor.DiscardPolicy();
 
-    @Bean
+    // 线程池
+    private final static ScheduledExecutorService checkGoodsServiceExecutor =
+            new ScheduledThreadPoolExecutor(1,  REJECTED_EXECUTION_HANDLER);
+
     public ExecutorService asyncServiceExecutor() {
         return new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE,
                 KEEP_ALIVE_TIME, TimeUnit.SECONDS, WORK_QUEUE,
                 REJECTED_EXECUTION_HANDLER);
+    }
+
+    /**
+     * 用于定时检查即将参加秒杀的商品是否在缓存内的线程池，核心线程数为 1。
+     * 将商品加入缓存中时，设置过期时间为秒杀时间段
+     * @return ExecutorService 定时线程池
+     */
+    public static ScheduledExecutorService checkGoodsServiceExecutor() {
+        return checkGoodsServiceExecutor;
     }
 }
