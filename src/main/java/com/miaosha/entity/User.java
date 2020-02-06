@@ -1,4 +1,4 @@
-package com.miaosha.domain;
+package com.miaosha.entity;
 
 /**
  * Created by August on 2019/6/7 22:44

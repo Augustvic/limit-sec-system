@@ -21,93 +21,101 @@
 │  ├─main
 │  │  ├─java
 │  │  │  └─com
-│  │  │      └─itstyle
-│  │  │          └─seckill
-│  │  │              │  Application.java
-│  │  │              │  
-│  │  │              ├─common
-│  │  │              │  ├─api
-│  │  │              │  │      SwaggerConfig.java 
-│  │  │              │  │      
-│  │  │              │  ├─config
-│  │  │              │  │      IndexController.java  
-│  │  │              │  │      
-│  │  │              │  ├─dynamicquery   
-│  │  │              │  │      DynamicQuery.java
-│  │  │              │  │      DynamicQueryImpl.java
-│  │  │              │  │      NativeQueryResultEntity.java
-│  │  │              │  │      
-│  │  │              │  ├─entity   
-│  │  │              │  │      Result.java
-│  │  │              │  │      Seckill.java
-│  │  │              │  │      SuccessKilled.java
-│  │  │              │  │      
-│  │  │              │  ├─enums
-│  │  │              │  │      SeckillStatEnum.java
-│  │  │              │  │      
-│  │  │              │  ├─interceptor
-│  │  │              │  │      MyAdapter.java
-│  │  │              │  │      
-│  │  │              │  └─redis
-│  │  │              │          RedisConfig.java
-│  │  │              │          RedisUtil.java
-│  │  │              │          
-│  │  │              ├─distributedlock
-│  │  │              │  ├─redis
-│  │  │              │  │      RedissLockDemo.java
-│  │  │              │  │      RedissLockUtil.java
-│  │  │              │  │      RedissonAutoConfiguration.java
-│  │  │              │  │      RedissonProperties.java
-│  │  │              │  │      
-│  │  │              │  └─zookeeper
-│  │  │              │          ZkLockUtil.java
-│  │  │              │          
-│  │  │              ├─queue
-│  │  │              │  ├─jvm
-│  │  │              │  │      SeckillQueue.java
-│  │  │              │  │      TaskRunner.java
-│  │  │              │  │      
-│  │  │              │  ├─kafka
-│  │  │              │  │      KafkaConsumer.java
-│  │  │              │  │      KafkaSender.java
-│  │  │              │  │      
-│  │  │              │  └─redis
-│  │  │              │          RedisConsumer.java
-│  │  │              │          RedisSender.java
-│  │  │              │          RedisSubListenerConfig.java
-│  │  │              │          
-│  │  │              ├─repository
-│  │  │              │      SeckillRepository.java
-│  │  │              │      
-│  │  │              ├─service
-│  │  │              │  │  ISeckillDistributedService.java
-│  │  │              │  │  ISeckillService.java
-│  │  │              │  │  
-│  │  │              │  └─impl
-│  │  │              │          SeckillDistributedServiceImpl.java
-│  │  │              │          SeckillServiceImpl.java
-│  │  │              │          
-│  │  │              └─web
-│  │  │                      SeckillController.java
-│  │  │                      SeckillDistributedController.java
+│  │  │      └─miaosha
+│  │  │          │  MainApplication.java
+│  │  │          │  
+│  │  │          ├─access
+│  │  │          │      AccessInterceptor.java 
+│  │  │          │      AccessLimit.java
+│  │  │          │      UserContext,java
+│  │  │          │  
+│  │  │          ├─config
+│  │  │          │     ThreadPoolConfig.java  
+│  │  │          │     UserArgumentResolver.java
+│  │  │          │     WebConfig.java
+│  │  │          │  
+│  │  │          ├─controller
+│  │  │          │      GoodsController.java
+│  │  │          │      LoginController.java
+│  │  │          │      MiaoshaController.java
+│  │  │          │      OrderController.java
+│  │  │          │      SampleController.java
+│  │  │          │      UserController.java
+│  │  │          │      
+│  │  │          ├─dao
+│  │  │          │      GoodsDao.java
+│  │  │          │      MiaoshaGoodsDao.java
+│  │  │          │      MiaoshaUserDao.java
+│  │  │          │      OrderDao.java
+│  │  │          │      UserDao.java
+│  │  │          │     
+│  │  │          ├─entity
+│  │  │          │      Goods.java
+│  │  │          │      MiaoshaGoods.java
+│  │  │          │      MiaoshaOrder.java
+│  │  │          │      MiaoshaUser.java
+│  │  │          │      OrderInfo.java
+│  │  │          │      User.java
+│  │  │          │
+│  │  │          ├─exception
+│  │  │          │      GlobalException.java
+│  │  │          │      GlobalExceptionHandler.java
+│  │  │          │
+│  │  │          ├─kafka
+│  │  │          │      MiaoshaMessage.java
+│  │  │          │      MQConfig.java
+│  │  │          │      MQReceiver.java
+│  │  │          │      MQSend.java
+│  │  │          │
+│  │  │          ├─redis
+│  │  │          │      AccessKey.java
+│  │  │          │      BasePrefix.java
+│  │  │          │      GoodsKey.java
+│  │  │          │      KeyPrefix.java
+│  │  │          │      MiaoshaKey.java
+│  │  │          │      MiaoshaUserKey.java
+│  │  │          │      OrderKey.java
+│  │  │          │      RedisConfig.java
+│  │  │          │      RedisPoolFactory.java
+│  │  │          │      RedisService.java
+│  │  │          │      UserKey.java
+│  │  │          │
+│  │  │          ├─result
+│  │  │          │      CodeMsg.java
+│  │  │          │      Result.java
+│  │  │          │
+│  │  │          ├─service
+│  │  │          │      GoodsService.java
+│  │  │          │      MiaoshaService.java
+│  │  │          │      MiaoshaUserService.java
+│  │  │          │      OrderService.java
+│  │  │          │      UserService.java
+│  │  │          │
+│  │  │          ├─util
+│  │  │          │      BaseUtil.java
+│  │  │          │      MD5Util.java
+│  │  │          │      UUIDUtil.java
+│  │  │          │
+│  │  │          └─vo
+│  │  │                  GoodsDetailVo.java
+│  │  │                  GoodsVo.java
+│  │  │                  LoginVo.java
+│  │  │                  OrderDetailVo.java
+│  │  │        
 │  │  │                      
-│  │  ├─resources
-│  │  │  │  application.properties
-│  │  │  │  logback-spring.xml
-│  │  │  │  
-│  │  │  ├─sql
-│  │  │  │      seckill.sql
-│  │  │  │      
-│  │  │  ├─static
-│  │  │  └─templates
-│  │  └─webapp
+│  │  └─resources
+│  │      │  application.yml
+│  │      │      
+│  │      ├─static
+│  │      └─templates
+└─
 
 ```
 
 
 秒杀核心功能的总体流程如下图所示：
 
-<img src="https://github.com/Augustvic/MiaoShaoSystem/tree/master/images/main.png" width=70% />
+<img src="https://github.com/Augustvic/MiaoShaoSystem/blob/master/images/main.png" width=70% />
 
 ## 2. 缓存与消息队列
 
@@ -125,19 +133,19 @@ Redis 令牌机制
 
 技术栈：kafka
 
-**降流**
+#### 2.1.1 降流
 
 此操作的目标是将请求尽量拦截在上游，减少对数据库的访问。
 
 短时间大量的秒杀请求不会直接冲击到服务端的处理流程，先堆积在消息队列中，服务按照自己的能力从消息队列中获取消息请求进行处理。
 
-**解耦（未涉及）**
+#### 2.1.2 解耦（未涉及）
 
 当一个新的订单创建时，可能会有支付系统需要发起支付流程、风控系统需要审核订单的合法性、客服系统需要给用户发送短信告知用户、分析系统需要更新统计数据……
 
 以上操作都需要实时获取订单数据，所以引入消息队列，下游子系统各自订阅消息，完成各自的流程，互不干扰。
 
-**异步**
+#### 2.1.3 异步
 
 此系统中，决定是否秒杀成功，实际上只有最后一步——写入数据库。异步操作在这里指的是，当秒杀请求进入消息队列，就马上给用户返回“正在处理”。之后由消息队列异步地进行后续的操作，执行完成后才返回秒杀的结果。
 

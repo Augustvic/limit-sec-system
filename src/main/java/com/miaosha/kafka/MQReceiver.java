@@ -1,7 +1,7 @@
 package com.miaosha.kafka;
 
-import com.miaosha.domain.MiaoshaOrder;
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaOrder;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.redis.RedisService;
 import com.miaosha.service.GoodsService;
 import com.miaosha.service.MiaoshaService;

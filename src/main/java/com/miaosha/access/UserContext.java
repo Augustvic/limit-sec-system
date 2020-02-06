@@ -1,6 +1,6 @@
 package com.miaosha.access;
 
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 
 public class UserContext {
     private static ThreadLocal<MiaoshaUser> userHolder = new ThreadLocal<>();

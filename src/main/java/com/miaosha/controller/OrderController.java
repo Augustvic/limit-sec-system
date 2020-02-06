@@ -1,7 +1,7 @@
 package com.miaosha.controller;
 
-import com.miaosha.domain.MiaoshaUser;
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.entity.MiaoshaUser;
+import com.miaosha.entity.OrderInfo;
 import com.miaosha.result.CodeMsg;
 import com.miaosha.result.Result;
 import com.miaosha.service.GoodsService;

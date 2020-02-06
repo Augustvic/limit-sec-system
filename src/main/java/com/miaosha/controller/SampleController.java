@@ -1,6 +1,6 @@
 package com.miaosha.controller;
 
-import com.miaosha.domain.User;
+import com.miaosha.entity.User;
 import com.miaosha.redis.RedisService;
 import com.miaosha.redis.UserKey;
 import com.miaosha.result.CodeMsg;

@@ -1,7 +1,7 @@
 package com.miaosha.dao;
 
-import com.miaosha.domain.MiaoshaOrder;
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.entity.MiaoshaOrder;
+import com.miaosha.entity.OrderInfo;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

@@ -1,6 +1,6 @@
 package com.miaosha.dao;
 
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

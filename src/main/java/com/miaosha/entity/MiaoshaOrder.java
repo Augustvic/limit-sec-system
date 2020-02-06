@@ -1,4 +1,4 @@
-package com.miaosha.domain;
+package com.miaosha.entity;
 
 public class MiaoshaOrder {
     private Long id;

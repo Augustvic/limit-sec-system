@@ -1,6 +1,6 @@
 package com.miaosha.vo;
 
-import com.miaosha.domain.Goods;
+import com.miaosha.entity.Goods;
 import java.util.Date;
 
 public class GoodsVo extends Goods {

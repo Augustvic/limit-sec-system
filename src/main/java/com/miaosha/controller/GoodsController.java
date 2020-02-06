@@ -1,7 +1,6 @@
 package com.miaosha.controller;
 
-import com.miaosha.domain.MiaoshaUser;
-import com.miaosha.redis.GoodsKey;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.redis.RedisService;
 import com.miaosha.result.Result;
 import com.miaosha.service.GoodsService;
@@ -15,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.apache.commons.lang3.StringUtils;
 //import org.thymeleaf.spring5.context.SpringWebContext;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 

@@ -1,6 +1,6 @@
 package com.miaosha.vo;
 
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.entity.OrderInfo;
 
 public class OrderDetailVo {
     private GoodsVo goods;

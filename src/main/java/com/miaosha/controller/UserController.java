@@ -1,6 +1,6 @@
 package com.miaosha.controller;
 
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.result.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

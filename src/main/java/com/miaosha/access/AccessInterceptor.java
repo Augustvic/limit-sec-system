@@ -1,7 +1,7 @@
 package com.miaosha.access;
 
 import com.alibaba.fastjson.JSON;
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.redis.AccessKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.result.CodeMsg;

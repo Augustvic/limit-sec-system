@@ -3,15 +3,12 @@ package com.miaosha.controller;
 
 import com.miaosha.access.AccessLimit;
 import com.miaosha.config.ThreadPoolConfig;
-import com.miaosha.domain.MiaoshaGoods;
-import com.miaosha.domain.MiaoshaOrder;
-import com.miaosha.domain.MiaoshaUser;
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.entity.MiaoshaGoods;
+import com.miaosha.entity.MiaoshaOrder;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.kafka.MQSender;
 import com.miaosha.kafka.MiaoshaMessage;
-import com.miaosha.redis.AccessKey;
 import com.miaosha.redis.GoodsKey;
-import com.miaosha.redis.MiaoshaKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.result.CodeMsg;
 import com.miaosha.result.Result;
@@ -20,12 +17,6 @@ import com.miaosha.service.MiaoshaService;
 import com.miaosha.service.MiaoshaUserService;
 import com.miaosha.service.OrderService;
 import com.miaosha.util.BaseUtil;
-import com.miaosha.util.MD5Util;
-import com.miaosha.util.UUIDUtil;
-import com.miaosha.vo.GoodsVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +32,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -76,10 +66,11 @@ public class MiaoshaController {
             @Override
             public void run() {
                 // 获取距现在 30 - 60 分钟时间段内即将开始秒杀的商品
-                List<MiaoshaGoods> goodsList = goodsService.listMiaoshaGoodsLatest(30 * 60, 60 * 60);
+                List<MiaoshaGoods> goodsList = miaoshaService.listMiaoshaGoodsLatest(30 * 60, 60 * 60);
                 if (goodsList == null) {
                     return;
                 }
+                System.out.println(goodsList.toString());
                 for (MiaoshaGoods goods : goodsList) {
                     // 秒杀结束 1 分钟后过期
                     int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);

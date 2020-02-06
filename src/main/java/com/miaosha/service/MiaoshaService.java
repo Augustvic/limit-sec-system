@@ -1,18 +1,14 @@
 package com.miaosha.service;
 
-import com.miaosha.dao.GoodsDao;
-import com.miaosha.domain.Goods;
-import com.miaosha.domain.MiaoshaOrder;
-import com.miaosha.domain.MiaoshaUser;
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.dao.MiaoshaGoodsDao;
+import com.miaosha.entity.*;
 import com.miaosha.redis.MiaoshaKey;
 import com.miaosha.redis.RedisService;
+import com.miaosha.util.BaseUtil;
 import com.miaosha.util.MD5Util;
 import com.miaosha.util.UUIDUtil;
 import com.miaosha.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,11 +16,14 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Future;
 
 @Service
 public class MiaoshaService {
+
+    @Autowired
+    MiaoshaGoodsDao miaoshaGoodsDao;
 
     @Autowired
     GoodsService goodsService;
@@ -38,7 +37,7 @@ public class MiaoshaService {
     @Transactional
     public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
         // 减库存 下订单 写入秒杀订单
-        boolean success = goodsService.reduceStock(goods);
+        boolean success = reduceStock(goods);
         if (success) {
             // order_info, miaosha_order
             return orderService.createOrder(user, goods);
@@ -162,5 +161,30 @@ public class MiaoshaService {
         }
         redisService.delete(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId);
         return true;
+    }
+
+    /**
+     * 减库存
+     * @param goods 需要减库存的商品
+     * @return 减库存成功返回 true
+     */
+
+    public boolean reduceStock(GoodsVo goods) {
+        MiaoshaGoods g = new MiaoshaGoods();
+        g.setGoodsId(goods.getId());
+        int ret = miaoshaGoodsDao.reduceStock(g);
+        return ret > 0;
+    }
+
+    /**
+     * 获取指定时间内即将参加秒杀的商品
+     * @param startSeconds 初始时间偏移
+     * @param endSeconds 结束时间偏移
+     * @return 得到的秒杀商品列表
+     */
+    public List<MiaoshaGoods> listMiaoshaGoodsLatest(int startSeconds, int endSeconds) {
+        String startDate = BaseUtil.timeAdd(startSeconds);
+        String endDate = BaseUtil.timeAdd(endSeconds);
+        return  miaoshaGoodsDao.listMiaoshaGoodsLatest(startDate, endDate);
     }
 }

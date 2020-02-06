@@ -1,6 +1,6 @@
 package com.miaosha.vo;
 
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 
 public class GoodsDetailVo {
 

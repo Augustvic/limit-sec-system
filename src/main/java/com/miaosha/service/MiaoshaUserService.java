@@ -1,7 +1,7 @@
 package com.miaosha.service;
 
 import com.miaosha.dao.MiaoshaUserDao;
-import com.miaosha.domain.MiaoshaUser;
+import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.exception.GlobalException;
 import com.miaosha.redis.MiaoshaUserKey;
 import com.miaosha.redis.RedisService;

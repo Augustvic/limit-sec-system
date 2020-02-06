@@ -1,9 +1,9 @@
 package com.miaosha.service;
 
 import com.miaosha.dao.OrderDao;
-import com.miaosha.domain.MiaoshaOrder;
-import com.miaosha.domain.MiaoshaUser;
-import com.miaosha.domain.OrderInfo;
+import com.miaosha.entity.MiaoshaOrder;
+import com.miaosha.entity.MiaoshaUser;
+import com.miaosha.entity.OrderInfo;
 import com.miaosha.redis.OrderKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.vo.GoodsVo;
