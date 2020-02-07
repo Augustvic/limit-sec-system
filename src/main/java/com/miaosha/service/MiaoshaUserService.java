@@ -27,16 +27,21 @@ public class MiaoshaUserService {
     @Autowired
     RedisService redisService;
 
+    /**
+     * 根据 id 获取用户信息
+     * @param id
+     * @return MiaoshaUser
+     */
     public MiaoshaUser getById(long id) {
         // 取缓存
-        MiaoshaUser user = redisService.get(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
+        MiaoshaUser user = redisService.hget(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
         if (user != null) {
             return user;
         }
         // 取数据库
         user = miaoshaUserDao.getById(id);
         if (user != null) {
-            redisService.set(MiaoshaUserKey.getById, "" + id, user);
+            redisService.hset(MiaoshaUserKey.getById, "" + id, user);
         }
         return user;
     }
@@ -55,7 +60,7 @@ public class MiaoshaUserService {
         // 处理缓存（必须考虑缓存，否则出现缓存不一致）
         redisService.delete(MiaoshaUserKey.getById, "" + id);
         user.setPassword(toBeUpdate.getPassword());
-        redisService.set(MiaoshaUserKey.token, token, user);
+        redisService.hset(MiaoshaUserKey.token, token, user);
         return true;
     }
 
@@ -79,7 +84,7 @@ public class MiaoshaUserService {
         }
         //登陆成功生成cookie
         String token = UUIDUtil.uuid();
-        redisService.set(MiaoshaUserKey.token, token, user);
+        redisService.hset(MiaoshaUserKey.token, token, user);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
         cookie.setPath("/");
@@ -91,7 +96,7 @@ public class MiaoshaUserService {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        MiaoshaUser user = redisService.get(MiaoshaUserKey.token, token, MiaoshaUser.class);
+        MiaoshaUser user = redisService.hget(MiaoshaUserKey.token, token, MiaoshaUser.class);
         //延长有效期
         if (user != null){
             addCookie(response, token, user);
@@ -101,7 +106,7 @@ public class MiaoshaUserService {
 
     //延长cookie有效期
     public void addCookie(HttpServletResponse response, String token, MiaoshaUser user) {
-        redisService.set(MiaoshaUserKey.token, token, user);
+        redisService.hset(MiaoshaUserKey.token, token, user);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
         cookie.setPath("/");

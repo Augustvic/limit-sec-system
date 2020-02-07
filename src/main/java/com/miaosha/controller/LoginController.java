@@ -25,7 +25,6 @@ public class LoginController {
 
     @RequestMapping("/to_login")
     public String toLogin() {
-        System.out.println("login:" + Thread.currentThread().getName());
         return "login";
     }
 

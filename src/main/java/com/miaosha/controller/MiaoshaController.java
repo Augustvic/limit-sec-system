@@ -65,12 +65,11 @@ public class MiaoshaController {
         Runnable task = new Runnable() {
             @Override
             public void run() {
-                // 获取距现在 30 - 60 分钟时间段内即将开始秒杀的商品
-                List<MiaoshaGoods> goodsList = miaoshaService.listMiaoshaGoodsLatest(30 * 60, 60 * 60);
+                // 获取距现在 5 - 30 分钟时间段内即将开始秒杀的商品
+                List<MiaoshaGoods> goodsList = miaoshaService.listMiaoshaGoodsLatest(5 * 60, 30 * 60);
                 if (goodsList == null) {
                     return;
                 }
-                System.out.println(goodsList.toString());
                 for (MiaoshaGoods goods : goodsList) {
                     // 秒杀结束 1 分钟后过期
                     int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
@@ -79,9 +78,9 @@ public class MiaoshaController {
                 }
             }
         };
-        // 30 分钟检查一次
+        // 20 分钟检查一次
         checkGoodsServiceExecutor.scheduleAtFixedRate(task, 0,
-                30 * 60, TimeUnit.SECONDS);
+                20 * 60, TimeUnit.SECONDS);
     }
 
     /**
