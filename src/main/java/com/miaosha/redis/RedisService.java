@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.params.SetParams;
 
+import java.util.Collections;
 import java.util.Map;
 
 @Service
@@ -15,6 +17,52 @@ public class RedisService {
 
     @Autowired
     JedisPool jedisPool;
+
+    private static final String LOCK_SUCCESS = "OK";
+
+    /**
+     * 尝试加分布式锁
+     * @param prefix 锁的前缀
+     * @param key 锁的后缀 key
+     * @param requestId 标识加锁客户端的 value
+     * @return 是否加锁成功
+     */
+    public boolean lock(KeyPrefix prefix, String key, String requestId) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String realKey = prefix.getPrefix() + key;
+            SetParams params = new SetParams();
+            params.ex(prefix.expireSeconds());
+            params.nx();
+            String result = jedis.set(realKey, requestId, params);
+            return LOCK_SUCCESS.equals(result);
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
+     * 尝试释放分布式锁
+     * @param prefix 锁的前缀
+     * @param key 锁的后缀 key
+     * @param requestId 标识加锁客户端的 value
+     * @return 是否释放成功
+     */
+    public boolean unlock(KeyPrefix prefix, String key, String requestId) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String realKey = prefix.getPrefix() + key;
+            // 此段为 Lua 脚本，用来保证原子性：
+            // 首先获取锁对应的 value 值，检查是否与 requestId 相等，如果相等则删除锁（解锁）
+            String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+            Object result = jedis.eval(script, Collections.singletonList(realKey), Collections.singletonList(requestId));
+            return LOCK_SUCCESS.equals(result);
+        } finally {
+            returnToPool(jedis);
+        }
+    }
 
     /**
      *  获取单个对象

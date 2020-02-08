@@ -9,6 +9,7 @@ import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.kafka.MQSender;
 import com.miaosha.kafka.MiaoshaMessage;
 import com.miaosha.redis.GoodsKey;
+import com.miaosha.redis.LockKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.result.CodeMsg;
 import com.miaosha.result.Result;
@@ -62,6 +63,7 @@ public class MiaoshaController {
     @PostConstruct
     private void init() {
         ScheduledExecutorService checkGoodsServiceExecutor = ThreadPoolConfig.checkGoodsServiceExecutor();
+        // 获取最近时间段内即将开始秒杀的商品
         Runnable task = new Runnable() {
             @Override
             public void run() {
@@ -100,6 +102,24 @@ public class MiaoshaController {
         boolean check = miaoshaService.checkPath(user, goodsId, path);
         if (!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
+        }
+        // 判断缓存是否存在，如果不存在，请求互斥锁，进入数据库读取并存入缓存
+        while (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {
+            if (redisService.lock(LockKey.lock, GoodsKey.getMiaoshaGoodsStock.getPrefix() + goodsId, "1")) {
+                try {
+                    MiaoshaGoods goods = miaoshaService.getMiaoshaGoodById(goodsId);
+                    if (goods == null) {
+                        return Result.error(CodeMsg.REQUEST_ILLEGAL);
+                    }
+                    int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
+                    redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
+                    localOverMap.put(goods.getId(), false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    redisService.unlock(LockKey.lock, GoodsKey.getMiaoshaGoodsStock.getPrefix() + goodsId, "1");
+                }
+            }
         }
         // 内存标记减少redis访问
         boolean over = localOverMap.get(goodsId);

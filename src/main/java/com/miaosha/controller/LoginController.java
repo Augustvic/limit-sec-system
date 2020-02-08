@@ -23,11 +23,21 @@ public class LoginController {
 
     private static Logger log = LoggerFactory.getLogger(LoginController.class);
 
+    /**
+     * 进入登录页面
+     * @return 登录页面
+     */
     @RequestMapping("/to_login")
     public String toLogin() {
         return "login";
     }
 
+    /**
+     * 执行登录验证
+     * @param response 相应数据
+     * @param loginVo 登录信息
+     * @return 是否登陆成功
+     */
     @RequestMapping("/do_login")
     @ResponseBody
     public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {

@@ -17,8 +17,14 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Autowired
 	MiaoshaUserService userService;
-	
+
+	/**
+	 * 判断参数类型是否是 MiaoshaUser
+	 * @param parameter 传入参数
+	 * @return 参数类型是 MiaoshaUser 返回 true
+	 */
 	public boolean supportsParameter(MethodParameter parameter) {
+		// 获取参数类型
 		Class<?> clazz = parameter.getParameterType();
 		return clazz==MiaoshaUser.class;
 	}

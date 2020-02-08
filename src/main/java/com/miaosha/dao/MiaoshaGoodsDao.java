@@ -16,4 +16,7 @@ public interface MiaoshaGoodsDao {
 
     @Select("select * from miaosha_goods where start_date >= #{startDate} and start_date <= #{endDate}")
     public List<MiaoshaGoods> listMiaoshaGoodsLatest(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    @Select("select * from miaosha_goods where id = #{goodsId}")
+    public MiaoshaGoods getMiaoshaGoodById(@Param("goodsId") Long goodsId);
 }

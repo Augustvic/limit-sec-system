@@ -187,4 +187,13 @@ public class MiaoshaService {
         String endDate = BaseUtil.timeAdd(endSeconds);
         return  miaoshaGoodsDao.listMiaoshaGoodsLatest(startDate, endDate);
     }
+
+    /**
+     * 根据 id 获取秒杀商品
+     * @param goodsId id
+     * @return 秒杀商品
+     */
+    public MiaoshaGoods getMiaoshaGoodById(Long goodsId) {
+        return miaoshaGoodsDao.getMiaoshaGoodById(goodsId);
+    }
 }

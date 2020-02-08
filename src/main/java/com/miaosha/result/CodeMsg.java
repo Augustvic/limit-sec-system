@@ -1,9 +1,5 @@
 package com.miaosha.result;
 
-/**
- * Created by August on 2019/6/7 22:39
- **/
-
 public class CodeMsg {
 
     private int code;

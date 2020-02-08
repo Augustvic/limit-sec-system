@@ -46,24 +46,37 @@ public class MiaoshaUserService {
         return user;
     }
 
+    /**
+     * 修改密码
+     * @param token 用户 token
+     * @param id 用户 id
+     * @param formPass 生成密码
+     * @return 修改成功返回 true
+     */
     public boolean updatePassword(String token, long id, String formPass) {
         // 取user对象
         MiaoshaUser user = getById(id);
         if (user == null) {
             throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
         }
-        // 更新数据库
         MiaoshaUser toBeUpdate = new MiaoshaUser();
         toBeUpdate.setId(id);
         toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
-        miaoshaUserDao.update(toBeUpdate);
-        // 处理缓存（必须考虑缓存，否则出现缓存不一致）
-        redisService.delete(MiaoshaUserKey.getById, "" + id);
+        // 修改缓存
         user.setPassword(toBeUpdate.getPassword());
         redisService.hset(MiaoshaUserKey.token, token, user);
+        redisService.hset(MiaoshaUserKey.getById, "" + id, user);
+        // 更新数据库
+        miaoshaUserDao.update(toBeUpdate);
         return true;
     }
 
+    /**
+     * 登录验证
+     * @param response 返回
+     * @param loginVo 登录信息
+     * @return 是否成功
+     */
     public CodeMsg login(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
             return CodeMsg.SERVER_ERROR;
@@ -92,6 +105,12 @@ public class MiaoshaUserService {
         return CodeMsg.SUCCESS;
     }
 
+    /**
+     * 根据 token 获取 MiaoshaUser
+     * @param response 相应数据
+     * @param token token
+     * @return 获取到的用户信息
+     */
     public MiaoshaUser getByToken(HttpServletResponse response, String token) {
         if (StringUtils.isEmpty(token)) {
             return null;
@@ -104,8 +123,13 @@ public class MiaoshaUserService {
         return user;
     }
 
-    //延长cookie有效期
-    public void addCookie(HttpServletResponse response, String token, MiaoshaUser user) {
+    /**
+     * 延长 cookie 有效期，重新设置过期时间
+     * @param response 相应数据
+     * @param token token
+     * @param user 用户
+     */
+    private void addCookie(HttpServletResponse response, String token, MiaoshaUser user) {
         redisService.hset(MiaoshaUserKey.token, token, user);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
