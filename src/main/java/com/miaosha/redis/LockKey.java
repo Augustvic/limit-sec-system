@@ -6,6 +6,6 @@ public class LockKey extends BasePrefix{
         super(expireSeconds, prefix);
     }
 
-    // 分布式锁默认过期时间 10 秒
-    public static LockKey lock = new LockKey(10, "lock");
+    // 分布式锁默认过期时间 5 秒
+    public static LockKey lock = new LockKey(5, "lock");
 }

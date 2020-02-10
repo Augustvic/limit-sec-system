@@ -2,10 +2,6 @@ package com.miaosha.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-/**
- * Created by August on 2019/6/15 14:24
- **/
-
 public class MD5Util {
 
     public static String md5(String src) {

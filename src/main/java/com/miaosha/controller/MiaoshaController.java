@@ -1,6 +1,7 @@
 package com.miaosha.controller;
 
 
+import com.google.common.util.concurrent.RateLimiter;
 import com.miaosha.access.AccessLimit;
 import com.miaosha.config.ThreadPoolConfig;
 import com.miaosha.entity.MiaoshaGoods;
@@ -74,7 +75,7 @@ public class MiaoshaController {
                 }
                 for (MiaoshaGoods goods : goodsList) {
                     // 秒杀结束 1 分钟后过期
-                    int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
+                    int expireSeconds = BaseUtil.safeLongToInt((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
                     redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
                     localOverMap.put(goods.getId(), false);
                 }
@@ -103,17 +104,21 @@ public class MiaoshaController {
         if (!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
-        // 判断缓存是否存在，如果不存在，请求互斥锁，进入数据库读取并存入缓存
+        // 判断缓存是否存在，如果不存在，请求互斥锁，从数据库读取并存入缓存
         while (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {
             if (redisService.lock(LockKey.lock, GoodsKey.getMiaoshaGoodsStock.getPrefix() + goodsId, "1")) {
                 try {
-                    MiaoshaGoods goods = miaoshaService.getMiaoshaGoodById(goodsId);
-                    if (goods == null) {
-                        return Result.error(CodeMsg.REQUEST_ILLEGAL);
+                    // 再次检查，防止释放锁之后其他线程进入
+                    if (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {
+                        MiaoshaGoods goods = miaoshaService.getMiaoshaGoodById(goodsId);
+                        if (goods == null) {
+                            return Result.error(CodeMsg.REQUEST_ILLEGAL);
+                        }
+                        // 秒杀结束一分钟之后缓存失效
+                        int expireSeconds = BaseUtil.safeLongToInt((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
+                        redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
+                        localOverMap.put(goods.getId(), false);
                     }
-                    int expireSeconds = BaseUtil.safeIntToLong((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
-                    redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
-                    localOverMap.put(goods.getId(), false);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -131,11 +136,6 @@ public class MiaoshaController {
         if (stock < 0) {
             localOverMap.put(goodsId, true);
             return Result.error(CodeMsg.MIAO_SHA_OVER);
-        }
-        // 判断是否已经秒杀到了
-        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
-        if (order != null) {
-            return Result.error(CodeMsg.REPEAT_MIAOSHA);
         }
         // 入队
         MiaoshaMessage mm = new MiaoshaMessage();

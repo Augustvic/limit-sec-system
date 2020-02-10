@@ -106,6 +106,30 @@ public class RedisService {
     }
 
     /**
+     *  设置 String 对象，自定义过期时间
+     */
+    public <T> boolean setwe(KeyPrefix prefix, String key, T value, int expireSeconds) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String str = beanToString(value);
+            if (str == null || str.length() == 0) {
+                return false;
+            }
+            //生成真正的 key
+            String realKey = prefix.getPrefix() + key;
+            if (expireSeconds <= 0) {
+                jedis.set(realKey, str);
+            } else {
+                jedis.setex(realKey, expireSeconds, str);
+            }
+            return true;
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
      *  设置 hash 对象
      */
     public <T> boolean hset(KeyPrefix prefix, String key, T value) {

@@ -10,7 +10,7 @@ public class BaseUtil {
      * @param k 传入长整型变量
      * @return int 类型的值
      */
-    public static int safeIntToLong(long k) {
+    public static int safeLongToInt(long k) {
         if (k > Integer.MAX_VALUE)
             return Integer.MAX_VALUE;
         if (k < Integer.MIN_VALUE)
