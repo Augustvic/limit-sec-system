@@ -1,11 +1,12 @@
 package com.miaosha.util.concurrent;
 
 import com.google.common.math.LongMath;
-import com.miaosha.redis.LockKey;
 import com.miaosha.redis.PermitBucketKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.util.BaseUtil;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,31 +34,42 @@ public class RateLimiter {
     private Long maxPermits;
 
     /**
+     * 分布式互斥锁
+     */
+    private RLock lock;
+
+    /**
      * 构造函数
      * @param key 令牌桶 key 后缀
      * @param permitsPerSecond 每秒存入的令牌数
      * @param maxPermits 最大存储令牌数
      */
-    public RateLimiter(String key, Long permitsPerSecond, Long maxPermits){
+    public RateLimiter(String key, Long permitsPerSecond, Long maxPermits, RLock lock){
         this.key = key;
         this.permitsPerSecond = permitsPerSecond;
         this.maxPermits = maxPermits;
+        this.lock = lock;
     }
 
     /**
-     * 获取锁
+     * 尝试获取锁
      * @return 获取成功返回 true
      */
-    private boolean lock() {
-        return redisService.lock(LockKey.lock, PermitBucketKey.permitBucket.getPrefix() + this.key, "1");
+    private boolean lock(){
+        try {
+            // 等待 100 秒，获得锁 10 秒后自动解锁
+            return lock.tryLock(100, 10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
      * 释放锁
-     * @return 释放成功返回 true
      */
-    private boolean unlock() {
-        return redisService.unlock(LockKey.lock, PermitBucketKey.permitBucket.getPrefix() + this.key, "1");
+    private void unlock() {
+        lock.unlock();
     }
 
     /**
@@ -106,13 +118,93 @@ public class RateLimiter {
     /**
      * 等待直到获取指定数量的令牌
      * @param tokens 请求令牌数量
+     * @return 如果需要等待，线程休眠，再次就绪后返回等待的时间，否则返回 0
+     */
+    public boolean acquire(Long tokens){
+        try {
+            Long milliToWait = reserve(tokens);
+            Thread.sleep(milliToWait);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 获取一个令牌
+     *
      * @return 等待时间
+     */
+    public boolean acquire(){
+        return acquire(1L);
+    }
+
+    /**
+     * 获取令牌，有时间限制
+     *
+     * @param tokens 要获取的令牌数
+     * @param timeout 获取令牌等待的时间，负数被视为0
+     * @param unit 时间格式
+     * @return 成功返回 true
      * @throws InterruptedException
      */
-    public Long acquire(Long tokens) throws InterruptedException {
-        Long milliToWait = reserve(tokens);
-        Thread.sleep(milliToWait);
-        return milliToWait;
+    public Boolean tryAcquire(Long tokens, Long timeout, TimeUnit unit) throws InterruptedException{
+        long timeoutMicros = Math.max(unit.toMillis(timeout), 0);
+        checkTokens(tokens);
+        try {
+            if (lock()) {
+                if (!canAcquire(tokens, timeoutMicros)) {
+                    return false;
+                } else {
+                    Long milliToWait = reserveAndGetWaitLength(tokens);
+                    Thread.sleep(milliToWait);
+                    return true;
+                }
+            }
+        } finally {
+            unlock();
+        }
+        return false;
+    }
+
+    /**
+     * 获取一个令牌
+     * @param timeout 时间限制
+     * @param unit 时间格式
+     * @return 成功返回 true
+     * @throws InterruptedException
+     */
+    private Boolean tryAcquire(Long timeout , TimeUnit unit) throws InterruptedException{
+        return tryAcquire(1L,timeout, unit);
+    }
+
+    /**
+     * 在等待的时间内是否可以获取到令牌
+     * @param tokens 请求令牌个数
+     * @param timeoutMillis 时间限制
+     * @return 可以获取返回 true
+     */
+    private Boolean canAcquire(Long tokens, Long timeoutMillis){
+        return queryEarliestAvailable(tokens) - timeoutMillis <= 0;
+    }
+
+    /**
+     * 获取 tokens 个令牌最早需要等待多久
+     * @param tokens 令牌个数
+     * @return 最短等待时间
+     */
+    private Long queryEarliestAvailable(Long tokens){
+        long n = System.currentTimeMillis();
+        PermitBucket bucket = getBucket();
+        bucket.reSync(n);
+        // 可以消耗的令牌数
+        long storedPermitsToSpend = Math.min(tokens, bucket.getStoredPermits());
+        // 需要等待的令牌数
+        long freshPermits = tokens - storedPermitsToSpend;
+        // 需要等待的时间
+        long waitMillis = freshPermits * bucket.getIntervalMillis();
+        return LongMath.checkedAdd(bucket.getNextFreeTicketMillis() - n, waitMillis);
     }
 
     /**
@@ -122,11 +214,14 @@ public class RateLimiter {
      */
     private Long reserve(Long tokens) {
         checkTokens(tokens);
-        try {
-            lock();
-            return reserveAndGetWaitLength(tokens);
-        } finally {
-            unlock();
+        while (true) {
+            if (lock()) {
+                try {
+                    return reserveAndGetWaitLength(tokens);
+                } finally {
+                    unlock();
+                }
+            }
         }
     }
 
@@ -156,7 +251,7 @@ public class RateLimiter {
         long freshPermits = tokens - storedPermitsToSpend;
         // 需要等待的时间
         long waitMillis = freshPermits * bucket.getIntervalMillis();
-        bucket.setNextFreeTicketMillis(bucket.getNextFreeTicketMillis() + waitMillis);
+        bucket.setNextFreeTicketMillis(LongMath.checkedAdd(bucket.getNextFreeTicketMillis(), waitMillis));
         bucket.setStoredPermits(bucket.getStoredPermits() - storedPermitsToSpend );
         setBucket(bucket);
         return bucket.getNextFreeTicketMillis() - timeMillis;

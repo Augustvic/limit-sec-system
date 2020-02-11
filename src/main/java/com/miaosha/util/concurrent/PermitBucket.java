@@ -33,9 +33,13 @@ public class PermitBucket {
      * @param maxPermits 最大存储令牌数
      */
     public PermitBucket(Long permitsPerSecond, Long maxPermits ) {
+        if (permitsPerSecond == null) {
+            permitsPerSecond = 100L;
+        }
         if (maxPermits == null) {
             maxPermits = 1000L;
         }
+        permitsPerSecond = (permitsPerSecond == 0L) ? 1000L : permitsPerSecond;
         this.maxPermits = maxPermits;
         this.storedPermits = permitsPerSecond;
         this.intervalMillis = TimeUnit.SECONDS.toMillis(1) / permitsPerSecond;

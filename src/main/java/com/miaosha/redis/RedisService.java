@@ -301,7 +301,7 @@ public class RedisService {
     }
 
     private void returnToPool(Jedis jedis) {
-        if (jedis == null) {
+        if (jedis != null) {
             jedis.close();
         }
     }
