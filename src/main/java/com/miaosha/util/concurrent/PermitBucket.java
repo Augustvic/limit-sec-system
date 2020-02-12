@@ -10,41 +10,22 @@ public class PermitBucket {
     /**
      * 最大存储令牌数
      */
-    private Long maxPermits;
+    private long maxPermits;
 
     /**
      * 当前存储令牌数
      */
-    private Long storedPermits;
+    private long storedPermits;
 
     /**
      * 每两次添加令牌之间的时间间隔（逐个添加令牌）
      */
-    private Long intervalMillis;
+    private long intervalMillis;
 
     /**
      * 下次可以请求获取令牌的起始时间，默认当前系统时间
      */
-    private Long nextFreeTicketMillis;
-
-    /**
-     * 构造函数
-     * @param permitsPerSecond 每秒放入的令牌数
-     * @param maxPermits 最大存储令牌数
-     */
-    public PermitBucket(Long permitsPerSecond, Long maxPermits ) {
-        if (permitsPerSecond == null) {
-            permitsPerSecond = 100L;
-        }
-        if (maxPermits == null) {
-            maxPermits = 1000L;
-        }
-        permitsPerSecond = (permitsPerSecond == 0L) ? 1000L : permitsPerSecond;
-        this.maxPermits = maxPermits;
-        this.storedPermits = permitsPerSecond;
-        this.intervalMillis = TimeUnit.SECONDS.toMillis(1) / permitsPerSecond;
-        this.nextFreeTicketMillis = System.currentTimeMillis();
-    }
+    private long nextFreeTicketMillis;
 
     /**
      * redis的过期时长。最低有效时长为 1 分钟。
@@ -72,23 +53,42 @@ public class PermitBucket {
         return false;
     }
 
-    public void setStoredPermits(Long storedPermits) {
+    public PermitBucket(long maxPermits, long storedPermits, long intervalMillis, long nextFreeTicketMillis) {
+        this.maxPermits = maxPermits;
         this.storedPermits = storedPermits;
-    }
-
-    public Long getStoredPermits() {
-        return storedPermits;
-    }
-
-    public Long getIntervalMillis() {
-        return intervalMillis;
-    }
-
-    public void setNextFreeTicketMillis(Long nextFreeTicketMillis) {
+        this.intervalMillis = intervalMillis;
         this.nextFreeTicketMillis = nextFreeTicketMillis;
     }
 
-    public Long getNextFreeTicketMillis() {
+    public long getMaxPermits() {
+        return maxPermits;
+    }
+
+    public void setMaxPermits(long maxPermits) {
+        this.maxPermits = maxPermits;
+    }
+
+    public long getStoredPermits() {
+        return storedPermits;
+    }
+
+    public void setStoredPermits(long storedPermits) {
+        this.storedPermits = storedPermits;
+    }
+
+    public long getIntervalMillis() {
+        return intervalMillis;
+    }
+
+    public void setIntervalMillis(long intervalMillis) {
+        this.intervalMillis = intervalMillis;
+    }
+
+    public long getNextFreeTicketMillis() {
         return nextFreeTicketMillis;
+    }
+
+    public void setNextFreeTicketMillis(long nextFreeTicketMillis) {
+        this.nextFreeTicketMillis = nextFreeTicketMillis;
     }
 }

@@ -54,6 +54,7 @@ public class UserController {
             e.printStackTrace();
         }
         executor.shutdown();
+        System.out.println("executor shutdown");
         return "login";
     }
 }

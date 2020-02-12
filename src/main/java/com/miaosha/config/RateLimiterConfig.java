@@ -16,6 +16,6 @@ public class RateLimiterConfig {
     @Bean
     RateLimiter rateLimiter() {
         RLock rLock = redissonService.getRLock("rlock");
-        return new RateLimiter("limiter", 1L, 1000L, rLock);
+        return new RateLimiter("limiter", 1000L, 1000L, rLock);
     }
 }

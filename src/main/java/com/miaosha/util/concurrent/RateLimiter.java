@@ -6,7 +6,6 @@ import com.miaosha.redis.RedisService;
 import com.miaosha.util.BaseUtil;
 import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
@@ -81,7 +80,12 @@ public class RateLimiter {
             if (lock()) {
                 try {
                     if (!redisService.exists(PermitBucketKey.permitBucket, this.key)) {
-                        PermitBucket permitBucket = new PermitBucket(permitsPerSecond, maxPermits);
+                        // 初始化 PermitBucket
+                        permitsPerSecond = (permitsPerSecond == 0L) ? 1000L : permitsPerSecond;
+                        long intervalMillis = TimeUnit.SECONDS.toMillis(1) / permitsPerSecond;
+                        long nextFreeTicketMillis = System.currentTimeMillis();
+                        PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalMillis, nextFreeTicketMillis);
+                        // 存入缓存
                         redisService.setwe(PermitBucketKey.permitBucket, this.key, permitBucket, BaseUtil.safeLongToInt(permitBucket.expires()));
                         return permitBucket;
                     }
