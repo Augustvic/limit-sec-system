@@ -14,8 +14,15 @@ public class RateLimiterConfig {
     RedissonService redissonService;
 
     @Bean
-    RateLimiter rateLimiter() {
-        RLock rLock = redissonService.getRLock("rlock");
-        return new RateLimiter("limiter", 1000L, 1000L, rLock);
+    RateLimiter rDBRateLimiter() {
+        RLock readLock = redissonService.getRLock("readlock");
+        return new RateLimiter("readLimiter", 100L, 1000L, readLock);
     }
+
+    @Bean
+    RateLimiter wDBRateLimiter() {
+        RLock writeLock = redissonService.getRLock("writelock");
+        return new RateLimiter("writeLimiter", 10L, 1000L, writeLock);
+    }
+
 }

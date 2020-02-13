@@ -2,10 +2,6 @@
 
 ## 0. 近期思路：
 
-使用 RateLimiter 实现 Redis （分布式）令牌桶
-
-使用 redisson 实现互斥锁
-
 检查缓存中是否已经有了订单，将某个商品的订单列表以 redis 链表形式保存
 
 手写 LRU 算法
@@ -34,6 +30,8 @@ MySQL 优化
 │  │  │          │      UserContext,java
 │  │  │          │  
 │  │  │          ├─config
+│  │  │          │     RateLimiterConfig.java
+│  │  │          │     RedissonConfig.java
 │  │  │          │     ThreadPoolConfig.java  
 │  │  │          │     UserArgumentResolver.java
 │  │  │          │     WebConfig.java
@@ -76,12 +74,14 @@ MySQL 优化
 │  │  │          │      BasePrefix.java
 │  │  │          │      GoodsKey.java
 │  │  │          │      KeyPrefix.java
+│  │  │          │      LockKey.java
 │  │  │          │      MiaoshaKey.java
 │  │  │          │      MiaoshaUserKey.java
 │  │  │          │      OrderKey.java
 │  │  │          │      RedisConfig.java
 │  │  │          │      RedisPoolFactory.java
 │  │  │          │      RedisService.java
+│  │  │          │      RedissonService.java
 │  │  │          │      UserKey.java
 │  │  │          │
 │  │  │          ├─result
@@ -95,16 +95,20 @@ MySQL 优化
 │  │  │          │      OrderService.java
 │  │  │          │      UserService.java
 │  │  │          │
-│  │  │          ├─util
-│  │  │          │      BaseUtil.java
-│  │  │          │      MD5Util.java
-│  │  │          │      UUIDUtil.java
+│  │  │          ├─vo
+│  │  │          │      GoodsDetailVo.java
+│  │  │          │      GoodsVo.java
+│  │  │          │      LoginVo.java
+│  │  │          │      OrderDetailVo.java
 │  │  │          │
-│  │  │          └─vo
-│  │  │                 GoodsDetailVo.java
-│  │  │                 GoodsVo.java
-│  │  │                 LoginVo.java
-│  │  │                 OrderDetailVo.java
+│  │  │          └─util
+│  │  │              │  BaseUtil.java
+│  │  │              │  MD5Util.java
+│  │  │              │  UUIDUtil.java
+│  │  │              │
+│  │  │              └─concurrent
+│  │  │                       PermitBucket.java
+│  │  │                       RateLimiter.java
 │  │  │        
 │  │  │                      
 │  │  └─resources

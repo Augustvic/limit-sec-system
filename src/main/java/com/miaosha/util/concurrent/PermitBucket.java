@@ -20,7 +20,7 @@ public class PermitBucket {
     /**
      * 每两次添加令牌之间的时间间隔（逐个添加令牌）
      */
-    private long intervalMillis;
+    private long intervalMicros;
 
     /**
      * 下次可以请求获取令牌的起始时间，默认当前系统时间
@@ -46,17 +46,17 @@ public class PermitBucket {
      */
     public boolean reSync(long now){
         if (now > nextFreeTicketMillis) {
-            storedPermits = Math.min(maxPermits, storedPermits + (now - nextFreeTicketMillis) / intervalMillis);
+            storedPermits = Math.min(maxPermits, storedPermits + TimeUnit.MILLISECONDS.toMicros(now - nextFreeTicketMillis) / intervalMicros);
             nextFreeTicketMillis = now;
             return true;
         }
         return false;
     }
 
-    public PermitBucket(long maxPermits, long storedPermits, long intervalMillis, long nextFreeTicketMillis) {
+    public PermitBucket(long maxPermits, long storedPermits, long intervalMicros, long nextFreeTicketMillis) {
         this.maxPermits = maxPermits;
         this.storedPermits = storedPermits;
-        this.intervalMillis = intervalMillis;
+        this.intervalMicros = intervalMicros;
         this.nextFreeTicketMillis = nextFreeTicketMillis;
     }
 
@@ -76,12 +76,12 @@ public class PermitBucket {
         this.storedPermits = storedPermits;
     }
 
-    public long getIntervalMillis() {
-        return intervalMillis;
+    public long getIntervalMicros() {
+        return intervalMicros;
     }
 
-    public void setIntervalMillis(long intervalMillis) {
-        this.intervalMillis = intervalMillis;
+    public void setIntervalMicros(long intervalMicros) {
+        this.intervalMicros = intervalMicros;
     }
 
     public long getNextFreeTicketMillis() {

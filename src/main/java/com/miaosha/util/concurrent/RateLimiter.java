@@ -76,16 +76,18 @@ public class RateLimiter {
      * @return 返回令牌桶
      */
     private PermitBucket putDefaultBucket() {
+        // 多个线程同时进入此函数，只有一个函数能执行初始化的操作，其他函数自旋
+        // 直到初始化完成后，立即退出。
         while (!redisService.exists(PermitBucketKey.permitBucket, this.key)) {
             if (lock()) {
                 try {
                     if (!redisService.exists(PermitBucketKey.permitBucket, this.key)) {
                         // 初始化 PermitBucket
                         permitsPerSecond = (permitsPerSecond == 0L) ? 1000L : permitsPerSecond;
-                        long intervalMillis = TimeUnit.SECONDS.toMillis(1) / permitsPerSecond;
+                        long intervalMicros = TimeUnit.SECONDS.toMicros(1) / permitsPerSecond;
                         long nextFreeTicketMillis = System.currentTimeMillis();
-                        PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalMillis, nextFreeTicketMillis);
-                        // 存入缓存
+                        PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalMicros, nextFreeTicketMillis);
+                        // 存入缓存，设置有效时间
                         redisService.setwe(PermitBucketKey.permitBucket, this.key, permitBucket, BaseUtil.safeLongToInt(permitBucket.expires()));
                         return permitBucket;
                     }
@@ -104,7 +106,9 @@ public class RateLimiter {
      * @return 缓存中的令牌桶或者默认的令牌桶
      */
     public PermitBucket getBucket() {
+        // 从缓存中获取桶
         PermitBucket permitBucket = redisService.get(PermitBucketKey.permitBucket, this.key, PermitBucket.class);
+        // 如果缓存中没有，进入 putDefaultBucket 中初始化
         if (permitBucket == null) {
             return putDefaultBucket();
         }
@@ -119,15 +123,34 @@ public class RateLimiter {
         redisService.setwe(PermitBucketKey.permitBucket, this.key, permitBucket, BaseUtil.safeLongToInt(permitBucket.expires()));
     }
 
+
+    /**
+     * 尝试获取令牌，不等待。
+     * @return 成功返回 true，失败返回 false
+     */
+    public boolean acquireMillis() {
+        try {
+            Long milliToWait = reserve(1L);
+            return milliToWait <= 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     /**
      * 等待直到获取指定数量的令牌
      * @param tokens 请求令牌数量
      * @return 如果需要等待，线程休眠，再次就绪后返回等待的时间，否则返回 0
      */
-    public boolean acquire(Long tokens){
+    public boolean acquire(Long tokens) {
         try {
+            // reserve 返回需要等待多长时间
             Long milliToWait = reserve(tokens);
+            // 线程休眠
             Thread.sleep(milliToWait);
+            // 线程苏醒，返回获取令牌成功
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,7 +163,7 @@ public class RateLimiter {
      *
      * @return 等待时间
      */
-    public boolean acquire(){
+    public boolean acquire() {
         return acquire(1L);
     }
 
@@ -207,8 +230,8 @@ public class RateLimiter {
         // 需要等待的令牌数
         long freshPermits = tokens - storedPermitsToSpend;
         // 需要等待的时间
-        long waitMillis = freshPermits * bucket.getIntervalMillis();
-        return LongMath.checkedAdd(bucket.getNextFreeTicketMillis() - n, waitMillis);
+        long waitMicros = freshPermits * bucket.getIntervalMicros();
+        return LongMath.checkedAdd(bucket.getNextFreeTicketMillis() - n, TimeUnit.MICROSECONDS.toMillis(waitMicros));
     }
 
     /**
@@ -218,6 +241,8 @@ public class RateLimiter {
      */
     private Long reserve(Long tokens) {
         checkTokens(tokens);
+        // 如果没有获取到锁，一直自旋，直到获取成功
+        // 此处必须上锁，因为涉及到 redis 的读写以及桶状态的修改
         while (true) {
             if (lock()) {
                 try {
@@ -246,18 +271,24 @@ public class RateLimiter {
      * @return 需要等待的时间
      */
     private Long reserveAndGetWaitLength(Long tokens){
+        // 当前时间
         long timeMillis = System.currentTimeMillis();
+        // 获取分布式缓存中的桶
         PermitBucket bucket = getBucket();
+        // 同步获得的桶中的信息
         bucket.reSync(timeMillis);
         // 可以消耗的令牌数
         long storedPermitsToSpend = Math.min(tokens, bucket.getStoredPermits());
         // 需要等待的令牌数
         long freshPermits = tokens - storedPermitsToSpend;
         // 需要等待的时间
-        long waitMillis = freshPermits * bucket.getIntervalMillis();
-        bucket.setNextFreeTicketMillis(LongMath.checkedAdd(bucket.getNextFreeTicketMillis(), waitMillis));
-        bucket.setStoredPermits(bucket.getStoredPermits() - storedPermitsToSpend );
+        long waitMicros = freshPermits * bucket.getIntervalMicros();
+        // 修改桶的状态
+        bucket.setNextFreeTicketMillis(LongMath.checkedAdd(bucket.getNextFreeTicketMillis(), TimeUnit.MICROSECONDS.toMillis(waitMicros)));
+        bucket.setStoredPermits(bucket.getStoredPermits() - storedPermitsToSpend);
+        // 缓存中更新桶的状态
         setBucket(bucket);
+        System.out.println(Thread.currentThread().getName() + ": " + RedisService.beanToString(bucket));
         return bucket.getNextFreeTicketMillis() - timeMillis;
     }
 }

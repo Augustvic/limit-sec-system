@@ -33,20 +33,6 @@ public class MQReceiver {
     @KafkaListener(topics = com.miaosha.kafka.MQConfig.MIAOSHA_QUEUE)
     public void receive(String message) {
         System.out.println("receive message:" + message);
-        com.miaosha.kafka.MiaoshaMessage mm = RedisService.stringToBean(message, com.miaosha.kafka.MiaoshaMessage.class);
-        MiaoshaUser user = mm.getUser();
-        long goodsId = mm.getGoodsId();
-
-        GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
-        int stock = goods.getStockCount();
-        if (stock <= 0)
-            return;
-        //判断是否已经秒杀到了
-        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
-        if (order != null) {
-            return;
-        }
-        //减库存 下订单 写入秒杀订单
-        miaoshaService.miaosha(user, goods);
+        miaoshaService.afterReceiveMessage(message);
     }
 }

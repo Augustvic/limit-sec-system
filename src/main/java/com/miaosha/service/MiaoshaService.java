@@ -2,13 +2,17 @@ package com.miaosha.service;
 
 import com.miaosha.dao.MiaoshaGoodsDao;
 import com.miaosha.entity.*;
+import com.miaosha.kafka.MQSender;
+import com.miaosha.kafka.MiaoshaMessage;
 import com.miaosha.redis.MiaoshaKey;
 import com.miaosha.redis.RedisService;
 import com.miaosha.util.BaseUtil;
 import com.miaosha.util.MD5Util;
 import com.miaosha.util.UUIDUtil;
+import com.miaosha.util.concurrent.RateLimiter;
 import com.miaosha.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +37,17 @@ public class MiaoshaService {
 
     @Autowired
     RedisService redisService;
+
+    @Autowired
+    MQSender sender;
+
+    @Autowired
+    @Qualifier(value = "rDBRateLimiter")
+    RateLimiter readDBRateLimiter;
+
+    @Autowired
+    @Qualifier(value = "wDBRateLimiter")
+    RateLimiter writeDBRateLimiter;
 
     @Transactional
     public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
@@ -168,7 +183,6 @@ public class MiaoshaService {
      * @param goods 需要减库存的商品
      * @return 减库存成功返回 true
      */
-
     public boolean reduceStock(GoodsVo goods) {
         MiaoshaGoods g = new MiaoshaGoods();
         g.setGoodsId(goods.getId());
@@ -195,5 +209,40 @@ public class MiaoshaService {
      */
     public MiaoshaGoods getMiaoshaGoodById(Long goodsId) {
         return miaoshaGoodsDao.getMiaoshaGoodById(goodsId);
+    }
+
+
+    /**
+     * kafka 接收到消息之后，进行后续检查库存，写订单等操作
+     * @param message 接收到的消息
+     */
+    public void afterReceiveMessage(String message) {
+        MiaoshaMessage mm = RedisService.stringToBean(message, MiaoshaMessage.class);
+        MiaoshaUser user = mm.getUser();
+        long goodsId = mm.getGoodsId();
+
+        // 如果没有获取到读数据库令牌
+        if (!readDBRateLimiter.acquireMillis()) {
+            // 重新进入队列等待
+            sender.sendMiaoshaMessage(mm);
+            return;
+        }
+        GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
+        int stock = goods.getStockCount();
+        if (stock <= 0)
+            return;
+        //判断是否已经秒杀到了
+        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
+        if (order != null) {
+            return;
+        }
+        // 如果没有获取到写数据库令牌
+        if (!writeDBRateLimiter.acquireMillis()) {
+            // 重新进入队列等待
+            sender.sendMiaoshaMessage(mm);
+            return;
+        }
+        //减库存 下订单 写入秒杀订单
+        miaosha(user, goods);
     }
 }
