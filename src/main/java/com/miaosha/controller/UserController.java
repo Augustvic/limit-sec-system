@@ -3,6 +3,7 @@ package com.miaosha.controller;
 import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.redis.RedissonService;
 import com.miaosha.result.Result;
+import com.miaosha.util.MD5Util;
 import com.miaosha.util.concurrent.RateLimiter;
 import org.apache.kafka.common.metrics.stats.Count;
 import org.redisson.api.RLock;
@@ -32,7 +33,6 @@ public class UserController {
     @RequestMapping("/test")
     public String test() {
         // Code
-
         return "login";
     }
 }

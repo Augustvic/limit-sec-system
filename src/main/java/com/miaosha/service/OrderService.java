@@ -26,7 +26,7 @@ public class OrderService {
 //        从数据库中获取秒杀订单信息
 //        return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
         // 从缓存中获取秒杀订单信息
-        return redisService.get(OrderKey.getMiaoshaOrderByUidGid, "" + userId + "_" + goodsId, MiaoshaOrder.class);
+        return redisService.hget(OrderKey.getMiaoshaOrderByUidGid, "" + userId, "g" + goodsId, MiaoshaOrder.class);
     }
 
     @Transactional
@@ -49,7 +49,7 @@ public class OrderService {
         orderDao.insertMiaoshaOrder(miaoshaOrder);
 
         // 将秒杀订单信息写入缓存
-        redisService.set(OrderKey.getMiaoshaOrderByUidGid, "" + user.getId() + "_" + goods.getId(), miaoshaOrder);
+        redisService.hset(OrderKey.getMiaoshaOrderByUidGid, "" + user.getId(), "g" + goods.getId(), miaoshaOrder);
 
         return orderInfo;
     }

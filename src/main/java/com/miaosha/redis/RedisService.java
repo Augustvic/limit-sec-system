@@ -21,50 +21,6 @@ public class RedisService {
     private static final String LOCK_SUCCESS = "OK";
 
     /**
-     * 尝试加分布式锁
-     * @param prefix 锁的前缀
-     * @param key 锁的后缀 key
-     * @param requestId 标识加锁客户端的 value
-     * @return 是否加锁成功
-     */
-    public boolean lock(KeyPrefix prefix, String key, String requestId) {
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
-            String realKey = prefix.getPrefix() + key;
-            SetParams params = new SetParams();
-            params.ex(prefix.expireSeconds());
-            params.nx();
-            String result = jedis.set(realKey, requestId, params);
-            return LOCK_SUCCESS.equals(result);
-        } finally {
-            returnToPool(jedis);
-        }
-    }
-
-    /**
-     * 尝试释放分布式锁
-     * @param prefix 锁的前缀
-     * @param key 锁的后缀 key
-     * @param requestId 标识加锁客户端的 value
-     * @return 是否释放成功
-     */
-    public boolean unlock(KeyPrefix prefix, String key, String requestId) {
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
-            String realKey = prefix.getPrefix() + key;
-            // 此段为 Lua 脚本，用来保证原子性：
-            // 首先获取锁对应的 value 值，检查是否与 requestId 相等，如果相等则删除锁（解锁）
-            String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
-            Object result = jedis.eval(script, Collections.singletonList(realKey), Collections.singletonList(requestId));
-            return LOCK_SUCCESS.equals(result);
-        } finally {
-            returnToPool(jedis);
-        }
-    }
-
-    /**
      *  获取单个对象
      */
     public <T> T get(KeyPrefix prefix, String key, Class<T> clazz) {
@@ -106,6 +62,51 @@ public class RedisService {
     }
 
     /**
+     * hash 中插入元素
+     * @param prefix
+     * @param key
+     * @param field
+     * @param value
+     * @param <T>
+     * @return
+     */
+    public <T> boolean hset(KeyPrefix prefix, String key, String field, T value) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String str = beanToString(value);
+            if (str == null || str.length() == 0) {
+                return false;
+            }
+            String realKey = prefix.getPrefix() + key;
+            int seconds = prefix.expireSeconds();
+            jedis.hset(realKey, field, str);
+            // 设置失效时间
+            if (seconds > 0) {
+                jedis.expire(realKey, seconds);
+            }
+            return true;
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
+     *  获取单个对象
+     */
+    public <T> T hget(KeyPrefix prefix, String key, String field, Class<T> clazz) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String realKey = prefix.getPrefix() + key;
+            String str = jedis.hget(realKey, field);
+            return stringToBean(str, clazz);
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
      *  设置 String 对象，自定义过期时间
      */
     public <T> boolean setwe(KeyPrefix prefix, String key, T value, int expireSeconds) {
@@ -132,7 +133,7 @@ public class RedisService {
     /**
      *  设置 hash 对象
      */
-    public <T> boolean hset(KeyPrefix prefix, String key, T value) {
+    public <T> boolean hmcset(KeyPrefix prefix, String key, T value) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
@@ -157,7 +158,7 @@ public class RedisService {
     /**
      *  获取 hash 对象
      */
-    public <T> T hget(KeyPrefix prefix, String key, Class<T> clazz) {
+    public <T> T hmcget(KeyPrefix prefix, String key, Class<T> clazz) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();

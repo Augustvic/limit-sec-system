@@ -1,7 +1,5 @@
 package com.miaosha.controller;
 
-
-import com.google.common.util.concurrent.RateLimiter;
 import com.miaosha.access.AccessLimit;
 import com.miaosha.config.ThreadPoolConfig;
 import com.miaosha.entity.MiaoshaGoods;
@@ -10,8 +8,8 @@ import com.miaosha.entity.MiaoshaUser;
 import com.miaosha.kafka.MQSender;
 import com.miaosha.kafka.MiaoshaMessage;
 import com.miaosha.redis.GoodsKey;
-import com.miaosha.redis.LockKey;
 import com.miaosha.redis.RedisService;
+import com.miaosha.redis.RedissonService;
 import com.miaosha.result.CodeMsg;
 import com.miaosha.result.Result;
 import com.miaosha.service.GoodsService;
@@ -19,6 +17,7 @@ import com.miaosha.service.MiaoshaService;
 import com.miaosha.service.MiaoshaUserService;
 import com.miaosha.service.OrderService;
 import com.miaosha.util.BaseUtil;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,6 +58,18 @@ public class MiaoshaController {
     @Autowired
     MQSender sender;
 
+    @Autowired
+    RedissonService redissonService;
+
+    // 互斥锁的数量
+    private static final int nLocks = 100;
+    private static final String[] LOCKS = new String[nLocks];
+    static {
+        for (int i = 0; i < nLocks; i++) {
+            LOCKS[i] = "lock" + i;
+        }
+    }
+
     private Map<Long, Boolean> localOverMap = new HashMap<>();
 
     @PostConstruct
@@ -95,7 +106,7 @@ public class MiaoshaController {
     @ResponseBody
     public Result<Integer> list(Model model, MiaoshaUser user,
                                 @RequestParam("goodsId") long goodsId,
-                                @PathVariable("path") String path) {
+                                @PathVariable("path") String path) throws Exception{
         model.addAttribute("user", user);
         if (user == null)
             return Result.error(CodeMsg.SESSION_ERROR);
@@ -104,11 +115,17 @@ public class MiaoshaController {
         if (!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
-        // 判断缓存是否存在，如果不存在，请求互斥锁，从数据库读取并存入缓存
+
+        // 检查 redis 中是否已经存入库存，避免缓存击穿
+        String[] locks = LOCKS;
+        // 获取同一商品库存的线程中，只有一个线程能读取数据库，因为同一商品的 goodsId 相同
+        // 如果不同的商品 index 相同，也需要等待释放锁
+        int index = BaseUtil.safeLongToInt(goodsId & (locks.length - 1));
+        RLock rLock = redissonService.getRLock(locks[index]);
         while (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {
-            if (redisService.lock(LockKey.lock, GoodsKey.getMiaoshaGoodsStock.getPrefix() + goodsId, "1")) {
+            if (rLock.tryLock(100, 10, TimeUnit.SECONDS)) {
                 try {
-                    // 再次检查，防止释放锁之后其他线程进入
+                    // 再次检查缓存是否存在，避免上锁之前其他线程已经写入了缓存
                     if (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {
                         MiaoshaGoods goods = miaoshaService.getMiaoshaGoodById(goodsId);
                         if (goods == null) {
@@ -119,13 +136,12 @@ public class MiaoshaController {
                         redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
                         localOverMap.put(goods.getId(), false);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 } finally {
-                    redisService.unlock(LockKey.lock, GoodsKey.getMiaoshaGoodsStock.getPrefix() + goodsId, "1");
+                    rLock.unlock();
                 }
             }
         }
+
         // 内存标记减少redis访问
         boolean over = localOverMap.get(goodsId);
         if (over) {

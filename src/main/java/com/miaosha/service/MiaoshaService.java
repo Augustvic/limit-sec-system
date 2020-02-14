@@ -227,12 +227,14 @@ public class MiaoshaService {
             sender.sendMiaoshaMessage(mm);
             return;
         }
+        // 读取数据库中商品库存
         GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
         int stock = goods.getStockCount();
         if (stock <= 0)
             return;
         //判断是否已经秒杀到了
         MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
+        // 已经秒杀到了，不能重复秒杀
         if (order != null) {
             return;
         }
@@ -243,6 +245,7 @@ public class MiaoshaService {
             return;
         }
         //减库存 下订单 写入秒杀订单
+
         miaosha(user, goods);
     }
 }
