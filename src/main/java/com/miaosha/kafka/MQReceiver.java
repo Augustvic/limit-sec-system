@@ -33,6 +33,10 @@ public class MQReceiver {
     @KafkaListener(topics = com.miaosha.kafka.MQConfig.MIAOSHA_QUEUE)
     public void receive(String message) {
         System.out.println("receive message:" + message);
-        miaoshaService.afterReceiveMessage(message);
+        try {
+            miaoshaService.afterReceiveMessage(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

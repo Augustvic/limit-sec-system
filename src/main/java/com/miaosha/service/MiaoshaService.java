@@ -6,11 +6,13 @@ import com.miaosha.kafka.MQSender;
 import com.miaosha.kafka.MiaoshaMessage;
 import com.miaosha.redis.MiaoshaKey;
 import com.miaosha.redis.RedisService;
+import com.miaosha.redis.RedissonService;
 import com.miaosha.util.BaseUtil;
 import com.miaosha.util.MD5Util;
 import com.miaosha.util.UUIDUtil;
 import com.miaosha.util.concurrent.RateLimiter;
 import com.miaosha.vo.GoodsVo;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class MiaoshaService {
@@ -37,6 +40,9 @@ public class MiaoshaService {
 
     @Autowired
     RedisService redisService;
+
+    @Autowired
+    RedissonService redissonService;
 
     @Autowired
     MQSender sender;
@@ -216,7 +222,7 @@ public class MiaoshaService {
      * kafka 接收到消息之后，进行后续检查库存，写订单等操作
      * @param message 接收到的消息
      */
-    public void afterReceiveMessage(String message) {
+    public void afterReceiveMessage(String message) throws Exception{
         MiaoshaMessage mm = RedisService.stringToBean(message, MiaoshaMessage.class);
         MiaoshaUser user = mm.getUser();
         long goodsId = mm.getGoodsId();
@@ -245,7 +251,15 @@ public class MiaoshaService {
             return;
         }
         //减库存 下订单 写入秒杀订单
-
-        miaosha(user, goods);
+        // 获取互斥锁
+        RLock rLock = redissonService.getRLock("decrStockLock_" + goodsId);
+        // 最多等待 100 秒，上锁 10 秒后解锁
+        if (rLock.tryLock(100, 10, TimeUnit.SECONDS)) {
+            try {
+                miaosha(user, goods);
+            } finally {
+                rLock.unlock();
+            }
+        }
     }
 }

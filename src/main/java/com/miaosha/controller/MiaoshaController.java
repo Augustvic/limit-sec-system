@@ -17,6 +17,7 @@ import com.miaosha.service.MiaoshaService;
 import com.miaosha.service.MiaoshaUserService;
 import com.miaosha.service.OrderService;
 import com.miaosha.util.BaseUtil;
+import com.miaosha.util.concurrent.BloomFilter;
 import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +61,9 @@ public class MiaoshaController {
 
     @Autowired
     RedissonService redissonService;
+
+    @Autowired
+    BloomFilter bloomFilter;
 
     // 互斥锁的数量
     private static final int nLocks = 100;
@@ -110,16 +114,23 @@ public class MiaoshaController {
         model.addAttribute("user", user);
         if (user == null)
             return Result.error(CodeMsg.SESSION_ERROR);
-        // 验证path
+        // 验证 path
         boolean check = miaoshaService.checkPath(user, goodsId, path);
         if (!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
+        //判断是否已经秒杀到了
+        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
+        // 已经秒杀到了，不能重复秒杀
+        if (order != null) {
+            return Result.error(CodeMsg.REPEAT_MIAOSHA);
+        }
 
-        // 检查 redis 中是否已经存入库存，避免缓存击穿
+        // 检查秒杀商品库存是否已经存入缓存，避免缓存击穿
         String[] locks = LOCKS;
         // 获取同一商品库存的线程中，只有一个线程能读取数据库，因为同一商品的 goodsId 相同
         // 如果不同的商品 index 相同，也需要等待释放锁
+        // 在“库存”这个缓存里，所有的商品一共只有 locks.length 把锁
         int index = BaseUtil.safeLongToInt(goodsId & (locks.length - 1));
         RLock rLock = redissonService.getRLock(locks[index]);
         while (!redisService.exists(GoodsKey.getMiaoshaGoodsStock, "" + goodsId)) {

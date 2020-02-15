@@ -7,6 +7,7 @@ import com.miaosha.redis.RedisService;
 import com.miaosha.result.CodeMsg;
 import com.miaosha.result.Result;
 import com.miaosha.service.MiaoshaUserService;
+import com.miaosha.util.concurrent.BloomFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,11 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
     RedisService redisService;
+
+    @Autowired
+    BloomFilter bloomFilter;
+
+    private static final String where = "userAccessLimit";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -52,7 +58,13 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
                 }
                 key += "_" + user.getId();
             }
-            // martine flower, 重构-改善既有代码的设计
+
+            // 在黑名单里
+            if (bloomFilter.isExist(where, String.valueOf(user.getId()))) {
+                render(response, CodeMsg.ACCESS_LIMIT_BLACKLIST);
+                return false;
+            }
+
             AccessKey ak = AccessKey.withExpire(seconds);
             Integer count = redisService.get(ak, key, Integer.class);
             if (count == null) {
@@ -63,6 +75,7 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
             }
             else {
                 render(response, CodeMsg.ACCESS_LIMIT_REACHED);
+                bloomFilter.put(where, String.valueOf(user.getId()));
                 return false;
             }
         }

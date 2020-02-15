@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.params.SetParams;
 
-import java.util.Collections;
 import java.util.Map;
 
 @Service
@@ -17,8 +15,6 @@ public class RedisService {
 
     @Autowired
     JedisPool jedisPool;
-
-    private static final String LOCK_SUCCESS = "OK";
 
     /**
      *  获取单个对象
