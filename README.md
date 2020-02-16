@@ -2,8 +2,6 @@
 
 ## 0. 近期思路：
 
-缓存穿透：布隆过滤器
-
 MySQL 优化
 
 虚拟机调优
@@ -28,6 +26,7 @@ MySQL 优化
 │  │  │          │      UserContext,java
 │  │  │          │  
 │  │  │          ├─config
+│  │  │          │     BloomFilterConfig.java
 │  │  │          │     RateLimiterConfig.java
 │  │  │          │     RedissonConfig.java
 │  │  │          │     ThreadPoolConfig.java  
@@ -105,6 +104,7 @@ MySQL 优化
 │  │  │              │  UUIDUtil.java
 │  │  │              │
 │  │  │              └─concurrent
+│  │  │                       BloomFilter.java
 │  │  │                       PermitBucket.java
 │  │  │                       RateLimiter.java
 │  │  │        
@@ -187,6 +187,8 @@ MySQL 优化
 此模块使用 Redis 的 hash 数据结构保存用户的秒杀订单，用户的 ID 作为键，单个商品的 id 作为 hash 结构的 key，订单详情作为 hash 结构的 value。
 
 ### 2.3 数据库
+
+数据库表设计详见 "(miaoshadb)[]"
 
 #### 2.3.1 索引
 
