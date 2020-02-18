@@ -1,6 +1,8 @@
 package com.miaosha.vo;
 
 import com.miaosha.entity.Goods;
+import com.miaosha.entity.MiaoshaGoods;
+
 import java.util.Date;
 
 public class GoodsVo extends Goods {
@@ -39,5 +41,18 @@ public class GoodsVo extends Goods {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public GoodsVo(Goods goods, MiaoshaGoods miaoshaGoods) {
+        this.setId(goods.getId());
+        this.setGoodsName(goods.getGoodsName());
+        this.setGoodsTitle(goods.getGoodsTitle());
+        this.setGoodsImg(goods.getGoodsImg());
+        this.setGoodsPrice(goods.getGoodsPrice());
+        this.setGoodsStock(goods.getGoodsStock());
+        this.setStockCount(miaoshaGoods.getStockCount());
+        this.setStartDate(miaoshaGoods.getStartDate());
+        this.setEndDate(miaoshaGoods.getEndDate());
+        this.setMiaoshaPrice(miaoshaGoods.getMiaoshaPrice());
     }
 }

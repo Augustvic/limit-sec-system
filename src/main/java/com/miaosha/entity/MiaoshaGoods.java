@@ -8,6 +8,15 @@ public class MiaoshaGoods {
     private Integer stockCount;
     private Date startDate;
     private Date endDate;
+    private Double miaoshaPrice;
+
+    public Double getMiaoshaPrice() {
+        return miaoshaPrice;
+    }
+
+    public void setMiaoshaPrice(Double miaoshaPrice) {
+        this.miaoshaPrice = miaoshaPrice;
+    }
 
     public Long getId() {
         return id;

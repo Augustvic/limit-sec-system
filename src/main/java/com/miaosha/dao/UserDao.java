@@ -6,10 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-/**
- * Created by August on 2019/6/7 22:58
- **/
-
 @Mapper
 public interface UserDao {
 
