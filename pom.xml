@@ -4,11 +4,20 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.imooc</groupId>
-  <artifactId>miaosha</artifactId>
+  <groupId>com.Aug</groupId>
+  <artifactId>limit</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>limit-common</module>
+    <module>limit-config</module>
+      <module>limit-user</module>
+      <module>limit-seckill</module>
+      <module>limit-app</module>
+      <module>limit-redis</module>
+  </modules>
 
-  <name>miaosha</name>
+  <name>limit</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -22,6 +31,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+
+    <mybatis_version>2.0.0</mybatis_version>
+    <druid_version>1.1.8</druid_version>
+    <fastjson_version>1.2.38</fastjson_version>
+    <guava_version>18.0</guava_version>
+    <redisson_version>3.12.0</redisson_version>
+    <rocketmq_version>2.1.0</rocketmq_version>
+    <junit_version>4.12</junit_version>
   </properties>
 
   <dependencies>
@@ -45,13 +62,13 @@
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>2.0.0</version>
+      <version>${mybatis_version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
-      <version>1.1.8</version>
+      <version>${druid_version}</version>
     </dependency>
 
     <dependency>
@@ -68,19 +85,19 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>1.2.38</version>
+      <version>${fastjson_version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>18.0</version>
+      <version>${guava_version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.redisson</groupId>
       <artifactId>redisson</artifactId>
-      <version>3.12.0</version>
+      <version>${redisson_version}</version>
     </dependency>
 
     <!--MD5-->
@@ -101,10 +118,18 @@
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
-    <!--Kafka-->
+    <!--RocketMQ-->
     <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
+      <groupId>org.apache.rocketmq</groupId>
+      <artifactId>rocketmq-spring-boot-starter</artifactId>
+      <version>${rocketmq_version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit_version}</version>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>

@@ -1,0 +1,65 @@
+{
+  "groups": [
+    {
+      "name": "rocketmq",
+      "type": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "rocketmq.consumer-consume-message-batch-max-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 1
+    },
+    {
+      "name": "rocketmq.consumer-consume-thread-max",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "rocketmq.consumer-consume-thread-min",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "rocketmq.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties"
+    },
+    {
+      "name": "rocketmq.group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": "default"
+    },
+    {
+      "name": "rocketmq.namesrv-addr",
+      "type": "java.lang.String",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": "localhost:9876"
+    },
+    {
+      "name": "rocketmq.producer-max-message-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 1024
+    },
+    {
+      "name": "rocketmq.producer-retry-times-when-send-failed",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 2
+    },
+    {
+      "name": "rocketmq.producer-send-msg-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.limit.seckill.rocketmq.RocketMQProperties",
+      "defaultValue": 2000
+    }
+  ],
+  "hints": []
+}

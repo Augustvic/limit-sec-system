@@ -1,0 +1,50 @@
+server:
+  port: 8090
+
+spring:
+  #thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+
+  #Druid
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?serverTimezone=GMT%2B8&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #static静态页面
+  resources:
+    add-mappings: true
+    static-locations: classpath:/static/
+    chain:
+      cache: true
+      enabled: true
+      html-application-cache: true
+
+#mybatis
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/imooc/miaosha/dao/*.xml
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  timeout: 1000
+  poolMaxTotal: 1000
+  poolMaxIdle: 500
+  poolMaxWait: 500
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: my_group
