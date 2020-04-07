@@ -5,7 +5,7 @@ import com.limit.common.result.CodeMsg;
 import com.limit.common.utils.MD5Util;
 import com.limit.common.utils.UUIDUtil;
 import com.limit.redis.service.RedisService;
-import com.limit.redis.user.SeckillUserKey;
+import com.limit.redis.key.user.SeckillUserKey;
 import com.limit.user.dao.SeckillUserDao;
 import com.limit.user.entity.SeckillUser;
 import com.limit.user.vo.LoginVo;

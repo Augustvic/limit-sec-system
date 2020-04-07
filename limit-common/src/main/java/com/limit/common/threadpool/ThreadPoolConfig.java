@@ -18,8 +18,10 @@ public class ThreadPoolConfig {
     // 存活时间
     private Integer keepAliveTime = Constants.DEFAULT_ALIVE_TIME;
 
-    public ThreadPoolConfig() {
+    public ThreadPoolConfig() {}
 
+    public ThreadPoolConfig(String name) {
+        this.name = name;
     }
 
     // scheduled

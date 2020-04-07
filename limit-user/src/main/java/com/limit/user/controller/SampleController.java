@@ -3,7 +3,7 @@ package com.limit.user.controller;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.redis.service.RedisService;
-import com.limit.redis.user.UserKey;
+import com.limit.redis.key.user.UserKey;
 import com.limit.user.entity.User;
 import com.limit.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,10 +2,6 @@ package com.limit.user.entity;
 
 import java.util.Date;
 
-/**
- * Created by August on 2019/6/15 15:30
- **/
-
 public class SeckillUser {
     private Long id;
     private String nickname;

@@ -104,13 +104,13 @@
         })
     }
 
-    function getSeckillResult(goodsId) {
+    function getSeckillResult(requestId) {
         g_showLoading();
         $.ajax({
             url: "/seckill/result",
             type: "GET",
             data: {
-                goodsId: $("#goodsId").val()
+                requestId: requestId
             },
             success: function (data) {
                 if (data.code == 0) {
@@ -119,7 +119,7 @@
                         layer.msg("对不起，秒杀失败");
                     } else if (result == 0) { //继续轮询
                         setTimeout(function () {
-                            getSeckillResult(goodsId)
+                            getSeckillResult(requestId)
                         }, 200);
                     } else {
                         layer.confirm("恭喜你，秒杀成功！查看订单?", {btn: ["确定", "取消"]},
@@ -150,7 +150,7 @@
             success: function (data) {
                 if (data.code == 0) {
                     // window.location.href="/order_detail.html?orderId="+data.data.id;
-                    getSeckillResult($("#goodsId").val());
+                    getSeckillResult(data.data);
                 } else {
                     layer.msg(data.msg);
                 }

@@ -1,11 +1,13 @@
 package com.limit.user.access;
 
 import com.alibaba.fastjson.JSON;
-import com.limit.common.concurrent.BloomFilter;
+import com.limit.common.concurrent.bloomfilter.BloomFilter;
+import com.limit.common.concurrent.bloomfilter.BloomFilterConfig;
+import com.limit.common.concurrent.bloomfilter.BloomFilterFactory;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.redis.service.RedisService;
-import com.limit.redis.user.AccessKey;
+import com.limit.redis.key.user.AccessKey;
 import com.limit.user.entity.SeckillUser;
 import com.limit.user.service.SeckillUserService;
 import org.apache.commons.lang3.StringUtils;
@@ -28,8 +30,7 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     RedisService redisService;
 
-    @Autowired
-    BloomFilter bloomFilter;
+    private final BloomFilter bloomFilter = BloomFilterFactory.getBloomFilter(new BloomFilterConfig());
 
     private static final String where = "userAccessLimit";
 

@@ -1,6 +1,6 @@
 package com.limit.user.controller;
 
-import com.limit.common.concurrent.BloomFilter;
+import com.limit.common.concurrent.bloomfilter.BloomFilter;
 import com.limit.common.result.Result;
 import com.limit.user.entity.SeckillUser;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import com.limit.seckill.entity.OrderInfo;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.seckill.service.GoodsService;
-import com.limit.seckill.service.OrderService;
+import com.limit.seckill.service.impl.OrderServiceImpl;
 import com.limit.seckill.vo.GoodsVo;
 import com.limit.seckill.vo.OrderDetailVo;
 import com.limit.user.entity.SeckillUser;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OrderController {
 
     @Autowired
-    OrderService orderService;
+    OrderServiceImpl orderService;
 
     @Autowired
     GoodsService goodsService;

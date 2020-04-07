@@ -19,7 +19,7 @@
 | end_date | datetime | 秒杀结東时间 |
 | goods_id | bigint(20) | 商品id |
 | id | bigint(20) | 秒杀的商品表 |
-| miaosha_price | decimal(10,2) | 秒杀价 |
+| seckill_price | decimal(10,2) | 秒杀价 |
 | start_date | datetime | 秒杀开始时间 |
 | stock_count | int(11) | 库存数量 |
 
@@ -39,7 +39,7 @@
 | head | varchar(128) | 头像，云存储的ID |
 | id | bigint(20) | 用户ID, 手机号码 |
 | last_login_date | datetime | 上次登录时间 |
-| login—count | int(11) | 登录次数 |
+| login_count | int(11) | 登录次数 |
 | nickname | varchar(255) |  |
 | password | varchar(32) | MD5(MD5(pass明文+固定salt) + salt) |
 | register_date | datetime | 注册时间 |

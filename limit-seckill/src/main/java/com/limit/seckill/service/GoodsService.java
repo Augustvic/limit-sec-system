@@ -6,27 +6,13 @@ import com.limit.seckill.entity.Goods;
 import com.limit.seckill.entity.SeckillGoods;
 import com.limit.seckill.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class GoodsService {
-
-    @Autowired
-    GoodsDao goodsDao;
-
-    @Autowired
-    SeckillGoodsDao seckillGoodsDao;
+public interface GoodsService {
 
     // 获取所有商品
-    public List<GoodsVo> listGoodsVo() {
-        return goodsDao.listGoodsVo();
-    }
+    List<GoodsVo> listGoodsVo();
 
-    public GoodsVo getGoodsVoByGoodsId(long goodsId) {
-        Goods goods = goodsDao.getGoodsByGoodsId(goodsId);
-        SeckillGoods seckillGoods = seckillGoodsDao.getSeckillGoodById(goodsId);
-        return new GoodsVo(goods, seckillGoods);
-    }
+    GoodsVo getGoodsVoByGoodsId(long goodsId);
 }
