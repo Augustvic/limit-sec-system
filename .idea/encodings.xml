@@ -4,10 +4,9 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limit-app" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limit-common" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/limit-common/src/main/java/test/com/limit/common/threadpool/common/CommonThreadPoolTest.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/limit-common/src/main/java/test/com/limit/common/threadpool/common/CommonThreadPoolTest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/limit-config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limit-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/limit-rocketmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limit-seckill" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limit-user" charset="UTF-8" />
   </component>

@@ -1,6 +1,6 @@
 package com.limit.redis.key.user;
 
-import com.limit.redis.BasePrefix;
+import com.limit.redis.key.BasePrefix;
 
 public class SeckillUserKey extends BasePrefix {
 

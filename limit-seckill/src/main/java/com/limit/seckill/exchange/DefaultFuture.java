@@ -47,8 +47,18 @@ public class DefaultFuture {
                     return 0L;
                 }
             }
+            FUTURES.remove(id);
         }
         return -1L;
+    }
+
+    public static boolean hasResponse(long id) {
+        if (FUTURES.containsKey(id)) {
+            DefaultFuture future = FUTURES.get(id);
+            Response response = future.getResponse();
+            return response != null;
+        }
+        return false;
     }
 
     public void setResponse(Response response) {

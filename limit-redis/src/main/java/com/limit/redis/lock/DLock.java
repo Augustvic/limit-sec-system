@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class DLock implements Lock {
 
-    @Autowired
     private RedissonService redissonService;
 
     // 锁名字的前缀
@@ -25,7 +24,7 @@ public class DLock implements Lock {
     // 缓存已经用过的锁
     private final Map<String, RLock> RLOCKS;
 
-    public DLock(String name, int nLocks) {
+    public DLock(String name, int nLocks,  RedissonService redissonService) {
         this.name = name;
         this.nLocks = nLocks;
         this.keys = new String[nLocks];
@@ -33,6 +32,7 @@ public class DLock implements Lock {
             this.keys[i] = this.name + i;
         }
         this.RLOCKS = new ConcurrentHashMap<>();
+        this.redissonService = redissonService;
     }
 
     @Override

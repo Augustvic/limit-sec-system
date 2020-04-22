@@ -1,4 +1,0 @@
-fixed=com.limit.common.threadpool.fixed.FixedThreadPool
-cached=com.limit.common.threadpool.cached.CachedThreadPool
-scheduled=com.limit.common.threadpool.scheduled.ScheduledThreadPool
-common=com.limit.common.threadpool.common.CommonThreadPool

@@ -1,7 +1,6 @@
 package com.limit.seckill.dispatcher.support;
 
-import com.limit.common.extension.ExtensionLoader;
-import com.limit.common.threadpool.ThreadPool;
+import com.limit.common.threadpool.ThreadPoolFactory;
 import com.limit.common.threadpool.ThreadPoolConfig;
 import com.limit.seckill.dispatcher.Dispatcher;
 import com.limit.seckill.dispatcher.runnable.DoSeckillRunnable;
@@ -10,7 +9,8 @@ import com.limit.seckill.service.SeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.ExecutorService;
+import javax.annotation.PostConstruct;
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Service
 public class DoSeckillDispatcher implements Dispatcher {
@@ -18,16 +18,27 @@ public class DoSeckillDispatcher implements Dispatcher {
     @Autowired
     SeckillService seckillService;
 
-    private final ExecutorService executor;
+    @Autowired
+    ThreadPoolFactory threadPoolFactory;
 
-    public DoSeckillDispatcher() {
+    private ThreadPoolExecutor executor;
+
+    @PostConstruct
+    public void init() {
         ThreadPoolConfig config = new ThreadPoolConfig("DoSeckill");
-        executor = (ExecutorService) ExtensionLoader.getExtensionLoader(ThreadPool.class).getExtension("common").getExecutor(config);;
+        config.setCorePoolSize(10);
+        config.setMaximumPoolSize(20);
+        executor = (ThreadPoolExecutor) threadPoolFactory.getCommonThreadPool(config);
     }
 
     @Override
     public void received(Object msg) {
         if (msg instanceof Request) {
+//            try {
+//                seckillService.afterReceiveRequest((Request)msg);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             executor.execute(new DoSeckillRunnable(seckillService, (Request)msg));
         }
     }

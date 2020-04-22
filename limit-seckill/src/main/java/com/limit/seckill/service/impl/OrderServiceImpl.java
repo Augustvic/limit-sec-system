@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
         orderDao.insertSeckillOrder(seckillOrder);
 
         // 将秒杀订单信息写入缓存
-        redisService.hset(OrderKey.getSeckillOrderByUidGid, "" + user.getId(), "g" + goods.getId(), seckillOrder);
+        redisService.hset(OrderKey.getSeckillOrderByUidGid, "" + user.getId(), "order" + orderInfo.getId(), seckillOrder);
 
         return orderInfo;
     }

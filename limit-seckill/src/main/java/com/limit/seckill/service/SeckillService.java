@@ -14,7 +14,7 @@ public interface SeckillService {
 
     OrderInfo seckill(SeckillUser user, GoodsVo goods);
 
-    long getSeckillResult(Long userId, long goodsId);
+//    long getSeckillResult(Long userId, long goodsId);
 
     //redis中标记商品已经卖完
     void setGoodsOver(Long goodsId);

@@ -12,6 +12,7 @@
         <module name="limit-seckill" />
         <module name="limit-user" />
         <module name="limit-common" />
+        <module name="limit-rocketmq" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="limit-common" options="-parameters" />
       <module name="limit-config" options="-parameters" />
       <module name="limit-redis" options="-parameters" />
+      <module name="limit-rocketmq" options="-parameters" />
       <module name="limit-seckill" options="-parameters" />
       <module name="limit-user" options="-parameters" />
     </option>

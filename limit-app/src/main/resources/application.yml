@@ -45,6 +45,12 @@ redis:
   poolMaxWait: 500
 
 rocketmq:
-  name-server: 127.0.0.1:9876
   producer:
-    group: my_group
+    groupName: limit_producer_group
+    namesrvAddr: 127.0.0.1:9876
+    retryTimesWhenSendFailed: 0
+  consumer:
+    groupName: limit_consumer_group
+    namesrvAddr: 127.0.0.1:9876
+    consumeThreadMin: 5
+    consumeThreadMax: 10

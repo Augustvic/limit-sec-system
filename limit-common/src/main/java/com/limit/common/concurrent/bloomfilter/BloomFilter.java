@@ -2,7 +2,6 @@ package com.limit.common.concurrent.bloomfilter;
 
 import com.google.common.hash.Funnels;
 import com.google.common.hash.Hashing;
-import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.Pipeline;
@@ -14,12 +13,11 @@ import java.nio.charset.Charset;
  */
 public class BloomFilter {
 
-    @Autowired
-    JedisPool jedisPool;
+    private static final String keyPrefix = "BloomFilter:";
 
-    private static final String keyPrefix = "bf:";
+    private JedisPool jedisPool;
 
-    private final Jedis jedis;
+    private Jedis jedis;
 
     // bit 数组长度
     private final long numBits;
@@ -32,7 +30,7 @@ public class BloomFilter {
         return Math.max(1, (int) Math.round((double) m / n * Math.log(2)));
     }
 
-    // 计算 hash 函数个数
+    // 为了达到规定的错误率，计算 hash 函数个数
     private long optimalNumOfBits(long n, double p) {
         if (p == 0) {
             p = Double.MIN_VALUE;
@@ -44,9 +42,9 @@ public class BloomFilter {
      * 构造函数
      */
     public BloomFilter(BloomFilterConfig config) {
-        this.jedis = jedisPool.getResource();
         this.numBits = optimalNumOfBits(config.getExpectedInsertions(), config.getFpp());
         this.numHashFunctions = optimalNumOfHashFunctions(config.getExpectedInsertions(), this.numBits);
+        this.jedisPool = config.getJedisPool();
     }
 
     /**
@@ -55,7 +53,6 @@ public class BloomFilter {
      * @param fpp 可接受的错误率
      */
     public BloomFilter(long expectedInsertions, double fpp) {
-        this.jedis = jedisPool.getResource();
         this.numBits = optimalNumOfBits(expectedInsertions, fpp);
         this.numHashFunctions = optimalNumOfHashFunctions(expectedInsertions, this.numBits);
     }
@@ -64,9 +61,12 @@ public class BloomFilter {
      * 判断 keys 是否存在于集合 where 中
      */
     public boolean isExist(String where, String key) {
+        if (jedis == null) {
+            jedis = jedisPool.getResource();
+        }
         long[] indexs = getIndexs(key);
         boolean result;
-        //这里使用了Redis管道来降低过滤器运行当中访问Redis次数 降低Redis并发量
+        //这里使用了 Redis 管道来降低过滤器运行当中访问 Redis 次数 降低 Redis 并发量
         Pipeline pipeline = jedis.pipelined();
         try {
             for (long index : indexs) {
@@ -80,11 +80,14 @@ public class BloomFilter {
     }
 
     /**
-     * 将key存入redis bitmap
+     * 将 key 存入 redis bitmap
      */
     public void put(String where, String key) {
+        if (jedis == null) {
+            jedis = jedisPool.getResource();
+        }
         long[] indexs = getIndexs(key);
-        //这里使用了Redis管道来降低过滤器运行当中访问Redis次数 降低Redis并发量
+        //这里使用了 Redis 管道来降低过滤器运行当中访问 Redis 次数 降低 Redis 并发量
         Pipeline pipeline = jedis.pipelined();
         try {
             for (long index : indexs) {
@@ -114,7 +117,7 @@ public class BloomFilter {
     }
 
     /**
-     * 获取一个 hash 值 方法来自guava
+     * 获取一个 hash 值 方法来自 guava
      */
     private long hash(String key) {
         Charset charset = Charset.forName("UTF-8");

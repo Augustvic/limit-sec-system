@@ -1,7 +1,5 @@
 package com.limit.common.concurrent.ratelimiter;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * 令牌桶
  */
@@ -18,46 +16,44 @@ public class PermitBucket {
     private long storedPermits;
 
     /**
-     * 每两次添加令牌之间的时间间隔（逐个添加令牌）
+     * 每两次添加令牌之间的时间间隔（逐个添加令牌），单位为微秒
      */
-    private long intervalMicros;
+    private long intervalNanos;
 
     /**
-     * 下次可以请求获取令牌的起始时间，默认当前系统时间
+     * 上次更新的时间
      */
-    private long nextFreeTicketMillis;
+    private long lastUpdateTime;
 
     /**
-     * redis的过期时长。最低有效时长为 1 分钟。
+     * redis的过期时长。默认不过期。
      * @return 有效时长
      */
-    public long expires() {
-        long now = System.currentTimeMillis();
-        return 2 * TimeUnit.MINUTES.toSeconds(1)
-                + TimeUnit.MILLISECONDS.toSeconds(Math.max(nextFreeTicketMillis, now) - now);
+    public int expires() {
+        return 0;
     }
 
     /**
-     * 异步更新当前持有的令牌数
+     * 更新当前持有的令牌数
      * 若当前时间晚于 nextFreeTicketMicros，则计算该段时间内可以生成多少令牌，将生成的令牌加入令牌桶中并更新数据
-     * 此处没有更新 redis
      * @param now 当前时间
-     * @return 是否更新成功
      */
-    public boolean reSync(long now){
-        if (now > nextFreeTicketMillis) {
-            storedPermits = Math.min(maxPermits, storedPermits + TimeUnit.MILLISECONDS.toMicros(now - nextFreeTicketMillis) / intervalMicros);
-            nextFreeTicketMillis = now;
-            return true;
+    public void reSync(long now, long storedPermitsToSpend){
+        if (now > lastUpdateTime) {
+            long newStoredPermits = Math.min(maxPermits, storedPermits + (now - lastUpdateTime) / intervalNanos - storedPermitsToSpend);
+            // now 距离 lastUpdateTime 很短时，防止 lastUpdateTime 变了而 storedPermits 没变
+            if (newStoredPermits != storedPermits) {
+                storedPermits = newStoredPermits;
+                lastUpdateTime = now;
+            }
         }
-        return false;
     }
 
-    public PermitBucket(long maxPermits, long storedPermits, long intervalMicros, long nextFreeTicketMillis) {
+    public PermitBucket(long maxPermits, long storedPermits, long intervalNanos, long lastUpdateTime) {
         this.maxPermits = maxPermits;
         this.storedPermits = storedPermits;
-        this.intervalMicros = intervalMicros;
-        this.nextFreeTicketMillis = nextFreeTicketMillis;
+        this.intervalNanos = intervalNanos;
+        this.lastUpdateTime = lastUpdateTime;
     }
 
     public long getMaxPermits() {
@@ -76,19 +72,19 @@ public class PermitBucket {
         this.storedPermits = storedPermits;
     }
 
-    public long getIntervalMicros() {
-        return intervalMicros;
+    public long getIntervalNanos() {
+        return intervalNanos;
     }
 
-    public void setIntervalMicros(long intervalMicros) {
-        this.intervalMicros = intervalMicros;
+    public void setIntervalNanos(long intervalNanos) {
+        this.intervalNanos = intervalNanos;
     }
 
-    public long getNextFreeTicketMillis() {
-        return nextFreeTicketMillis;
+    public long getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setNextFreeTicketMillis(long nextFreeTicketMillis) {
-        this.nextFreeTicketMillis = nextFreeTicketMillis;
+    public void setLastUpdateTime(long lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 }

@@ -21,26 +21,24 @@ public class UserController {
         return Result.success(user);
     }
 
-    @Autowired
-    BloomFilter bloomFilter;
 
     @RequestMapping("/test")
     public String test() {
-        // Code
-        int capacity = 1000;
-        String where = "test";
-        for (int i = 0; i < capacity; i++) {
-            bloomFilter.put(where, String.valueOf(i));
-        }
-        int sum = 0;
-        for (int i = capacity + 2000; i < capacity + 3000; i++) {
-            if (bloomFilter.isExist(where, String.valueOf(i))) {
-                sum ++;
-            }
-        }
-        //0.03
-        DecimalFormat df=new DecimalFormat("0.00");//设置保留位数
-        System.out.println("错判率为:" + df.format((float)sum/10000));
+//        // Code
+//        int capacity = 1000;
+//        String where = "test";
+//        for (int i = 0; i < capacity; i++) {
+//            bloomFilter.put(where, String.valueOf(i));
+//        }
+//        int sum = 0;
+//        for (int i = capacity + 2000; i < capacity + 3000; i++) {
+//            if (bloomFilter.isExist(where, String.valueOf(i))) {
+//                sum ++;
+//            }
+//        }
+//        //0.03
+//        DecimalFormat df=new DecimalFormat("0.00");//设置保留位数
+//        System.out.println("错判率为:" + df.format((float)sum/10000));
         return "login";
     }
 }

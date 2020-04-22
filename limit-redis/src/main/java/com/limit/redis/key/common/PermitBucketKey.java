@@ -1,6 +1,6 @@
 package com.limit.redis.key.common;
 
-import com.limit.redis.BasePrefix;
+import com.limit.redis.key.BasePrefix;
 
 public class PermitBucketKey extends BasePrefix {
 

@@ -1,12 +1,8 @@
 package com.limit.seckill.controller;
 
-import com.limit.redis.service.RedisService;
 import com.limit.seckill.exchange.DefaultFuture;
-import com.limit.seckill.exchange.message.Request;
-import com.limit.seckill.rocketmq.Sender;
 import com.limit.user.access.AccessLimit;
 import com.limit.user.entity.SeckillUser;
-import com.limit.seckill.rocketmq.SeckillMessage;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.seckill.service.impl.SeckillServiceImpl;
@@ -28,9 +24,6 @@ public class SeckillController {
     @Autowired
     SeckillServiceImpl seckillService;
 
-    @Autowired
-    Sender sender;
-
     /**
      * GET/POST 区别
      * GET幂等，从服务端获取数据
@@ -49,31 +42,7 @@ public class SeckillController {
         if (!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
-
-        CodeMsg preReduceResultMsg = CodeMsg.FAIL;
-        // 预减库存
-        try {
-            preReduceResultMsg = seckillService.preReduceInventory(user, goodsId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (preReduceResultMsg != CodeMsg.SUCCESS) {
-            return Result.error(preReduceResultMsg);
-        }
-
-        Request request = new Request(user, goodsId);
-        DefaultFuture future = new DefaultFuture(request.getId(), request, -1L);
-        DefaultFuture.FUTURES.put(request.getId(), future);
-
-        try {
-            sender.sendSeckillRequest(request);
-        } catch (Exception e) {
-            future.cancel();
-            e.printStackTrace();
-            return Result.error(CodeMsg.FAIL);
-        }
-        return Result.success(request.getId()); // 排队中
+        return seckillService.doSeckill(user, goodsId);
     }
 
     /**

@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import redis.clients.jedis.JedisPool;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,14 +27,22 @@ import java.io.OutputStream;
 public class AccessInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
+    JedisPool jedisPool;
+
+    @Autowired
     SeckillUserService userService;
 
     @Autowired
     RedisService redisService;
 
-    private final BloomFilter bloomFilter = BloomFilterFactory.getBloomFilter(new BloomFilterConfig());
+    private BloomFilter bloomFilter;
 
-    private static final String where = "userAccessLimit";
+    private static final String WHERE = "UserAccessLimit";
+
+    @PostConstruct
+    public void init() {
+        this.bloomFilter = BloomFilterFactory.getBloomFilter(new BloomFilterConfig(jedisPool));
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -47,6 +57,8 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
                 return true;
             }
 
+            // 参考 AccessLimit 注释的定义
+            // seconds 时间内如果访问次数超过 maxCount 次，将会被加入黑名单
             int seconds = accessLimit.seconds();
             int maxCount = accessLimit.maxCount();
             boolean needLogin = accessLimit.needLogin();
@@ -61,7 +73,7 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
             }
 
             // 在黑名单里
-            if (bloomFilter.isExist(where, String.valueOf(user.getId()))) {
+            if (bloomFilter.isExist(WHERE, String.valueOf(user.getId()))) {
                 render(response, CodeMsg.ACCESS_LIMIT_BLACKLIST);
                 return false;
             }
@@ -76,7 +88,7 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
             }
             else {
                 render(response, CodeMsg.ACCESS_LIMIT_REACHED);
-                bloomFilter.put(where, String.valueOf(user.getId()));
+                bloomFilter.put(WHERE, String.valueOf(user.getId()));
                 return false;
             }
         }

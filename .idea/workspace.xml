@@ -1,0 +1,1796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="06dc1507-e851-456d-8963-521c35cb482e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/rocketmq222/SenderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/service/impl/SeckillServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillSendCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/limit-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-app/src/main/java/com/limit/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-app/src/main/java/com/limit/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-app/src/main/resources/static/goods_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/limit-app/src/main/resources/static/goods_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/extension/ExtensionFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/extension/ExtensionLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/extension/SPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/extension/SpiExtensionFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolConfig2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/cached/CachedThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/CachedThreadPoolLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/common/CommonThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/CommonThreadPoolLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/fixed/FixedThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/FixedThreadPoolLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/scheduled/ScheduledThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ScheduledThreadPoolLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/utils/BaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/utils/BaseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/utils/Holder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/resources/META-INF/limit/internal/com.limit.common.threadpool.ThreadPool" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/common/CommonThreadPoolTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/BasePrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/BasePrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/KeyPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/KeyPrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/common/PermitBucketKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/common/PermitBucketKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/GoodsKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/GoodsKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/OrderKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/OrderKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/SeckillKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/SeckillKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/AccessKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/AccessKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/SeckillUserKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/SeckillUserKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/UserKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/UserKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/DLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/DLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/service/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/controller/SeckillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/controller/SeckillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/DefaultFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/DefaultFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/message/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/message/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/AbstractRocketConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/Receiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/RocketConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/RocketMQProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/SeckillMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq222/Sender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/SeckillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/SeckillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/SampleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/limit-seckill/target/" />
+    <ignored path="$PROJECT_DIR$/limit-user/target/" />
+    <ignored path="$PROJECT_DIR$/limit-app/target/" />
+    <ignored path="$PROJECT_DIR$/limit-config/target/" />
+    <ignored path="$PROJECT_DIR$/limit-common/target/" />
+    <ignored path="$PROJECT_DIR$/limit-redis/target/" />
+    <ignored path="$PROJECT_DIR$/limit-rocketmq/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="182" column="38" selection-start-line="182" selection-start-column="38" selection-end-line="182" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8007#8334#0" />
+                <element signature="e#8340#8694#0" />
+                <element signature="e#8700#10015#0" />
+                <element signature="e#10021#10355#0" />
+                <element signature="e#10421#10768#0" />
+                <element signature="e#10774#11251#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/OrderServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="78">
+                <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>test</find>
+      <find>goodsServiceImpl</find>
+      <find>redissonService</find>
+      <find>System.out.println</find>
+      <find>ConsumeMessageThread_3</find>
+      <find>localOverMap</find>
+      <find>class</find>
+      <find>SendCallback</find>
+      <find>sender</find>
+      <find>rocketmq</find>
+      <find>start</find>
+      <find>getBody</find>
+      <find>Constructor</find>
+      <find>producer</find>
+      <find>ConsumeMessageThread</find>
+      <find>acquireNanos</find>
+      <find>reserve</find>
+      <find>int</find>
+      <find>acquire</find>
+      <find>doAcquire</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/common/CommonThreadPoolLoaderTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/limit-app/pom.xml" />
+        <option value="$PROJECT_DIR$/limit-seckill/pom.xml" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/sender/Sender.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/sender/SenderFactory.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/sender/Producer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/sender/CommonProducer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/sender/ProducerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/CommonConsumer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillConfig.java" />
+        <option value="$PROJECT_DIR$/limit-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/pom.xml" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillSendCallback.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/CommonProducer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillProducer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/MessageListener.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillMessageListener.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill2/SeckillMessageListener.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/seckill2/SeckillMessageListener.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillMessageListener.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/controller/SeckillController.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/rocketmq222/SenderTest.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ConsumerConfig.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ProducerConfig.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/message/Request.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/utils/BaseUtil.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillProducer.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumer.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/DefaultFuture.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/service/impl/SeckillServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" />
+        <option value="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessLimit.java" />
+        <option value="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="limit" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="limit" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq222" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="bloomfilter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="ratelimiter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="threadpool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="key" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="lock" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+              <item name="producer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="dispatcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="dispatcher" type="462c0819:PsiDirectoryNode" />
+              <item name="runnable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="dispatcher" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="message" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="access" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.limit.common.threadpool" />
+      <recent name="com.limit.seckill.service.impl" />
+      <recent name="com.limit.seckill.rocketmq" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.limit.seckill" />
+      <recent name="com.limit.common.threadpool" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.SeckillServiceImplTest.doSeckill (1)">
+    <configuration name="SeckillServiceImplTest.doSeckill (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.service.impl.SeckillServiceImplTest" />
+      <option name="METHOD_NAME" value="doSeckill" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SeckillServiceImplTest.doSeckill" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.service.impl.SeckillServiceImplTest" />
+      <option name="METHOD_NAME" value="doSeckill" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.rocketmq222.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq222" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq222.SenderTest" />
+      <option name="METHOD_NAME" value="sendSeckillRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.rocketmq222.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq222" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq222.SenderTest" />
+      <option name="METHOD_NAME" value="sendSeckillRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.rocketmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
+      <option name="METHOD_NAME" value="sendSeckillRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.rocketmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
+      <option name="METHOD_NAME" value="sendSeckillRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.seckill.rocketmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
+      <option name="METHOD_NAME" value="sendSeckillRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.common.threadpool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ThreadPoolFactoryTest" />
+      <option name="METHOD_NAME" value="getFixedThreadPool" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="limit-app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.limit.MainApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.SenderTest.sendSeckillRequest" />
+      <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill" />
+      <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
+      <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill (1)" />
+      <item itemvalue="Spring Boot.MainApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill (1)" />
+        <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
+        <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06dc1507-e851-456d-8963-521c35cb482e" name="Default Changelist" comment="" />
+      <created>1586595102684</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586595102684</updated>
+      <workItem from="1586595105664" duration="43000" />
+      <workItem from="1587004439273" duration="77000" />
+      <workItem from="1587024891053" duration="3048000" />
+      <workItem from="1587027970683" duration="75000" />
+      <workItem from="1587028419249" duration="6205000" />
+      <workItem from="1587121830925" duration="169000" />
+      <workItem from="1587261330061" duration="6798000" />
+      <workItem from="1587341565490" duration="50696000" />
+      <workItem from="1587515627187" duration="26438000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 21m 30s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 24m 50s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 25m 44s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 27m 14s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 35m 43s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 38m 45s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 41m 02s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 41m 47s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 49m 32s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeckillServiceImplTest_doSeckill_(1) - 2020.04.22 at 19h 54m 00s.xml">
+      <configuration name="SeckillServiceImplTest.doSeckill (1)" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="93549000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28617623" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Web" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283859" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.47124305" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.15584415" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Spring" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3283859" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3283859" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497979" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32983023" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.32983023" />
+      <window_info anchor="right" id="Bean Validation" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ConsumerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.2.2.RELEASE/spring-core-5.2.2.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1608">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="18" column="83" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/rocketmq/rocketmq-common/4.7.0/rocketmq-common-4.7.0.jar!/org/apache/rocketmq/common/message/Message.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="156" column="18" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="18" />
+          <folding>
+            <element signature="e#4162#4163#0" expanded="true" />
+            <element signature="e#4194#4195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/utils/BaseUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="50" column="14" lean-forward="true" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/message/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding>
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.2.2.RELEASE/spring-aop-5.2.2.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="480" selection-start-line="480" selection-end-line="480" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/SeckillService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/controller/SeckillController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/config/ProducerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/runnable/DoSeckillRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="18" selection-start-line="18" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/math/LongMath.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="256" column="23" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/locks/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="334" column="9" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="119" column="23" lean-forward="true" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="29" column="67" lean-forward="true" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+          <folding>
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/GoodsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/message/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/exchange/DefaultFuture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/redisson/redisson/3.12.0/redisson-3.12.0.jar!/org/redisson/api/RLock.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/redisson/redisson/3.12.0/redisson-3.12.0.jar!/org/redisson/RedissonLock.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="250" column="27" lean-forward="true" selection-start-line="250" selection-start-column="27" selection-end-line="250" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding>
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1718#1719#0" expanded="true" />
+            <element signature="e#1792#1793#0" expanded="true" />
+            <element signature="e#1898#1899#0" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+            <element signature="e#2084#2085#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/service/impl/SeckillServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-438">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <element signature="e#1469#2391#0" expanded="true" />
+            <element signature="e#2390#2391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="176" selection-start-line="176" selection-end-line="176" />
+          <folding>
+            <element signature="e#4125#4126#0" expanded="true" />
+            <element signature="e#4158#4159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/BasePrefix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-412">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/user/AccessKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="e#281#282#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/UserContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessLimit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding>
+            <element signature="e#3517#3518#0" expanded="true" />
+            <element signature="e#3557#3558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/OrderKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding>
+            <element signature="e#157#158#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="182" column="38" selection-start-line="182" selection-start-column="38" selection-end-line="182" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8007#8334#0" />
+            <element signature="e#8340#8694#0" />
+            <element signature="e#8700#10015#0" />
+            <element signature="e#10021#10355#0" />
+            <element signature="e#10421#10768#0" />
+            <element signature="e#10774#11251#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/OrderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/FixedThreadPoolLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21762">
+          <caret line="1302" column="11" selection-start-line="1302" selection-start-column="11" selection-end-line="1302" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="78">
+            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

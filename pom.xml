@@ -15,6 +15,7 @@
       <module>limit-seckill</module>
       <module>limit-app</module>
       <module>limit-redis</module>
+    <module>limit-rocketmq</module>
   </modules>
 
   <name>limit</name>
@@ -37,7 +38,7 @@
     <fastjson_version>1.2.38</fastjson_version>
     <guava_version>18.0</guava_version>
     <redisson_version>3.12.0</redisson_version>
-    <rocketmq_version>2.1.0</rocketmq_version>
+    <rocketmq_version>4.7.0</rocketmq_version>
     <junit_version>4.12</junit_version>
   </properties>
 
@@ -46,6 +47,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -69,6 +76,12 @@
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
       <version>${druid_version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.rocketmq</groupId>
+      <artifactId>rocketmq-client</artifactId>
+      <version>${rocketmq_version}</version>
     </dependency>
 
     <dependency>
@@ -100,7 +113,6 @@
       <version>${redisson_version}</version>
     </dependency>
 
-    <!--MD5-->
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -112,19 +124,12 @@
       <version>3.6</version>
     </dependency>
 
-    <!--JSR303参数校验-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
-    <!--RocketMQ-->
-    <dependency>
-      <groupId>org.apache.rocketmq</groupId>
-      <artifactId>rocketmq-spring-boot-starter</artifactId>
-      <version>${rocketmq_version}</version>
-    </dependency>
-
+    <!--junit-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
