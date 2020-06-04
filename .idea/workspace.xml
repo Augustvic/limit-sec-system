@@ -2,28 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06dc1507-e851-456d-8963-521c35cb482e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/queue/ResizableLinkedBlockingQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/CommonThreadPoolExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ResizableLinkedBlockingQueueTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRU2Cache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/AbortPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/AbortPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/CachedThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CachedThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/CommonThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CommonThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/FixedThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/FixedThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/NamedThreadFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/NamedThreadFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ScheduledThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/ThreadPoolConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/DLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/DLock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -59,14 +50,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="104">
-                <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+                <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1508">
+              <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,9 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>goodsServiceImpl</find>
-      <find>redissonService</find>
-      <find>System.out.println</find>
       <find>ConsumeMessageThread_3</find>
       <find>localOverMap</find>
       <find>class</find>
@@ -114,9 +123,13 @@
       <find>submit(Ca</find>
       <find>Worker(</find>
       <find>@Tran</find>
+      <find>cacheSize</find>
+      <find>put(</find>
+      <find>containsKey</find>
     </findStrings>
     <replaceStrings>
       <replace>ResizableLinkedBlockingQueue</replace>
+      <replace>maxCapacity</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -125,14 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillConfig.java" />
-        <option value="$PROJECT_DIR$/limit-redis/pom.xml" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/pom.xml" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillSendCallback.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/CommonProducer.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillProducer.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/MessageListener.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill/SeckillMessageListener.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/seckill2/SeckillMessageListener.java" />
         <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/seckill2/SeckillMessageListener.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" />
@@ -170,12 +175,20 @@
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CommonThreadPoolLoader.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/CommonThreadPoolExecutor.java" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" />
-        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRU2Cache.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" />
         <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" />
-        <option value="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" />
       </list>
     </option>
   </component>
@@ -202,10 +215,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -215,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -429,33 +444,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
-              <item name="bloomfilter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
-              <item name="ratelimiter" type="462c0819:PsiDirectoryNode" />
+              <item name="cache" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -468,45 +457,6 @@
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="threadpool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="threadpool" type="462c0819:PsiDirectoryNode" />
-              <item name="loader" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="threadpool" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="limit" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="threadpool" type="462c0819:PsiDirectoryNode" />
-              <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -564,6 +514,18 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="cache" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -1070,7 +1032,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1083,7 +1044,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Exercise" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java源码/dubbo-1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -1097,23 +1058,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.limit.common.cache" />
       <recent name="com.limit.common.threadpool.support" />
       <recent name="com.limit.common.threadpool" />
       <recent name="com.limit.seckill.service.impl" />
       <recent name="com.limit.seckill.rocketmq" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test\java" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.limit.seckill" />
       <recent name="com.limit.common.threadpool" />
+      <recent name="com.limit.seckill" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1129,17 +1091,49 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.MainApplication">
-    <configuration name="CommonThreadPoolExecutorTest.execute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CacheFactoryTest.getCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="limit-common" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.limit.common.threadpool.support.*" />
+          <option name="PATTERN" value="com.limit.common.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.limit.common.threadpool.support" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.support.CommonThreadPoolExecutorTest" />
-      <option name="METHOD_NAME" value="execute" />
+      <option name="PACKAGE_NAME" value="com.limit.common.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.cache.CacheFactoryTest" />
+      <option name="METHOD_NAME" value="getCache" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheFactoryTest.getFIFOCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.common.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.common.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.cache.CacheFactoryTest" />
+      <option name="METHOD_NAME" value="getFIFOCache" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheTest.LRU2CacheTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.common.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.common.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.cache.CacheTest" />
+      <option name="METHOD_NAME" value="LRU2CacheTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1156,70 +1150,6 @@
       <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
       <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ResizableLinkedBlockingQueueTest" />
       <option name="METHOD_NAME" value="setCapacityTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.common.threadpool.queue.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ResizableLinkedBlockingQueueTest" />
-      <option name="METHOD_NAME" value="setCapacityTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SeckillServiceImplTest.doSeckill (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.seckill.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.seckill.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.service.impl.SeckillServiceImplTest" />
-      <option name="METHOD_NAME" value="doSeckill" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SeckillServiceImplTest.doSeckill" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.seckill.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.seckill.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.service.impl.SeckillServiceImplTest" />
-      <option name="METHOD_NAME" value="doSeckill" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.seckill.rocketmq.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
-      <option name="METHOD_NAME" value="sendSeckillRequest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1258,16 +1188,32 @@
       </method>
     </configuration>
     <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-app" />
+      <module name="limit-common" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.limit.common.threadpool.queue.*" />
+          <option name="PATTERN" value="com.limit.common.threadpool.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
       <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ThreadPoolFactoryTest" />
       <option name="METHOD_NAME" value="getFixedThreadPool" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadPoolFactoryTest.getLimitedThreadPool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.limit.common.threadpool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ThreadPoolFactoryTest" />
+      <option name="METHOD_NAME" value="getLimitedThreadPool" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1282,21 +1228,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.SenderTest.sendSeckillRequest" />
-      <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill" />
-      <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
-      <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill (1)" />
-      <item itemvalue="JUnit.ResizableLinkedBlockingQueueTest.setCapacityTest" />
-      <item itemvalue="JUnit.CommonThreadPoolExecutorTest.execute" />
       <item itemvalue="Spring Boot.MainApplication" />
+      <item itemvalue="JUnit.CacheTest.LRU2CacheTest" />
+      <item itemvalue="JUnit.CacheFactoryTest.getCache" />
+      <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
+      <item itemvalue="JUnit.ThreadPoolFactoryTest.getLimitedThreadPool" />
+      <item itemvalue="JUnit.CacheFactoryTest.getFIFOCache" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommonThreadPoolExecutorTest.execute" />
-        <item itemvalue="JUnit.ResizableLinkedBlockingQueueTest.setCapacityTest" />
-        <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill (1)" />
+        <item itemvalue="JUnit.CacheFactoryTest.getCache" />
+        <item itemvalue="JUnit.CacheFactoryTest.getFIFOCache" />
+        <item itemvalue="JUnit.ThreadPoolFactoryTest.getLimitedThreadPool" />
         <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
-        <item itemvalue="JUnit.SeckillServiceImplTest.doSeckill" />
+        <item itemvalue="JUnit.CacheTest.LRU2CacheTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1329,50 +1274,51 @@
       <workItem from="1591164699438" duration="2144000" />
       <workItem from="1591166892721" duration="5603000" />
       <workItem from="1591179751625" duration="7711000" />
-      <workItem from="1591233054779" duration="3764000" />
+      <workItem from="1591233054779" duration="4586000" />
+      <workItem from="1591263082912" duration="15329000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 20h 59m 26s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="CacheTest_LRU2CacheTest - 2020.06.04 at 20h 34m 06s.xml">
+      <configuration name="CacheTest.LRU2CacheTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 21h 00m 06s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 01m 50s.xml">
+      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 21h 00m 56s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 06m 25s.xml">
+      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 21h 05m 24s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 10m 38s.xml">
+      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 21h 06m 38s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 11m 18s.xml">
+      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ResizableLinkedBlockingQueueTest_setCapacityTest - 2020.06.01 at 21h 08m 13s.xml">
-      <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" configurationId="JUnit" />
+    <history-entry file="ThreadPoolFactoryTest_getFixedThreadPool - 2020.06.04 at 21h 36m 45s.xml">
+      <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommonThreadPoolExecutorTest_execute - 2020.06.03 at 15h 39m 06s.xml">
-      <configuration name="CommonThreadPoolExecutorTest.execute" configurationId="JUnit" />
+    <history-entry file="ThreadPoolFactoryTest_getFixedThreadPool - 2020.06.04 at 21h 38m 13s.xml">
+      <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommonThreadPoolExecutorTest_execute - 2020.06.03 at 15h 39m 39s.xml">
-      <configuration name="CommonThreadPoolExecutorTest.execute" configurationId="JUnit" />
+    <history-entry file="ThreadPoolFactoryTest_getLimitedThreadPool - 2020.06.04 at 21h 39m 26s.xml">
+      <configuration name="ThreadPoolFactoryTest.getLimitedThreadPool" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommonThreadPoolExecutorTest_execute - 2020.06.03 at 15h 40m 21s.xml">
-      <configuration name="CommonThreadPoolExecutorTest.execute" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getFIFOCache - 2020.06.04 at 21h 44m 40s.xml">
+      <configuration name="CacheFactoryTest.getFIFOCache" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommonThreadPoolExecutorTest_execute - 2020.06.03 at 15h 40m 38s.xml">
-      <configuration name="CommonThreadPoolExecutorTest.execute" configurationId="JUnit" />
+    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 44m 56s.xml">
+      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124019000" />
+    <option name="totallyTimeSpent" value="140170000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25626516" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497979" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -1380,8 +1326,8 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283859" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5473098" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3877551" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41558442" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5046382" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1398,7 +1344,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497979" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.32983023" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.32983023" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.2392886" />
       <window_info anchor="right" id="Bean Validation" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
@@ -1407,100 +1353,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessLimit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/seckill/OrderKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding>
-            <element signature="e#157#158#0" expanded="true" />
-            <element signature="e#186#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/redisson/redisson/3.12.0/redisson-3.12.0.jar!/org/redisson/api/RedissonClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="84" column="10" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-app/src/main/java/com/limit/MainApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/dispatcher.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/OrderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1040">
-          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/LinkedBlockingQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="121" column="26" lean-forward="true" selection-start-line="118" selection-end-line="855" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/concurrent/LinkedTransferQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="1416" column="57" selection-start-line="1416" selection-start-column="57" selection-end-line="1416" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/test/com/limit/common/threadpool/ResizableLinkedBlockingQueueTest.java" />
     <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/rocketmq222/SenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ResizableLinkedBlockingQueueTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="46" column="40" lean-forward="true" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#960#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#1001#1386#0" expanded="true" />
-            <element signature="e#1385#1386#0" expanded="true" />
-            <element signature="e#1427#1813#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1525,17 +1381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/ThreadPoolConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#1758#1759#0" expanded="true" />
-            <element signature="e#1787#1788#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1628,13 +1473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="740" column="14" selection-start-line="740" selection-start-column="14" selection-end-line="740" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1649,13 +1487,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1752,13 +1583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/controller/SeckillController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
@@ -1790,33 +1614,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/PriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="40" column="66" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
+        <state relative-caret-position="-12570">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ResizableLinkedBlockingQueueTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="126">
+          <caret line="830" selection-start-line="830" selection-end-line="830" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/reflect/Constructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="164" column="12" selection-start-line="164" selection-start-column="12" selection-end-line="164" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2745#2746#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2830#2831#0" expanded="true" />
+            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2915#2916#0" expanded="true" />
+            <element signature="e#2942#2943#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRU2Cache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        <state relative-caret-position="368">
+          <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
+            <element signature="e#2924#2925#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="102" selection-start-line="102" selection-end-line="104" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2161#2162#0" expanded="true" />
+            <element signature="e#2188#2189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1824,9 +1710,87 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="104">
-            <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+            <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/service/impl/SeckillServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-234">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/ThreadPoolConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="88" column="84" selection-start-line="88" selection-start-column="84" selection-end-line="88" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="30" column="78" selection-start-line="30" selection-start-column="78" selection-end-line="30" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1508">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -86,7 +86,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     @PostConstruct
     private void init() {
-        checkGoodsServiceExecutor = (ScheduledExecutorService) threadPoolFactory.getScheduledThreadPool(new ThreadPoolConfig("LoadInventory"));
+        checkGoodsServiceExecutor = (ScheduledExecutorService) threadPoolFactory.getThreadPool(Constants.SCHEDULED_THREAD_POOL, new ThreadPoolConfig("LoadInventory"));
 
         this.readDBRateLimiter = RateLimiterFactory.getRateLimiter(
                 new RateLimiterConfig("readLimiter", 1L,

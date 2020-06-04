@@ -1,26 +1,18 @@
 package com.limit.common.threadpool;
 
-import com.limit.MainApplication;
+import com.limit.common.Constants;
 import com.limit.common.threadpool.support.ThreadPoolConfig;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadPoolExecutor;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = MainApplication.class)
 public class ThreadPoolFactoryTest {
-
-    @Autowired
-    ThreadPoolFactory threadPoolFactory;
 
     @Test
     public void getFixedThreadPool() throws Exception{
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) threadPoolFactory.getFixedThreadPool(new ThreadPoolConfig());
+        ThreadPoolFactory threadPoolFactory = new ThreadPoolFactory();
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) threadPoolFactory.getThreadPool(Constants.FIXED_THREAD_POOL, new ThreadPoolConfig());
         final CountDownLatch latch = new CountDownLatch(1);
         executor.execute(new Runnable() {
             @Override
@@ -31,5 +23,12 @@ public class ThreadPoolFactoryTest {
         });
         latch.await();
         executor.shutdown();
+    }
+
+    @Test
+    public void getLimitedThreadPool() throws Exception{
+        ThreadPoolFactory threadPoolFactory = new ThreadPoolFactory();
+        Object executor = threadPoolFactory.getThreadPool("Limited", new ThreadPoolConfig());
+        System.out.println(executor == null); // true
     }
 }

@@ -1,5 +1,6 @@
 package com.limit.seckill.dispatcher.support;
 
+import com.limit.common.Constants;
 import com.limit.common.threadpool.ThreadPoolFactory;
 import com.limit.common.threadpool.support.CommonThreadPoolExecutor;
 import com.limit.common.threadpool.support.ThreadPoolConfig;
@@ -29,7 +30,7 @@ public class DoSeckillDispatcher implements Dispatcher {
         ThreadPoolConfig config = new ThreadPoolConfig("DoSeckill");
         config.setCorePoolSize(10);
         config.setMaximumPoolSize(20);
-        executor = (CommonThreadPoolExecutor) threadPoolFactory.getCommonThreadPool(config);
+        executor = (CommonThreadPoolExecutor) threadPoolFactory.getThreadPool(Constants.COMMON_THREAD_POOL, config);
     }
 
     @Override
