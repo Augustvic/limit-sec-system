@@ -1,7 +1,8 @@
 package com.limit.seckill.dispatcher.support;
 
 import com.limit.common.threadpool.ThreadPoolFactory;
-import com.limit.common.threadpool.ThreadPoolConfig;
+import com.limit.common.threadpool.support.CommonThreadPoolExecutor;
+import com.limit.common.threadpool.support.ThreadPoolConfig;
 import com.limit.seckill.dispatcher.Dispatcher;
 import com.limit.seckill.dispatcher.runnable.DoSeckillRunnable;
 import com.limit.seckill.exchange.message.Request;
@@ -21,14 +22,14 @@ public class DoSeckillDispatcher implements Dispatcher {
     @Autowired
     ThreadPoolFactory threadPoolFactory;
 
-    private ThreadPoolExecutor executor;
+    private CommonThreadPoolExecutor executor;
 
     @PostConstruct
     public void init() {
         ThreadPoolConfig config = new ThreadPoolConfig("DoSeckill");
         config.setCorePoolSize(10);
         config.setMaximumPoolSize(20);
-        executor = (ThreadPoolExecutor) threadPoolFactory.getCommonThreadPool(config);
+        executor = (CommonThreadPoolExecutor) threadPoolFactory.getCommonThreadPool(config);
     }
 
     @Override

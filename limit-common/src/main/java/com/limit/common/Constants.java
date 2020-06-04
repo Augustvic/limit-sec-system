@@ -10,5 +10,5 @@ public class Constants {
     public static final Integer DEFAULT_BLOCKING_QUEUE = 1000;
     public static final Integer DEFAULT_ALIVE_TIME = 60 * 1000;
 
-    public static final Integer N_LOCKS = 100;
+    public static final Integer N_LOCKS = 1000;
 }

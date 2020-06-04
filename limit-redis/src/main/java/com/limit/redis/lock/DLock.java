@@ -2,7 +2,6 @@ package com.limit.redis.lock;
 
 import com.limit.redis.service.RedissonService;
 import org.redisson.api.RLock;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,8 +62,13 @@ public class DLock implements Lock {
         String keyName = keys[key];
         RLock lock = RLOCKS.get(keyName);
         if (lock == null) {
-            lock = redissonService.getRLock(keyName);
-            RLOCKS.put(keyName, lock);
+            synchronized (this) {
+                lock = RLOCKS.get(keyName);
+                if (lock == null) {
+                    lock = redissonService.getRLock(keyName);
+                    RLOCKS.put(keyName, lock);
+                }
+            }
         }
         return lock;
     }

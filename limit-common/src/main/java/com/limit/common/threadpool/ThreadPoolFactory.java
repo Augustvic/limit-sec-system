@@ -1,5 +1,6 @@
 package com.limit.common.threadpool;
 
+import com.limit.common.threadpool.support.ThreadPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class ThreadPoolFactory {
     private ThreadPoolLoader getThreadPoolLoader(String name) {
         ThreadPoolLoader loader = THREADPOOL_LOADERS.get(name);
         if (loader == null) {
-            String realName = "com.limit.common.threadpool." + name + "ThreadPoolLoader";
+            String realName = "com.limit.common.threadpool.loader." + name + "ThreadPoolLoader";
             try {
                 loader = (ThreadPoolLoader)Class.forName(realName).newInstance();
             } catch (Exception e) {

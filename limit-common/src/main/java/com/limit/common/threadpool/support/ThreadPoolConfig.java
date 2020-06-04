@@ -1,4 +1,4 @@
-package com.limit.common.threadpool;
+package com.limit.common.threadpool.support;
 
 import com.limit.common.Constants;
 
@@ -10,10 +10,7 @@ public class ThreadPoolConfig {
     private Integer corePoolSize = Constants.DEFAULT_CORE_THREADS;
     // 最大线程数
     private Integer maximumPoolSize = Constants.DEFAULT_MAX_THREADS;
-    // 阻塞队列
-    // 等于 0：SynchronousQueue
-    // 小于 0：ArrayBlockingQueue，绝对值为容量
-    // 大于 0：LinkedBlockingQueue，绝对值为容量
+    // 阻塞队列容量
     private Integer queues = Constants.DEFAULT_BLOCKING_QUEUE;
     // 存活时间
     private Integer keepAliveTime = Constants.DEFAULT_ALIVE_TIME;

@@ -7,7 +7,7 @@ import com.limit.common.concurrent.ratelimiter.RateLimiterFactory;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.common.threadpool.ThreadPoolFactory;
-import com.limit.common.threadpool.ThreadPoolConfig;
+import com.limit.common.threadpool.support.ThreadPoolConfig;
 import com.limit.redis.key.seckill.GoodsKey;
 import com.limit.redis.key.seckill.SeckillKey;
 import com.limit.redis.lock.DLock;
@@ -75,10 +75,9 @@ public class SeckillServiceImpl implements SeckillService {
 
     private final Map<Long, Boolean> localOverMap = new ConcurrentHashMap<>();
 
-    private static final int N_LOCKS = Constants.N_LOCKS;
-
     private ScheduledExecutorService checkGoodsServiceExecutor;
-    private DLock dLock;
+    private DLock getStockLock;
+    private DLock reduceStockLock;
     private RateLimiter readDBRateLimiter;
     private RateLimiter writeDBRateLimiter;
 
@@ -95,9 +94,10 @@ public class SeckillServiceImpl implements SeckillService {
         this.writeDBRateLimiter = RateLimiterFactory.getRateLimiter(
                 new RateLimiterConfig("writeLimiter", 1L,
                         10000L, redissonService.getRLock("writelock"), redisService));;
-        this.dLock = LockFactory.getDLock("goods", N_LOCKS, redissonService);
+        this.getStockLock = LockFactory.getDLock("GetStock", Constants.N_LOCKS, redissonService);
+        this.reduceStockLock = LockFactory.getDLock("ReduceStock", Constants.N_LOCKS, redissonService);
 
-        this. producer = (SeckillProducer) producerFactory.getProducer("seckill_producer", SeckillProducer.path);
+        this.producer = (SeckillProducer) producerFactory.getProducer("seckill_producer", SeckillProducer.path);
         this.consumer = consumerFactory.getSeckillConsumer("seckill_consumer");
         this.consumer.start();
 
@@ -449,9 +449,9 @@ public class SeckillServiceImpl implements SeckillService {
 
         //减库存 下订单 写入秒杀订单
         // 获取互斥锁
-        RLock rLock = redissonService.getRLock("decrStockLock_" + goodsId);
-        // 最多等待 100 秒，上锁 100 秒后解锁
-        if (rLock.tryLock(100, 100, TimeUnit.SECONDS)) {
+        int key = BaseUtil.safeLongToInt(goodsId & (Constants.N_LOCKS - 1));
+//        RLock rLock = redissonService.getRLock("decrStockLock_" + goodsId);
+        if (reduceStockLock.lock(key)) {
             try {
                 OrderInfo orderInfo = seckill(user, goods);
                 if (orderInfo != null) {
@@ -459,7 +459,7 @@ public class SeckillServiceImpl implements SeckillService {
                     DefaultFuture.received(response);
                 }
             } finally {
-                rLock.unlock();
+                reduceStockLock.unlock(key);
             }
         }
     }
@@ -469,9 +469,9 @@ public class SeckillServiceImpl implements SeckillService {
         // 获取同一商品库存的线程中，只有一个线程能读取数据库，因为同一商品的 goodsId 相同
         // 如果不同的商品 index 相同，也需要等待释放锁
         // 在“库存”这个缓存里，所有的商品一共只有 locks.length 把锁
-        int key = BaseUtil.safeLongToInt(goodsId & (N_LOCKS - 1));
+        int key = BaseUtil.safeLongToInt(goodsId & (Constants.N_LOCKS - 1));
         while (!redisService.exists(GoodsKey.getSeckillGoodsStock, "" + goodsId)) {
-            if (dLock.lock(key)) {
+            if (getStockLock.lock(key)) {
                 try {
                     // 再次检查缓存是否存在，避免上锁之前其他线程已经写入了缓存
                     if (!redisService.exists(GoodsKey.getSeckillGoodsStock, "" + goodsId)) {
@@ -485,7 +485,7 @@ public class SeckillServiceImpl implements SeckillService {
                         localOverMap.put(goods.getId(), false);
                     }
                 } finally {
-                    dLock.unlock(key);
+                    getStockLock.unlock(key);
                 }
             }
             else {
