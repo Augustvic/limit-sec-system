@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06dc1507-e851-456d-8963-521c35cb482e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRU2Cache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,12 +39,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="104">
-                <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <first_editor relative-caret-position="208">
+                <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               </first_editor>
               <second_editor />
             </state>
@@ -65,16 +54,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
+            <state relative-caret-position="130">
               <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1508">
+            <state relative-caret-position="435">
               <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -176,7 +165,6 @@
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/CommonThreadPoolExecutor.java" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" />
         <option value="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java" />
@@ -189,6 +177,7 @@
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -230,7 +219,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1032,6 +1020,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1044,7 +1033,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java源码/dubbo-1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -1228,12 +1217,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.MainApplication" />
+      <item itemvalue="JUnit.ResizableLinkedBlockingQueueTest.setCapacityTest" />
+      <item itemvalue="JUnit.SenderTest.sendSeckillRequest" />
       <item itemvalue="JUnit.CacheTest.LRU2CacheTest" />
       <item itemvalue="JUnit.CacheFactoryTest.getCache" />
       <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
       <item itemvalue="JUnit.ThreadPoolFactoryTest.getLimitedThreadPool" />
       <item itemvalue="JUnit.CacheFactoryTest.getFIFOCache" />
+      <item itemvalue="Spring Boot.MainApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -1276,6 +1267,7 @@
       <workItem from="1591179751625" duration="7711000" />
       <workItem from="1591233054779" duration="4586000" />
       <workItem from="1591263082912" duration="15329000" />
+      <workItem from="1591278795219" duration="107000" />
     </task>
     <servers />
   </component>
@@ -1312,13 +1304,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140170000" />
+    <option name="totallyTimeSpent" value="140277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497979" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25383994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -1706,16 +1697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="104">
-            <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -1730,13 +1711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-234">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1784,13 +1758,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1508">
+        <state relative-caret-position="435">
           <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="208">
+            <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
