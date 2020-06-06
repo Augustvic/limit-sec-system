@@ -1,16 +1,14 @@
-package com.limit.common.concurrent.ratelimiter;
+package com.limit.common.concurrent.permitlimiter;
 
+import com.limit.common.Constants;
 import com.limit.redis.service.RedisService;
 import org.redisson.api.RLock;
 
-public class RateLimiterConfig {
+public class PermitLimiterConfig {
 
-    private RedisService redisService;
+    private final RedisService redisService;
 
-    /**
-     * 令牌桶 key
-     */
-    private final String key;
+    private final String name;
 
     /**
      * 每秒存入的令牌数
@@ -27,8 +25,12 @@ public class RateLimiterConfig {
      */
     private final RLock lock;
 
-    public RateLimiterConfig(String key, long permitsPerSecond, long maxPermits, RLock lock, RedisService redisService) {
-        this.key = key;
+    public PermitLimiterConfig(String name, RLock lock, RedisService redisService) {
+        this(name, Constants.PERMITS_PER_SECOND, Constants.MAX_PERMITS, lock, redisService);
+    }
+
+    public PermitLimiterConfig(String name, long permitsPerSecond, long maxPermits, RLock lock, RedisService redisService) {
+        this.name = name;
         this.permitsPerSecond = permitsPerSecond;
         this.maxPermits = maxPermits;
         this.lock = lock;
@@ -37,14 +39,6 @@ public class RateLimiterConfig {
 
     public RedisService getRedisService() {
         return redisService;
-    }
-
-    public void setRedisService(RedisService redisService) {
-        this.redisService = redisService;
-    }
-
-    public String getKey() {
-        return key;
     }
 
     public long getPermitsPerSecond() {
@@ -57,5 +51,9 @@ public class RateLimiterConfig {
 
     public RLock getLock() {
         return lock;
+    }
+
+    public String getName() {
+        return name;
     }
 }

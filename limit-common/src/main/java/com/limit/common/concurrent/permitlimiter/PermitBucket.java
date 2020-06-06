@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.ratelimiter;
+package com.limit.common.concurrent.permitlimiter;
 
 /**
  * 令牌桶
@@ -16,7 +16,7 @@ public class PermitBucket {
     private long storedPermits;
 
     /**
-     * 每两次添加令牌之间的时间间隔（逐个添加令牌），单位为微秒
+     * 每两次添加令牌之间的时间间隔（逐个添加令牌），单位为纳秒
      */
     private long intervalNanos;
 
@@ -24,14 +24,6 @@ public class PermitBucket {
      * 上次更新的时间
      */
     private long lastUpdateTime;
-
-    /**
-     * redis的过期时长。默认不过期。
-     * @return 有效时长
-     */
-    public int expires() {
-        return 0;
-    }
 
     /**
      * 更新当前持有的令牌数

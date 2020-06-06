@@ -24,9 +24,4 @@ public interface Producer {
      * @param message 消息
      */
     void sendOneWay(String message) throws Exception;
-
-    /**
-     * 销毁
-     */
-    void destroy();
 }

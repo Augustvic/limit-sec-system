@@ -8,9 +8,4 @@ public interface Consumer {
      * 开始监听
      */
     void start();
-
-    /**
-     * 销毁
-     */
-    void destroy();
 }

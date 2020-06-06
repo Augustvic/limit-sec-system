@@ -2,8 +2,8 @@ package com.limit.seckill.dispatcher.support;
 
 import com.limit.common.Constants;
 import com.limit.common.threadpool.ThreadPoolFactory;
-import com.limit.common.threadpool.support.CommonThreadPoolExecutor;
-import com.limit.common.threadpool.support.ThreadPoolConfig;
+import com.limit.common.threadpool.CommonThreadPoolExecutor;
+import com.limit.common.threadpool.ThreadPoolConfig;
 import com.limit.seckill.dispatcher.Dispatcher;
 import com.limit.seckill.dispatcher.runnable.DoSeckillRunnable;
 import com.limit.seckill.exchange.message.Request;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.concurrent.ThreadPoolExecutor;
 
 @Service
 public class DoSeckillDispatcher implements Dispatcher {

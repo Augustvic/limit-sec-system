@@ -1,8 +1,6 @@
-package com.limit.common.concurrent.ratelimiter;
+package com.limit.common.concurrent.permitlimiter;
 
-import com.google.common.math.LongMath;
-import com.limit.common.threadpool.ThreadPoolFactory;
-import com.limit.common.utils.BaseUtil;
+import com.limit.common.concurrent.Limiter;
 import com.limit.redis.key.common.PermitBucketKey;
 import com.limit.redis.service.RedisService;
 import org.redisson.api.RLock;
@@ -14,16 +12,14 @@ import java.util.concurrent.TimeUnit;
 /**
  * 令牌桶限流器，以令牌桶为基础
  */
-public class RateLimiter {
+public class PermitLimiter implements Limiter {
 
-    private static final Logger log = LoggerFactory.getLogger(RateLimiter.class);
+    private static final Logger log = LoggerFactory.getLogger(PermitLimiter.class);
 
-    private RedisService redisService;
+    private final RedisService redisService;
 
-    /**
-     * 令牌桶 key
-     */
-    private final String key;
+    // 唯一标识
+    private final String name;
 
     /**
      * 每秒存入的令牌数
@@ -43,26 +39,12 @@ public class RateLimiter {
     /**
      * 构造函数
      */
-    public RateLimiter(RateLimiterConfig config){
-        this.key = config.getKey();
+    public PermitLimiter(PermitLimiterConfig config){
+        this.name = config.getName();
         this.permitsPerSecond = (config.getPermitsPerSecond() == 0L) ? 1000L : config.getPermitsPerSecond();
         this.maxPermits = config.getMaxPermits();
         this.lock = config.getLock();
         this.redisService = config.getRedisService();
-    }
-
-    /**
-     * 构造函数
-     * @param key 令牌桶 key 后缀
-     * @param permitsPerSecond 每秒存入的令牌数
-     * @param maxPermits 最大存储令牌数
-     */
-    public RateLimiter(String key, long permitsPerSecond, long maxPermits, RLock lock, RedisService redisService){
-        this.key = key;
-        this.permitsPerSecond = (permitsPerSecond == 0L) ? 1000L : permitsPerSecond;
-        this.maxPermits = maxPermits;
-        this.lock = lock;
-        this.redisService = redisService;
     }
 
     /**
@@ -91,15 +73,15 @@ public class RateLimiter {
      * @return 返回令牌桶
      */
     private PermitBucket putDefaultBucket() {
-        if (!redisService.exists(PermitBucketKey.permitBucket, this.key)) {
+        if (!redisService.exists(PermitBucketKey.permitBucket, this.name)) {
             long intervalNanos = TimeUnit.SECONDS.toNanos(1) / permitsPerSecond;
             long lastUpdateTime = System.nanoTime();
             PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalNanos, lastUpdateTime);
             // 存入缓存，设置有效时间
-            redisService.setwe(PermitBucketKey.permitBucket, this.key, permitBucket, permitBucket.expires());
+            redisService.setwe(PermitBucketKey.permitBucket, this.name, permitBucket, PermitBucketKey.permitBucket.expireSeconds());
             return permitBucket;
         }
-        return redisService.get(PermitBucketKey.permitBucket, this.key, PermitBucket.class);
+        return redisService.get(PermitBucketKey.permitBucket, this.name, PermitBucket.class);
     }
 
     /**
@@ -108,7 +90,7 @@ public class RateLimiter {
      */
     private PermitBucket getBucket() {
         // 从缓存中获取桶
-        PermitBucket permitBucket = redisService.get(PermitBucketKey.permitBucket, this.key, PermitBucket.class);
+        PermitBucket permitBucket = redisService.get(PermitBucketKey.permitBucket, this.name, PermitBucket.class);
         // 如果缓存中没有，进入 putDefaultBucket 中初始化
         if (permitBucket == null) {
             return putDefaultBucket();
@@ -121,7 +103,7 @@ public class RateLimiter {
      * @param permitBucket 新的令牌桶
      */
     private void setBucket(PermitBucket permitBucket) {
-        redisService.setwe(PermitBucketKey.permitBucket, this.key, permitBucket, permitBucket.expires());
+        redisService.setwe(PermitBucketKey.permitBucket, this.name, permitBucket, PermitBucketKey.permitBucket.expireSeconds());
     }
 
 
@@ -155,6 +137,7 @@ public class RateLimiter {
      *
      * @return 成功返回 true
      */
+    @Override
     public boolean acquire() {
         return acquire(1);
     }

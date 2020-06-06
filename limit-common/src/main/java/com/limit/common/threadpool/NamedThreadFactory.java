@@ -1,4 +1,4 @@
-package com.limit.common.threadpool.support;
+package com.limit.common.threadpool;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

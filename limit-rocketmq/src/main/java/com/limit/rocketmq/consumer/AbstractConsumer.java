@@ -20,10 +20,4 @@ public abstract class AbstractConsumer implements Consumer {
         consumer.setConsumeThreadMax(config.getConsumeThreadMax());
         this.consumer = consumer;
     }
-
-    @Override
-    public void destroy() {
-        this.consumer.shutdown();
-        ConsumerFactory.destroy(this);
-    }
 }

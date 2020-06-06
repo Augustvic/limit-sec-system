@@ -24,10 +24,4 @@ public abstract class AbstractProducer implements Producer {
             log.info(e.toString());
         }
     }
-
-    @Override
-    public void destroy() {
-        this.producer.shutdown();
-        ProducerFactory.destroy(this);
-    }
 }

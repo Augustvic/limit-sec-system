@@ -1,4 +1,4 @@
-package com.limit.common.threadpool.support;
+package com.limit.common.threadpool;
 
 import com.limit.common.utils.BaseUtil;
 import org.slf4j.Logger;

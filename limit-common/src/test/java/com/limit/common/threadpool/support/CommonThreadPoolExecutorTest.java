@@ -1,13 +1,14 @@
 package com.limit.common.threadpool.support;
 
+import com.limit.common.threadpool.AbortPolicy;
+import com.limit.common.threadpool.CommonThreadPoolExecutor;
+import com.limit.common.threadpool.NamedThreadFactory;
 import com.limit.common.threadpool.queue.ResizableLinkedBlockingQueue;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.*;
 
 public class CommonThreadPoolExecutorTest {
 

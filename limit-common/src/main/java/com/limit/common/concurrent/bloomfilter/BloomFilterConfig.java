@@ -1,20 +1,25 @@
 package com.limit.common.concurrent.bloomfilter;
 
+import com.limit.common.Constants;
 import redis.clients.jedis.JedisPool;
 
 public class BloomFilterConfig {
+
+    private final String name;
+
     // 预计插入量
-    private long expectedInsertions = 1000;
+    private final long expectedInsertions;
     // 可接受的错误率
-    private double fpp = 0.01d;
+    private final double fpp;
 
-    private JedisPool jedisPool;
+    private final JedisPool jedisPool;
 
-    public BloomFilterConfig(JedisPool jedisPool) {
-        this.jedisPool = jedisPool;
+    public BloomFilterConfig(String name, JedisPool jedisPool) {
+        this(name, Constants.EXPECTED_INSERTIONS, Constants.FPP, jedisPool);
     }
 
-    public BloomFilterConfig(long expectedInsertions, double fpp, JedisPool jedisPool) {
+    public BloomFilterConfig(String name, long expectedInsertions, double fpp, JedisPool jedisPool) {
+        this.name = name;
         this.expectedInsertions = expectedInsertions;
         this.fpp = fpp;
         this.jedisPool = jedisPool;
@@ -24,23 +29,15 @@ public class BloomFilterConfig {
         return expectedInsertions;
     }
 
-    public void setExpectedInsertions(long expectedInsertions) {
-        this.expectedInsertions = expectedInsertions;
-    }
-
     public double getFpp() {
         return fpp;
-    }
-
-    public void setFpp(double fpp) {
-        this.fpp = fpp;
     }
 
     public JedisPool getJedisPool() {
         return jedisPool;
     }
 
-    public void setJedisPool(JedisPool jedisPool) {
-        this.jedisPool = jedisPool;
+    public String getName() {
+        return name;
     }
 }

@@ -15,7 +15,7 @@ public class BloomFilter {
 
     private static final String keyPrefix = "BloomFilter:";
 
-    private JedisPool jedisPool;
+    private final JedisPool jedisPool;
 
     private Jedis jedis;
 
@@ -45,16 +45,6 @@ public class BloomFilter {
         this.numBits = optimalNumOfBits(config.getExpectedInsertions(), config.getFpp());
         this.numHashFunctions = optimalNumOfHashFunctions(config.getExpectedInsertions(), this.numBits);
         this.jedisPool = config.getJedisPool();
-    }
-
-    /**
-     * 构造函数
-     * @param expectedInsertions 预计插入量
-     * @param fpp 可接受的错误率
-     */
-    public BloomFilter(long expectedInsertions, double fpp) {
-        this.numBits = optimalNumOfBits(expectedInsertions, fpp);
-        this.numHashFunctions = optimalNumOfHashFunctions(expectedInsertions, this.numBits);
     }
 
     /**

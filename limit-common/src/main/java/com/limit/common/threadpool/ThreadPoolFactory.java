@@ -1,7 +1,6 @@
 package com.limit.common.threadpool;
 
 import com.limit.common.Constants;
-import com.limit.common.threadpool.support.ThreadPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

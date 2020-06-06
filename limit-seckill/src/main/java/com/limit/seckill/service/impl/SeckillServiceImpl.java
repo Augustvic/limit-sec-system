@@ -1,13 +1,15 @@
 package com.limit.seckill.service.impl;
 
 import com.limit.common.Constants;
-import com.limit.common.concurrent.ratelimiter.RateLimiter;
-import com.limit.common.concurrent.ratelimiter.RateLimiterConfig;
-import com.limit.common.concurrent.ratelimiter.RateLimiterFactory;
+import com.limit.common.cache.CacheFactory;
+import com.limit.common.cache.LRU2Cache;
+import com.limit.common.concurrent.permitlimiter.PermitLimiter;
+import com.limit.common.concurrent.permitlimiter.PermitLimiterConfig;
+import com.limit.common.concurrent.permitlimiter.PermitLimiterFactory;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.common.threadpool.ThreadPoolFactory;
-import com.limit.common.threadpool.support.ThreadPoolConfig;
+import com.limit.common.threadpool.ThreadPoolConfig;
 import com.limit.redis.key.seckill.GoodsKey;
 import com.limit.redis.key.seckill.SeckillKey;
 import com.limit.redis.lock.DLock;
@@ -30,7 +32,6 @@ import com.limit.seckill.rocketmq.SeckillProducer;
 import com.limit.seckill.service.SeckillService;
 import com.limit.seckill.vo.GoodsVo;
 import com.limit.user.entity.SeckillUser;
-import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +43,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -68,18 +68,24 @@ public class SeckillServiceImpl implements SeckillService {
     ThreadPoolFactory threadPoolFactory;
 
     @Autowired
+    CacheFactory cacheFactory;
+
+    @Autowired
+    PermitLimiterFactory permitLimiterFactory;
+
+    @Autowired
     ProducerFactory producerFactory;
 
     @Autowired
     SeckillConsumerFactory consumerFactory;
 
-    private final Map<Long, Boolean> localOverMap = new ConcurrentHashMap<>();
-
+//    private final Map<Long, Boolean> localOverMap = new ConcurrentHashMap<>();
+    private LRU2Cache<Long, Boolean> localStockOver;
     private ScheduledExecutorService checkGoodsServiceExecutor;
     private DLock getStockLock;
     private DLock reduceStockLock;
-    private RateLimiter readDBRateLimiter;
-    private RateLimiter writeDBRateLimiter;
+    private PermitLimiter readDBPermitLimiter;
+    private PermitLimiter writeDBPermitLimiter;
 
     private SeckillProducer producer;
     private SeckillConsumer consumer;
@@ -88,14 +94,14 @@ public class SeckillServiceImpl implements SeckillService {
     private void init() {
         checkGoodsServiceExecutor = (ScheduledExecutorService) threadPoolFactory.getThreadPool(Constants.SCHEDULED_THREAD_POOL, new ThreadPoolConfig("LoadInventory"));
 
-        this.readDBRateLimiter = RateLimiterFactory.getRateLimiter(
-                new RateLimiterConfig("readLimiter", 1L,
-                        10000L, redissonService.getRLock("readlock"), redisService));
-        this.writeDBRateLimiter = RateLimiterFactory.getRateLimiter(
-                new RateLimiterConfig("writeLimiter", 1L,
-                        10000L, redissonService.getRLock("writelock"), redisService));;
+        this.readDBPermitLimiter = permitLimiterFactory.getPermitLimiter(
+                new PermitLimiterConfig("SeckillReadDBRateLimiter", redissonService.getRLock("readlock"), redisService));
+        this.writeDBPermitLimiter = permitLimiterFactory.getPermitLimiter(
+                new PermitLimiterConfig("SeckillWriteDBRateLimiter", redissonService.getRLock("writelock"), redisService));;
         this.getStockLock = LockFactory.getDLock("GetStock", Constants.N_LOCKS, redissonService);
         this.reduceStockLock = LockFactory.getDLock("ReduceStock", Constants.N_LOCKS, redissonService);
+
+        this.localStockOver = (LRU2Cache) cacheFactory.getCache("LocalStockOver", Constants.LRU2_CACHE, Constants.CACHE_MAX_CAPACITY);
 
         this.producer = (SeckillProducer) producerFactory.getProducer("seckill_producer", SeckillProducer.path);
         this.consumer = consumerFactory.getSeckillConsumer("seckill_consumer");
@@ -114,7 +120,7 @@ public class SeckillServiceImpl implements SeckillService {
                     // 秒杀结束 1 分钟后过期
                     int expireSeconds = BaseUtil.safeLongToInt((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
                     redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
-                    localOverMap.put(goods.getId(), false);
+                    localStockOver.put(goods.getId(), false);
                 }
             }
         };
@@ -348,7 +354,7 @@ public class SeckillServiceImpl implements SeckillService {
 //        long goodsId = request.getGoodsId();
 //
 //        // 如果没有获取到读数据库令牌
-//        if (!readDBRateLimiter.acquireMillis()) {
+//        if (!readDBPermitLimiter.acquireMillis()) {
 //            // 重新进入队列等待
 //            producer.sendSeckillRequest(request);
 //            return;
@@ -365,7 +371,7 @@ public class SeckillServiceImpl implements SeckillService {
 //            return;
 //        }
 //        // 如果没有获取到写数据库令牌
-//        if (!writeDBRateLimiter.acquireMillis()) {
+//        if (!writeDBPermitLimiter.acquireMillis()) {
 //            // 重新进入队列等待
 //            producer.sendSeckillRequest(request);
 //            return;
@@ -430,7 +436,7 @@ public class SeckillServiceImpl implements SeckillService {
         long goodsId = request.getGoodsId();
 
         // 获取读数据库令牌
-        if (!readDBRateLimiter.acquireTillSuccess(1L, 10000L)) {
+        if (!readDBPermitLimiter.acquireTillSuccess(1L, 10000L)) {
             Response response = new Response(request.getId(), -1L);
             DefaultFuture.received(response);
         }
@@ -442,7 +448,7 @@ public class SeckillServiceImpl implements SeckillService {
             return;
 
         // 如果没有获取到写数据库令牌
-        if (!writeDBRateLimiter.acquireTillSuccess(1L, 10000L)) {
+        if (!writeDBPermitLimiter.acquireTillSuccess(1L, 10000L)) {
             Response response = new Response(request.getId(), -1L);
             DefaultFuture.received(response);
         }
@@ -482,7 +488,7 @@ public class SeckillServiceImpl implements SeckillService {
                         // 秒杀结束一分钟之后缓存失效
                         int expireSeconds = BaseUtil.safeLongToInt((goods.getEndDate().getTime() - new Date().getTime()) / 1000 + 60);
                         redisService.set(new GoodsKey(expireSeconds, "gs"), "" + goods.getId(), goods.getStockCount());
-                        localOverMap.put(goods.getId(), false);
+                        localStockOver.put(goods.getId(), goods.getStockCount() < 0);
                     }
                 } finally {
                     getStockLock.unlock(key);
@@ -493,15 +499,17 @@ public class SeckillServiceImpl implements SeckillService {
             }
         }
         // 内存标记减少redis访问
-        boolean over = localOverMap.get(goodsId);
-        if (over) {
+        Boolean over = localStockOver.get(goodsId);
+        if (over != null && over) {
             return CodeMsg.MIAO_SHA_OVER;
         }
         // 预减库存
         long stock = redisService.decr(GoodsKey.getSeckillGoodsStock, "" + goodsId);
         if (stock < 0) {
-            localOverMap.put(goodsId, true);
+            localStockOver.put(goodsId, true);
             return CodeMsg.MIAO_SHA_OVER;
+        } else {
+            localStockOver.put(goodsId, false);
         }
         return CodeMsg.SUCCESS;
     }

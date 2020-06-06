@@ -35,13 +35,16 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     RedisService redisService;
 
+    @Autowired
+    BloomFilterFactory bloomFilterFactory;
+
     private BloomFilter bloomFilter;
 
     private static final String WHERE = "UserAccessLimit";
 
     @PostConstruct
     public void init() {
-        this.bloomFilter = BloomFilterFactory.getBloomFilter(new BloomFilterConfig(jedisPool));
+        this.bloomFilter = bloomFilterFactory.getBloomFilter(new BloomFilterConfig("AccessInterceptor", jedisPool));
     }
 
     @Override

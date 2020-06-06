@@ -1,7 +1,6 @@
 package com.limit.rocketmq.consumer;
 
 import com.limit.rocketmq.config.ConsumerConfig;
-import com.limit.rocketmq.producer.ProducerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class ConsumerFactory {
     @Autowired
     protected ConsumerConfig consumerConfig;
 
-    protected static final Logger log = LoggerFactory.getLogger(ProducerFactory.class);
+    protected static final Logger log = LoggerFactory.getLogger(ConsumerFactory.class);
 
     public static final Map<String, Consumer> NAME_CONSUMER = new ConcurrentHashMap<>();
     public static final Map<Consumer, String> CONSUMER_NAME = new ConcurrentHashMap<>();
@@ -39,7 +38,7 @@ public class ConsumerFactory {
         return consumer;
     }
 
-    public static void destroy(Consumer consumer) {
+    public void destroy(Consumer consumer) {
         String name = CONSUMER_NAME.remove(consumer);
         NAME_CONSUMER.remove(name);
     }

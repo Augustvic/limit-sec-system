@@ -38,7 +38,7 @@ public class ProducerFactory {
         return producer;
     }
 
-    public static void destroy(Producer producer) {
+    public void destroy(Producer producer) {
         String name = PRODUCER_NAME.remove(producer);
         NAME_PRODUCER.remove(name);
     }
