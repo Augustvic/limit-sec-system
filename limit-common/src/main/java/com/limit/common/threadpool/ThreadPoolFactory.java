@@ -1,6 +1,7 @@
 package com.limit.common.threadpool;
 
 import com.limit.common.Constants;
+import com.limit.common.Factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 
 @Service
-public class ThreadPoolFactory {
+public class ThreadPoolFactory implements Factory {
 
     private static final Logger log = LoggerFactory.getLogger(ThreadPoolFactory.class);
     private static final Map<String, ThreadPoolLoader> THREADPOOL_LOADERS = new ConcurrentHashMap<>();
     private static final Map<String, Executor> THREADPOOLS = new ConcurrentHashMap<>();
+    private static final Map<Executor, String> THREADPOOL_NAME = new ConcurrentHashMap<>();
     private static final Set<String> TYPES = new HashSet<>();
     static {
         TYPES.add(Constants.COMMON_THREAD_POOL);
@@ -43,10 +45,22 @@ public class ThreadPoolFactory {
                     THREADPOOL_LOADERS.putIfAbsent(type, loader);
                     loader = THREADPOOL_LOADERS.get(type);
                 }
-                THREADPOOLS.putIfAbsent(config.getName(), loader.getExecutor(config));
-                executor = THREADPOOLS.get(config.getName());
+                executor = loader.getExecutor(config);
+                String name = config.getName();
+                THREADPOOLS.putIfAbsent(name, executor);
+                THREADPOOL_NAME.putIfAbsent(executor, name);
+                executor = THREADPOOLS.get(name);
             }
         }
         return executor;
     }
+
+    @Override
+    public void destroy(Object obj) {
+        if (obj instanceof Executor) {
+            String name = THREADPOOL_NAME.remove(obj);
+            THREADPOOLS.remove(name);
+        }
+    }
+
 }

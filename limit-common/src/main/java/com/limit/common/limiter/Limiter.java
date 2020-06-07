@@ -1,4 +1,4 @@
-package com.limit.common.concurrent;
+package com.limit.common.limiter;
 
 /**
  * 限流器

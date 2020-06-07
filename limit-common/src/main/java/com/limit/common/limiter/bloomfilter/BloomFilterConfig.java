@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.bloomfilter;
+package com.limit.common.limiter.bloomfilter;
 
 import com.limit.common.Constants;
 import redis.clients.jedis.JedisPool;

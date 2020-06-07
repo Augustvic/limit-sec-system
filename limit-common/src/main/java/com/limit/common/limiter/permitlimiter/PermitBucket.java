@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.permitlimiter;
+package com.limit.common.limiter.permitlimiter;
 
 /**
  * 令牌桶
@@ -27,10 +27,11 @@ public class PermitBucket {
 
     /**
      * 更新当前持有的令牌数
-     * 若当前时间晚于 nextFreeTicketMicros，则计算该段时间内可以生成多少令牌，将生成的令牌加入令牌桶中并更新数据
+     * 若当前时间晚于 lastUpdateTime，则计算该段时间内可以生成多少令牌，将生成的令牌加入令牌桶中并更新数据
+     *
      * @param now 当前时间
      */
-    public void reSync(long now, long storedPermitsToSpend){
+    public void reSync(long now, long storedPermitsToSpend) {
         if (now > lastUpdateTime) {
             long newStoredPermits = Math.min(maxPermits, storedPermits + (now - lastUpdateTime) / intervalNanos - storedPermitsToSpend);
             // now 距离 lastUpdateTime 很短时，防止 lastUpdateTime 变了而 storedPermits 没变

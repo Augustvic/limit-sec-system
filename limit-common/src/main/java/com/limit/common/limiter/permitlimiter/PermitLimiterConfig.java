@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.permitlimiter;
+package com.limit.common.limiter.permitlimiter;
 
 import com.limit.common.Constants;
 import com.limit.redis.service.RedisService;

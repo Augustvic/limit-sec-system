@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.leakylimiter;
+package com.limit.common.limiter.leakylimiter;
 
 import com.limit.common.Constants;
 import com.limit.redis.service.RedisService;

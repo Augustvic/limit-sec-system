@@ -3,9 +3,9 @@ package com.limit.seckill.service.impl;
 import com.limit.common.Constants;
 import com.limit.common.cache.CacheFactory;
 import com.limit.common.cache.LRU2Cache;
-import com.limit.common.concurrent.permitlimiter.PermitLimiter;
-import com.limit.common.concurrent.permitlimiter.PermitLimiterConfig;
-import com.limit.common.concurrent.permitlimiter.PermitLimiterFactory;
+import com.limit.common.limiter.permitlimiter.PermitLimiter;
+import com.limit.common.limiter.permitlimiter.PermitLimiterConfig;
+import com.limit.common.limiter.permitlimiter.PermitLimiterFactory;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.common.threadpool.ThreadPoolFactory;
@@ -74,6 +74,9 @@ public class SeckillServiceImpl implements SeckillService {
     PermitLimiterFactory permitLimiterFactory;
 
     @Autowired
+    LockFactory lockFactory;
+
+    @Autowired
     ProducerFactory producerFactory;
 
     @Autowired
@@ -98,8 +101,8 @@ public class SeckillServiceImpl implements SeckillService {
                 new PermitLimiterConfig("SeckillReadDBRateLimiter", redissonService.getRLock("readlock"), redisService));
         this.writeDBPermitLimiter = permitLimiterFactory.getPermitLimiter(
                 new PermitLimiterConfig("SeckillWriteDBRateLimiter", redissonService.getRLock("writelock"), redisService));;
-        this.getStockLock = LockFactory.getDLock("GetStock", Constants.N_LOCKS, redissonService);
-        this.reduceStockLock = LockFactory.getDLock("ReduceStock", Constants.N_LOCKS, redissonService);
+        this.getStockLock = lockFactory.getDLock("GetStock", Constants.N_LOCKS, redissonService);
+        this.reduceStockLock = lockFactory.getDLock("ReduceStock", Constants.N_LOCKS, redissonService);
 
         this.localStockOver = (LRU2Cache) cacheFactory.getCache("LocalStockOver", Constants.LRU2_CACHE, Constants.CACHE_MAX_CAPACITY);
 

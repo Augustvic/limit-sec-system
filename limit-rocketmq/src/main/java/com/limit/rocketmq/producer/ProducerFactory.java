@@ -1,5 +1,6 @@
 package com.limit.rocketmq.producer;
 
+import com.limit.common.Factory;
 import com.limit.rocketmq.config.ProducerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class ProducerFactory {
+public class ProducerFactory implements Factory {
 
     private static final Logger log = LoggerFactory.getLogger(ProducerFactory.class);
 
@@ -38,8 +39,11 @@ public class ProducerFactory {
         return producer;
     }
 
-    public void destroy(Producer producer) {
-        String name = PRODUCER_NAME.remove(producer);
-        NAME_PRODUCER.remove(name);
+    @Override
+    public void destroy(Object obj) {
+        if (obj instanceof Producer) {
+            String name = PRODUCER_NAME.remove(obj);
+            NAME_PRODUCER.remove(name);
+        }
     }
 }

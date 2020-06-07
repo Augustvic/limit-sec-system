@@ -1,6 +1,6 @@
-package com.limit.common.concurrent.permitlimiter;
+package com.limit.common.limiter.permitlimiter;
 
-import com.limit.common.concurrent.Limiter;
+import com.limit.common.limiter.Limiter;
 import com.limit.redis.key.common.PermitBucketKey;
 import com.limit.redis.service.RedisService;
 import org.redisson.api.RLock;
@@ -88,7 +88,7 @@ public class PermitLimiter implements Limiter {
      * 获取令牌桶
      * @return 缓存中的令牌桶或者默认的令牌桶
      */
-    private PermitBucket getBucket() {
+    public PermitBucket getBucket() {
         // 从缓存中获取桶
         PermitBucket permitBucket = redisService.get(PermitBucketKey.permitBucket, this.name, PermitBucket.class);
         // 如果缓存中没有，进入 putDefaultBucket 中初始化
@@ -105,22 +105,21 @@ public class PermitLimiter implements Limiter {
     private void setBucket(PermitBucket permitBucket) {
         redisService.setwe(PermitBucketKey.permitBucket, this.name, permitBucket, PermitBucketKey.permitBucket.expireSeconds());
     }
-
-
+    
     /**
-     * 尝试获取 tokens 个令牌
+     * 尝试获取 permits 个令牌
      *
      * @return 获取成功返回 true，失败返回 false
      */
-    public boolean acquire(long tokens) {
-        checkTokens(tokens);
+    public boolean acquire(long permits) {
+        checkPermits(permits);
         while (true) {
             if (lock()) {
                 long wait;
                 try {
-                    wait = canAcquire(tokens);
+                    wait = canAcquire(permits);
                     if (wait <= 0L) {
-                        return doAcquire(tokens);
+                        return doAcquire(permits);
                     }
                     else {
                         return false;
@@ -144,19 +143,19 @@ public class PermitLimiter implements Limiter {
 
     /**
      * 获取成功或超时才返回
-     * @param tokens 获取的令牌数
+     * @param permits 获取的令牌数
      * @param timeout 超时时间，单位为秒
      */
-    public boolean acquireTillSuccess(long tokens, long timeout) {
-        checkTokens(tokens);
+    public boolean acquireTillSuccess(long permits, long timeout) {
+        checkPermits(permits);
         long start = System.nanoTime();
         long timeoutNanos = TimeUnit.SECONDS.toNanos(timeout);
         while (true) {
             long wait = 0L;
             if (lock()) {
                 try {
-                    wait = canAcquire(tokens);
-                    if (wait <= 0L && doAcquire(tokens)) {
+                    wait = canAcquire(permits);
+                    if (wait <= 0L && doAcquire(permits)) {
                         return true;
                     }
                 } finally {
@@ -174,37 +173,74 @@ public class PermitLimiter implements Limiter {
     }
 
     /**
-     * 当前是否可以获取到令牌，如果获取不到，至少需要等多久
-     * @param tokens 请求的令牌数
-     * @return 等待时间，单位是纳秒。为 0 表示可以马上获取
+     * 添加指定数量令牌
+     * @param permits 要添加的令牌数
      */
-    private long canAcquire(long tokens){
-        PermitBucket bucket = getBucket();
-        long now = System.nanoTime();
-        bucket.reSync(now, 0L);
-        setBucket(bucket);
-        if (tokens <= bucket.getStoredPermits()) {
-            return 0L;
-        }
-        else {
-            return (tokens - bucket.getStoredPermits()) * bucket.getIntervalNanos();
+    public void addPermits(long permits) {
+        checkPermits(permits);
+        while (true) {
+            if (lock()) {
+                try {
+                    PermitBucket bucket = getBucket();
+                    long now = System.nanoTime();
+                    bucket.reSync(now, 0L);
+                    long newPermits = calculateAddPermits(bucket, permits);
+                    bucket.setStoredPermits(newPermits);
+                    setBucket(bucket);
+                    return;
+                } finally {
+                    unlock();
+                }
+            }
         }
     }
 
     /**
-     * 确认可以获取，就获取 tokens 个令牌，更新缓存
-     * @param tokens 请求 token 个令牌
+     * 计算添加之后桶里的令牌数
+     * @param bucket 桶
+     * @param addPermits 添加的令牌数
+     * @return
+     */
+    private long calculateAddPermits(PermitBucket bucket, long addPermits) {
+        long newPermits = bucket.getStoredPermits() + addPermits;
+        if (newPermits > bucket.getMaxPermits()) {
+            newPermits = bucket.getMaxPermits();
+        }
+        return newPermits;
+    }
+
+    /**
+     * 当前是否可以获取到令牌，如果获取不到，至少需要等多久
+     * @param permits 请求的令牌数
+     * @return 等待时间，单位是纳秒。为 0 表示可以马上获取
+     */
+    private long canAcquire(long permits){
+        PermitBucket bucket = getBucket();
+        long now = System.nanoTime();
+        bucket.reSync(now, 0L);
+        setBucket(bucket);
+        if (permits <= bucket.getStoredPermits()) {
+            return 0L;
+        }
+        else {
+            return (permits - bucket.getStoredPermits()) * bucket.getIntervalNanos();
+        }
+    }
+
+    /**
+     * 确认可以获取，就获取 permits 个令牌，更新缓存
+     * @param permits 请求 token 个令牌
      * @return 需要等待的时间
      */
-    private boolean doAcquire(long tokens) {
+    private boolean doAcquire(long permits) {
         PermitBucket bucket = getBucket();
-        if (tokens > bucket.getStoredPermits())
+        if (permits > bucket.getStoredPermits())
             return false;
         // 当前时间
         long now = System.nanoTime();
         if (now > bucket.getLastUpdateTime()) {
             // 可以消耗的令牌数/需要消耗的令牌数
-            long storedPermitsToSpend = Math.min(tokens, bucket.getStoredPermits());
+            long storedPermitsToSpend = Math.min(permits, bucket.getStoredPermits());
             // 更新一下
             bucket.reSync(now, storedPermitsToSpend);
             // 缓存中更新桶的状态
@@ -216,11 +252,11 @@ public class PermitLimiter implements Limiter {
 
     /**
      * 校验 token 值
-     * @param tokens token 值
+     * @param permits token 值
      */
-    private void checkTokens(long tokens) {
-        if (tokens < 0){
-            throw new IllegalArgumentException("Requested tokens " + tokens + " must be positive");
+    private void checkPermits(long permits) {
+        if (permits < 0) {
+            throw new IllegalArgumentException("Request/Put permits " + permits + " must be positive");
         }
     }
 }

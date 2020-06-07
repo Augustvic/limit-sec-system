@@ -1,4 +1,4 @@
-package com.limit.common.concurrent.bloomfilter;
+package com.limit.common.limiter.bloomfilter;
 
 import com.google.common.hash.Funnels;
 import com.google.common.hash.Hashing;

@@ -1,9 +1,9 @@
 package com.limit.user.access;
 
 import com.alibaba.fastjson.JSON;
-import com.limit.common.concurrent.bloomfilter.BloomFilter;
-import com.limit.common.concurrent.bloomfilter.BloomFilterConfig;
-import com.limit.common.concurrent.bloomfilter.BloomFilterFactory;
+import com.limit.common.limiter.bloomfilter.BloomFilter;
+import com.limit.common.limiter.bloomfilter.BloomFilterConfig;
+import com.limit.common.limiter.bloomfilter.BloomFilterFactory;
 import com.limit.common.result.CodeMsg;
 import com.limit.common.result.Result;
 import com.limit.redis.service.RedisService;

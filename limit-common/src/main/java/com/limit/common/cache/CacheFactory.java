@@ -1,6 +1,7 @@
 package com.limit.common.cache;
 
 import com.limit.common.Constants;
+import com.limit.common.Factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class CacheFactory {
+public class CacheFactory implements Factory {
 
 //    private static final Map<String, LRUCache> LRU_CACHE_MAP = new ConcurrentHashMap<>();
 //    private static final Map<String, LRU2Cache> LRU2_CACHE_MAP = new ConcurrentHashMap<>();
@@ -20,6 +21,7 @@ public class CacheFactory {
 
     private static final Logger log = LoggerFactory.getLogger(CacheFactory.class);
     private static final Map<String, Object> CACHES= new ConcurrentHashMap<>();
+    private static final Map<Object, String> CACHE_NAME= new ConcurrentHashMap<>();
     private static final Set<String> TYPES = new HashSet<>();
     static {
         TYPES.add(Constants.LRU_CACHE);
@@ -78,9 +80,16 @@ public class CacheFactory {
                     log.info(e.toString());
                 }
                 CACHES.putIfAbsent(name, cache);
+                CACHE_NAME.putIfAbsent(cache, name);
                 cache = CACHES.get(name);
             }
         }
         return cache;
+    }
+
+    @Override
+    public void destroy(Object obj) {
+        String name = CACHE_NAME.remove(obj);
+        CACHES.remove(name);
     }
 }

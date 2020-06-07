@@ -2,45 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06dc1507-e851-456d-8963-521c35cb482e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/Limiter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/common/LeakyBucketKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/SeckillConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/limiter/leakylimiter/LeakyLimiterFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/limiter/permitlimiter/PermitLimiterFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/bloomfilter/BloomFilterFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiterFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiterFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitBucket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/Limiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/Limiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/bloomfilter/BloomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/bloomfilter/BloomFilterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitBucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitBucket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactory.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CachedThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CachedThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CommonThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CommonThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/FixedThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/FixedThreadPoolLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/AbortPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/AbortPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/CommonThreadPoolExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/CommonThreadPoolExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/NamedThreadFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/NamedThreadFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/ThreadPoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/controller/UserController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -81,7 +70,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="130">
-                <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+                <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
               </first_editor>
               <second_editor />
             </state>
@@ -93,20 +82,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SendCallback</find>
-      <find>sender</find>
-      <find>rocketmq</find>
-      <find>start</find>
-      <find>getBody</find>
-      <find>Constructor</find>
       <find>producer</find>
       <find>ConsumeMessageThread</find>
       <find>acquireNanos</find>
@@ -131,11 +114,21 @@
       <find>localOverMap</find>
       <find>key</find>
       <find>Integer</find>
+      <find>RATELIMITERS</find>
+      <find>NAME_CONSUMER</find>
+      <find>tokens</find>
+      <find>Tokens</find>
+      <find>getB</find>
+      <find>setwe</find>
     </findStrings>
     <replaceStrings>
       <replace>ResizableLinkedBlockingQueue</replace>
       <replace>maxCapacity</replace>
       <replace>int</replace>
+      <replace>PERMITLIMITERS</replace>
+      <replace>CONSUMERS</replace>
+      <replace>permits</replace>
+      <replace>Permits</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -144,30 +137,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/support/CommonThreadPoolExecutor.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/support/CommonThreadPoolExecutorTest.java" />
-        <option value="$PROJECT_DIR$/limit-app/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRUCache.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LFUCache.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/LRU2Cache.java" />
         <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/dispatcher/support/DoSeckillDispatcher.java" />
         <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterConfig.java" />
         <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiterFactory.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CachedThreadPoolLoader.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CommonThreadPoolLoader.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/FixedThreadPoolLoader.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java" />
         <option value="$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakybucket/LeakyBucketFactory.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitBucket.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/RateLimiter.java" />
@@ -175,25 +159,34 @@
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakybucket/LeakyLimiter.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakybucket/LeakyBucket.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/ratelimiter/PermitLimiter.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactory.java" />
-        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/Limiter.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyBucket.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitBucket.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiter.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterConfig.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterConfig.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolConfig.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactory.java" />
-        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" />
-        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/AbstractProducer.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/Producer.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/Consumer.java" />
         <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactoryTest.java" />
         <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiter.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java" />
+        <option value="$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java" />
+        <option value="$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitBucket.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactoryTest.java" />
+        <option value="$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiter.java" />
+        <option value="$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactoryTest.java" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -337,6 +330,55 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
+              <item name="leakylimiter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
+              <item name="permitlimiter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="seckill" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -454,7 +496,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -466,7 +508,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
               <item name="bloomfilter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -479,7 +521,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
               <item name="leakylimiter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -492,7 +534,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="concurrent" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
               <item name="permitlimiter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -563,6 +605,18 @@
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="cache" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="limiter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -656,6 +710,18 @@
               <item name="limit" type="462c0819:PsiDirectoryNode" />
               <item name="redis" type="462c0819:PsiDirectoryNode" />
               <item name="lock" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="limit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="limit-redis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="limit" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="limit" type="b2602c69:ProjectViewProjectNode" />
@@ -1008,8 +1074,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1036,27 +1102,27 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.limit.common.concurrent.permitlimiter" />
+      <recent name="com.limit.common.concurrent.leakylimiter" />
       <recent name="com.limit.common.cache" />
       <recent name="com.limit.common.threadpool.support" />
       <recent name="com.limit.common.threadpool" />
-      <recent name="com.limit.seckill.service.impl" />
-      <recent name="com.limit.seckill.rocketmq" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test\java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.limit.common.threadpool" />
       <recent name="com.limit.seckill" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.limit.redis.key.common" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test\java" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\August\Desktop\Java\项目经验\limit\limit-app\src\test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1071,7 +1137,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MainApplication">
+  <component name="RunManager" selected="JUnit.PermitLimiterFactoryTest.getPermitLimiter">
     <configuration name="CacheFactoryTest.getCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="limit-common" />
       <extension name="coverage">
@@ -1104,33 +1170,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CacheTest.LRU2CacheTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-common" />
+    <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.limit.common.cache.*" />
+          <option name="PATTERN" value="com.limit.common.limiter.leakylimiter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.limit.common.cache" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.common.cache.CacheTest" />
-      <option name="METHOD_NAME" value="LRU2CacheTest" />
+      <option name="PACKAGE_NAME" value="com.limit.common.limiter.leakylimiter" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.limiter.leakylimiter.LeakyLimiterFactoryTest" />
+      <option name="METHOD_NAME" value="getLeakyLimiter" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResizableLinkedBlockingQueueTest.setCapacityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-common" />
+    <configuration name="PermitLimiterFactoryTest.getPermitLimiter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="limit-app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.limit.common.threadpool.queue.*" />
+          <option name="PATTERN" value="com.limit.common.limiter.permitlimiter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ResizableLinkedBlockingQueueTest" />
-      <option name="METHOD_NAME" value="setCapacityTest" />
+      <option name="PACKAGE_NAME" value="com.limit.common.limiter.permitlimiter" />
+      <option name="MAIN_CLASS_NAME" value="com.limit.common.limiter.permitlimiter.PermitLimiterFactoryTest" />
+      <option name="METHOD_NAME" value="getPermitLimiter" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1147,38 +1213,6 @@
       <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
       <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
       <option name="METHOD_NAME" value="sendSeckillRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SenderTest.sendSeckillRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.seckill.rocketmq.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.seckill.rocketmq" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.seckill.rocketmq.SenderTest" />
-      <option name="METHOD_NAME" value="sendSeckillRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="limit-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.limit.rocketmq.consumer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.limit.common.threadpool" />
-      <option name="MAIN_CLASS_NAME" value="com.limit.common.threadpool.ThreadPoolFactoryTest" />
-      <option name="METHOD_NAME" value="getFixedThreadPool" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1209,22 +1243,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ResizableLinkedBlockingQueueTest.setCapacityTest" />
-      <item itemvalue="JUnit.SenderTest.sendSeckillRequest" />
-      <item itemvalue="JUnit.CacheTest.LRU2CacheTest" />
       <item itemvalue="JUnit.CacheFactoryTest.getCache" />
-      <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
       <item itemvalue="JUnit.ThreadPoolFactoryTest.getLimitedThreadPool" />
       <item itemvalue="JUnit.CacheFactoryTest.getFIFOCache" />
       <item itemvalue="Spring Boot.MainApplication" />
+      <item itemvalue="JUnit.LeakyLimiterFactoryTest.getLeakyLimiter" />
+      <item itemvalue="JUnit.PermitLimiterFactoryTest.getPermitLimiter" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PermitLimiterFactoryTest.getPermitLimiter" />
+        <item itemvalue="JUnit.LeakyLimiterFactoryTest.getLeakyLimiter" />
         <item itemvalue="JUnit.CacheFactoryTest.getCache" />
         <item itemvalue="JUnit.CacheFactoryTest.getFIFOCache" />
         <item itemvalue="JUnit.ThreadPoolFactoryTest.getLimitedThreadPool" />
-        <item itemvalue="JUnit.ThreadPoolFactoryTest.getFixedThreadPool" />
-        <item itemvalue="JUnit.CacheTest.LRU2CacheTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1265,49 +1297,50 @@
       <workItem from="1591429373691" duration="4217000" />
       <workItem from="1591443336876" duration="7747000" />
       <workItem from="1591451491486" duration="25000" />
+      <workItem from="1591493430158" duration="599000" />
+      <workItem from="1591523838250" duration="11008000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CacheTest_LRU2CacheTest - 2020.06.04 at 20h 34m 06s.xml">
-      <configuration name="CacheTest.LRU2CacheTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 01m 50s.xml">
-      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 06m 25s.xml">
-      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 10m 38s.xml">
-      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 11m 18s.xml">
-      <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ThreadPoolFactoryTest_getFixedThreadPool - 2020.06.04 at 21h 36m 45s.xml">
-      <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ThreadPoolFactoryTest_getFixedThreadPool - 2020.06.04 at 21h 38m 13s.xml">
-      <configuration name="ThreadPoolFactoryTest.getFixedThreadPool" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ThreadPoolFactoryTest_getLimitedThreadPool - 2020.06.04 at 21h 39m 26s.xml">
-      <configuration name="ThreadPoolFactoryTest.getLimitedThreadPool" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CacheFactoryTest_getFIFOCache - 2020.06.04 at 21h 44m 40s.xml">
-      <configuration name="CacheFactoryTest.getFIFOCache" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CacheFactoryTest_getCache - 2020.06.04 at 21h 44m 56s.xml">
       <configuration name="CacheFactoryTest.getCache" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="LeakyLimiterFactoryTest_getLeakyLimiter - 2020.06.07 at 19h 10m 52s.xml">
+      <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LeakyLimiterFactoryTest_getLeakyLimiter - 2020.06.07 at 19h 14m 58s.xml">
+      <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LeakyLimiterFactoryTest_getLeakyLimiter - 2020.06.07 at 19h 18m 02s.xml">
+      <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LeakyLimiterFactoryTest_getLeakyLimiter - 2020.06.07 at 19h 20m 18s.xml">
+      <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LeakyLimiterFactoryTest_getLeakyLimiter - 2020.06.07 at 19h 21m 12s.xml">
+      <configuration name="LeakyLimiterFactoryTest.getLeakyLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PermitLimiterFactoryTest_getPermitLimiter - 2020.06.07 at 20h 36m 16s.xml">
+      <configuration name="PermitLimiterFactoryTest.getPermitLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PermitLimiterFactoryTest_getPermitLimiter - 2020.06.07 at 20h 37m 48s.xml">
+      <configuration name="PermitLimiterFactoryTest.getPermitLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PermitLimiterFactoryTest_getPermitLimiter - 2020.06.07 at 20h 39m 05s.xml">
+      <configuration name="PermitLimiterFactoryTest.getPermitLimiter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PermitLimiterFactoryTest_getPermitLimiter - 2020.06.07 at 20h 59m 48s.xml">
+      <configuration name="PermitLimiterFactoryTest.getPermitLimiter" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155015000" />
+    <option name="totallyTimeSpent" value="166622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29991916" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3031528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -1315,7 +1348,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283859" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.41558442" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.296846" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5046382" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1333,7 +1366,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497979" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.32983023" />
-      <window_info anchor="right" id="Maven" order="5" weight="0.2392886" />
+      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.2392886" />
       <window_info anchor="right" id="Bean Validation" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
@@ -1342,116 +1375,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/3.1.0/jedis-3.1.0.jar!/redis/clients/jedis/Jedis.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="281" column="16" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/service/RedisService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="263" column="27" lean-forward="true" selection-start-line="263" selection-start-column="27" selection-end-line="263" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakybucket.java" />
-    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="29" column="96" selection-start-line="29" selection-start-column="96" selection-end-line="29" selection-end-column="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/SeckillConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/FixedThreadPoolLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/CachedThreadPoolLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="17" column="54" lean-forward="true" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-user/src/main/java/com/limit/user/access/AccessInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/bloomfilter/BloomFilterConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/redisson/redisson/3.12.0/redisson-3.12.0.jar!/org/redisson/api/RLock.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/redisson/redisson/3.12.0/redisson-3.12.0.jar!/org/redisson/RedissonLock.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1390">
-          <caret line="249" column="56" selection-start-line="249" selection-start-column="56" selection-end-line="249" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/key/common/PermitBucketKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -1484,88 +1407,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitBucket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/permitlimiter/PermitLimiterFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="10" selection-start-line="10" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
-            <element signature="e#1110#1111#0" expanded="true" />
-            <element signature="e#1140#1141#0" expanded="true" />
-            <element signature="e#1167#1168#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1241#1242#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-            <element signature="e#1315#1316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-308">
-          <caret line="18" column="51" lean-forward="true" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1613,27 +1458,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="105" column="58" selection-start-line="105" selection-start-column="58" selection-end-line="105" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/Limiter.java">
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/Limiter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
@@ -1644,13 +1469,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3097">
           <caret line="164" column="12" selection-start-line="164" selection-start-column="12" selection-end-line="164" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="29" lean-forward="true" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1665,13 +1483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1703,16 +1514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/AbstractConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -1727,31 +1528,249 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java">
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/cache/CacheFactoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="286">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiterFactory.java">
+    <entry file="file://$PROJECT_DIR$/limit-common/src/test/java/com/limit/common/threadpool/ThreadPoolFactoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="624">
+          <caret line="29" column="96" selection-start-line="29" selection-start-column="96" selection-end-line="29" selection-end-column="96" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/concurrent/leakylimiter/LeakyLimiter.java">
+    <entry file="file://$PROJECT_DIR$/limit-app/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/rocketmq222/SenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="156">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/seckill/service/impl/SeckillServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/loader/ScheduledThreadPoolLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="290" column="15" selection-start-line="290" selection-start-column="15" selection-end-line="290" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2444">
+          <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/Factory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/cache/CacheFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="91" column="22" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/NamedThreadFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/threadpool/ThreadPoolFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1274">
+          <caret line="64" column="4" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/DLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/service/impl/SeckillServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1884">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/lock/LockFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/producer/ProducerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="37" column="17" lean-forward="true" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-rocketmq/src/main/java/com/limit/rocketmq/consumer/ConsumerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-seckill/src/main/java/com/limit/seckill/rocketmq/SeckillConsumerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="31" column="56" lean-forward="true" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/limiter/leakylimiter/LeakyLimiterFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-app/src/test/java/com/limit/common/limiter/permitlimiter/PermitLimiterFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-redis/src/main/java/com/limit/redis/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="108" column="28" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitBucket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/bloomfilter/BloomFilterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/leakylimiter/LeakyLimiterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/limit-common/src/main/java/com/limit/common/limiter/permitlimiter/PermitLimiterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1760,7 +1779,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="130">
-            <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+            <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>

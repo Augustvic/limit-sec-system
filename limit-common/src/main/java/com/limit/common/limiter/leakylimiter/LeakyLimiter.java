@@ -1,6 +1,6 @@
-package com.limit.common.concurrent.leakylimiter;
+package com.limit.common.limiter.leakylimiter;
 
-import com.limit.common.concurrent.Limiter;
+import com.limit.common.limiter.Limiter;
 import com.limit.redis.key.common.LeakyBucketKey;
 import com.limit.redis.service.RedisService;
 import org.redisson.api.RLock;
@@ -94,6 +94,7 @@ public class LeakyLimiter implements Limiter {
         if (recent == null) {
             recent = System.nanoTime();
             resync(recent);
+            return recent - intervalNanos;
         }
         return recent;
     }
