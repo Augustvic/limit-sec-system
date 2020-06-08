@@ -25,6 +25,13 @@ public class PermitBucket {
      */
     private long lastUpdateTime;
 
+    public PermitBucket(long maxPermits, long storedPermits, long intervalNanos, long lastUpdateTime) {
+        this.maxPermits = maxPermits;
+        this.storedPermits = storedPermits;
+        this.intervalNanos = intervalNanos;
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
     /**
      * 更新当前持有的令牌数
      * 若当前时间晚于 lastUpdateTime，则计算该段时间内可以生成多少令牌，将生成的令牌加入令牌桶中并更新数据
@@ -40,13 +47,6 @@ public class PermitBucket {
                 lastUpdateTime = now;
             }
         }
-    }
-
-    public PermitBucket(long maxPermits, long storedPermits, long intervalNanos, long lastUpdateTime) {
-        this.maxPermits = maxPermits;
-        this.storedPermits = storedPermits;
-        this.intervalNanos = intervalNanos;
-        this.lastUpdateTime = lastUpdateTime;
     }
 
     public long getMaxPermits() {

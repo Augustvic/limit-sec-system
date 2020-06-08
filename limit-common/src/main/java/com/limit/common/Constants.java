@@ -34,4 +34,8 @@ public class Constants {
 
     // LeakyLimiter
     public static final long LEAK_PER_SECOND = 1L;
+
+    // SlidingWindowLimiter
+    public static final long LIMIT_COUNT = 1000L;
+    public static final long WINDOW_SIZE = 10L;
 }
