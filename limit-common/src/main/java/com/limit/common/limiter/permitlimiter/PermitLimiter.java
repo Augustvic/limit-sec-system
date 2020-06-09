@@ -77,7 +77,7 @@ public class PermitLimiter implements Limiter {
         if (!redisService.exists(PermitBucketKey.permitBucket, this.name)) {
             long intervalNanos = TimeUnit.SECONDS.toNanos(1) / permitsPerSecond;
             long lastUpdateTime = System.nanoTime();
-            PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalNanos, lastUpdateTime);
+            PermitBucket permitBucket = new PermitBucket(name, maxPermits, permitsPerSecond, intervalNanos, lastUpdateTime);
             // 存入缓存，设置有效时间
             redisService.setwe(PermitBucketKey.permitBucket, this.name, permitBucket, PermitBucketKey.permitBucket.expireSeconds());
         }

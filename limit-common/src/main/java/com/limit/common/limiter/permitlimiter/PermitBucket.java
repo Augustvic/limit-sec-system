@@ -5,6 +5,8 @@ package com.limit.common.limiter.permitlimiter;
  */
 public class PermitBucket {
 
+    // 唯一标识
+    private String name;
     /**
      * 最大存储令牌数
      */
@@ -25,7 +27,8 @@ public class PermitBucket {
      */
     private long lastUpdateTime;
 
-    public PermitBucket(long maxPermits, long storedPermits, long intervalNanos, long lastUpdateTime) {
+    public PermitBucket(String name, long maxPermits, long storedPermits, long intervalNanos, long lastUpdateTime) {
+        this.name = name;
         this.maxPermits = maxPermits;
         this.storedPermits = storedPermits;
         this.intervalNanos = intervalNanos;
@@ -79,5 +82,13 @@ public class PermitBucket {
 
     public void setLastUpdateTime(long lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 public class Window {
 
+    // 唯一标识
+    private String name;
     // 滑动窗口
     private LinkedList<Node> slots;
     // 时间间隔
@@ -13,7 +15,8 @@ public class Window {
     // 流量限制
     private long limit;
 
-    public Window(LinkedList<Node> slots, long intervalNanos, long windowSize, long limit) {
+    public Window(String name, LinkedList<Node> slots, long intervalNanos, long windowSize, long limit) {
+        this.name = name;
         this.slots = slots;
         this.intervalNanos = intervalNanos;
         this.windowSize = windowSize;
@@ -86,5 +89,13 @@ public class Window {
 
     public void setLimit(long limit) {
         this.limit = limit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

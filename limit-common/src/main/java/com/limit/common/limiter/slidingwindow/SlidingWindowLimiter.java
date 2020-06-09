@@ -44,7 +44,7 @@ public class SlidingWindowLimiter implements Limiter {
      */
     public Window putDefaultWindow() {
         if (!redisService.exists(WindowKey.window, this.name)) {
-            Window window = new Window(new LinkedList<>(), intervalNanos, windowSize, limit);
+            Window window = new Window(name, new LinkedList<>(), intervalNanos, windowSize, limit);
             // 存入缓存，设置有效时间
             redisService.setwe(WindowKey.window, this.name, window, WindowKey.window.expireSeconds());
         }
