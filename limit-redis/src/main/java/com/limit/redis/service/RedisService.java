@@ -3,6 +3,7 @@ package com.limit.redis.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.limit.redis.key.KeyPrefix;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -278,7 +279,7 @@ public class RedisService {
         }else if(clazz == long.class || clazz == Long.class) {
             return  (T)Long.valueOf(str);
         } else {
-            return JSON.toJavaObject(JSON.parseObject(str), clazz);
+            return JSON.parseObject(str, clazz);
         }
     }
 

@@ -70,6 +70,7 @@ public class PermitLimiter implements Limiter {
 
     /**
      * 生成并存储默认令牌桶
+     * 必须在 lock 内调用
      * @return 返回令牌桶
      */
     private PermitBucket putDefaultBucket() {
@@ -79,7 +80,6 @@ public class PermitLimiter implements Limiter {
             PermitBucket permitBucket = new PermitBucket(maxPermits, permitsPerSecond, intervalNanos, lastUpdateTime);
             // 存入缓存，设置有效时间
             redisService.setwe(PermitBucketKey.permitBucket, this.name, permitBucket, PermitBucketKey.permitBucket.expireSeconds());
-            return permitBucket;
         }
         return redisService.get(PermitBucketKey.permitBucket, this.name, PermitBucket.class);
     }
