@@ -1,11 +1,8 @@
 package com.limit.seckill.exchange;
 
-import com.limit.redis.service.RedisService;
 import com.limit.seckill.exchange.message.Request;
 import com.limit.seckill.exchange.message.Response;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

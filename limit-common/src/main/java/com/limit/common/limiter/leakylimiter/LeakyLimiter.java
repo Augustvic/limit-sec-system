@@ -27,12 +27,8 @@ public class LeakyLimiter implements Limiter {
     // 每两滴水之间的时间间隔
     private final long intervalNanos;
 
-    // 每秒钟最多通过多少滴水
-    private final long leakPerSecond;
-
     public LeakyLimiter(LeakyLimiterConfig config) {
         this.name = config.getName();
-        this.leakPerSecond = config.getLeakPerSecond();
         this.intervalNanos = config.getIntervalNanos();
         this.lock = config.getLock();
         this.redisService = config.getRedisService();
