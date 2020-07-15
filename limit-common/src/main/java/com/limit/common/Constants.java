@@ -23,6 +23,10 @@ public class Constants {
     public static final String LRU_CACHE = "LRU";
     public static final String LFU_CACHE = "LFU";
     public static final String LRU2_CACHE = "LRU2";
+    public static final String LFU_PUT = "put";
+    public static final String LFU_GET = "get";
+    public static final String LFU_UPDATE = "update";
+    public static final String LFU_REMOVE = "remove";
 
     // PermitLimiter
     public static final long PERMITS_PER_SECOND = 100L;
