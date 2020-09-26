@@ -41,15 +41,19 @@ public class PermitBucket {
      *
      * @param now 当前时间
      */
-    public void reSync(long now, long storedPermitsToSpend) {
+    public void reSync(long now) {
         if (now > lastUpdateTime) {
-            long newStoredPermits = Math.min(maxPermits, storedPermits + (now - lastUpdateTime) / intervalNanos - storedPermitsToSpend);
+            long newStoredPermits = Math.min(maxPermits, storedPermits + (now - lastUpdateTime) / intervalNanos);
             // now 距离 lastUpdateTime 很短时，防止 lastUpdateTime 变了而 storedPermits 没变
             if (newStoredPermits != storedPermits) {
                 storedPermits = newStoredPermits;
                 lastUpdateTime = now;
             }
         }
+    }
+
+    public void decrPermits(long storedPermitsToSpend) {
+        this.storedPermits -= storedPermitsToSpend;
     }
 
     public long getMaxPermits() {

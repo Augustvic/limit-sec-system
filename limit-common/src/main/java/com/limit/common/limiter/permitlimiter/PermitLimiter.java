@@ -183,7 +183,7 @@ public class PermitLimiter implements Limiter {
                 try {
                     PermitBucket bucket = getBucket();
                     long now = System.nanoTime();
-                    bucket.reSync(now, 0L);
+                    bucket.reSync(now);
                     long newPermits = calculateAddPermits(bucket, permits);
                     bucket.setStoredPermits(newPermits);
                     setBucket(bucket);
@@ -217,7 +217,7 @@ public class PermitLimiter implements Limiter {
     private long canAcquire(long permits){
         PermitBucket bucket = getBucket();
         long now = System.nanoTime();
-        bucket.reSync(now, 0L);
+        bucket.reSync(now);
         setBucket(bucket);
         if (permits <= bucket.getStoredPermits()) {
             return 0L;
@@ -242,7 +242,8 @@ public class PermitLimiter implements Limiter {
             // 可以消耗的令牌数/需要消耗的令牌数
             long storedPermitsToSpend = Math.min(permits, bucket.getStoredPermits());
             // 更新一下
-            bucket.reSync(now, storedPermitsToSpend);
+            bucket.reSync(now);
+            bucket.decrPermits(storedPermitsToSpend);
             // 缓存中更新桶的状态
             setBucket(bucket);
             return true;

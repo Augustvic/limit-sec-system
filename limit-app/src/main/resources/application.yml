@@ -33,8 +33,6 @@ mybatis:
     map-underscore-to-camel-case: true
     default-fetch-size: 100
     default-statement-timeout: 3000
-    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:com/imooc/miaosha/dao/*.xml
 
 redis:
   host: 127.0.0.1
